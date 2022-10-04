@@ -15,8 +15,12 @@ module.exports.getService = (req, res, next) => {
       if (service) {
         res.status(200).json(service)
       } else {
-        res.status(404).json({error: "Profesional no encontrado"})
+        res.status(404).json({error: "Servicio no encontrado"})
       }
     })
     .catch(next)
+}
+
+module.exports.createService = (req, res, next) => {
+  res.status(401).json({ error: "aun no podemos crear servicios porque necesitamos usuarios" })
 }

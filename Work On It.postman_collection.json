@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "c265a067-e221-421f-a8a6-dc726bb794d7",
+		"name": "Work On It",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7691251"
+	},
+	"item": [
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "List Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/services",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/services/63334ad42ce3c1b19698a42d",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"services",
+								"63334ad42ce3c1b19698a42d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": ,\r\n    \"profession\": ,\r\n    \"bio\": ,\r\n    \"experience\": ,\r\n    \"rate\": ,\r\n    \"rating\": ,\r\n    \"disponibility\": \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/services/create",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"services",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"email\": \"pruebas1@example.es\", \r\n    \"password\": \"12345678\", \r\n    \"nickname\": \"Prueba1\", \r\n    \"name\": \"Cristian\", \r\n    \"surname\": \"Arranz Arevalo\", \r\n    \"phone\": \"675524689\", \r\n    \"typeStreet\": \"street\", \r\n    \"street\": \"Zamora\", \r\n    \"numberStreet\": \"7\", \r\n    \"floor\": \"1\", \r\n    \"door\": \"B\", \r\n    \"locality\": \"PARLA\", \r\n    \"city\": \"MADRID\", \r\n    \"postcode\": \"28982\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/user/create",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "VERSION",
+			"value": "/api/v1",
+			"type": "string"
+		}
+	]
+}

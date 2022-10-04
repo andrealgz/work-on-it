@@ -92,10 +92,7 @@ const userSchema = new Schema (
       type: String,
       trim: true,
       required: "El código postal es obligatorio"
-    },
-    isProfessional: {
-      type: Boolean
-    },
+    }
   },
   {
     timestamps: true,

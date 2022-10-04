@@ -4,7 +4,7 @@ const { professions, experiences, timeTables } = require("../data");
 
 const servicesSchema = new Schema (
   {
-    idUser: {
+    user: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: "User"

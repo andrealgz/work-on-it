@@ -2,11 +2,11 @@
 
 ## User
 
-| http verb | path              | status codes | purpose        |
-|-----------|-------------------|--------------|----------------|
-| GET       | /api/v1/user/<id> | 200, 404     | profile        |
-| PATCH     | /api/v1/user/<id> | 200, 404     | update profile |
-| POST      | /api/v1/user      | 201, 400     | create         |
+| http verb | path                | status codes | purpose        |
+|-----------|---------------------|--------------|----------------|
+| GET       | /api/v1/user/<id>   | 200, 404     | profile        |
+| PATCH     | /api/v1/user/<id>   | 200, 404     | update profile |
+| POST      | /api/v1/user/create | 201, 400     | create         |
 
 
 ## Service
