@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { professions, experiences, timeTables } = require("../data");
 
-const professionalSchema = new Schema (
+const servicesSchema = new Schema (
   {
     idUser: {
       type: Schema.Types.ObjectId,
@@ -42,5 +42,5 @@ const professionalSchema = new Schema (
   }
 )
 
-const Professional = mongoose.model('Professional', professionalSchema);
-module.exports = Professional;
+const Services = mongoose.model('Services', servicesSchema);
+module.exports = Services;

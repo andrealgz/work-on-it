@@ -1,5 +1,5 @@
 module.exports = {
-  professional: require("./professional.model"),
-  user: require("./user.model"),
-  order: require("./order.model")
+  Services: require("./service.model"),
+  User: require("./user.model"),
+  Order: require("./order.model")
 }

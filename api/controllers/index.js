@@ -1,3 +1,3 @@
 module.exports = {
-  professional: require("./professional.controller")
+  services: require("./services.controller")
 }
