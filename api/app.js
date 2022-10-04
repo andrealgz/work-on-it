@@ -3,7 +3,8 @@ const express = require("express");
 
 const app = express();
 
-
+const routes = require("./config/routes.config");
+app.use("/api/v1", routes);
 
 const port = process.env.PORT || 3001;
 

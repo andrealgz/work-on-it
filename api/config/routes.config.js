@@ -1,8 +1,10 @@
 const express = require("express")
-
 const router = express.Router();
 
+const { professional } = require("../controllers") 
 
 
+router.get("/user/professional", professional.getAllProfessional)
 
-module.export = router;
+
+module.exports = router;
