@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
-const { typeStreets } = require("../data")
+const { typeStreet } = require("../data")
 
 const WORK_FACTOR = 10;
 const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -35,26 +35,26 @@ const userSchema = new Schema (
     name: {
       type: String,
       trim: true,
-      maxLength: [ 30 , "El nombre no puede tener más de 30 caracteres" ],
-      minLength: [ 3 , "El nombre necesita mínimo 3 caracteres" ],
+      maxLength: [30 , "El nombre no puede tener más de 30 caracteres"],
+      minLength: [3 , "El nombre necesita mínimo 3 caracteres"],
       required: "El nombre es obligatorio"
     },
     surname: {
       type: String,
       trim: true,
-      maxLength: [ 60 , "Los apellidos no puede tener más de 60 caracteres" ],
-      minLength: [ 3 , "Los apellidos necesita mínimo 3 caracteres" ],
+      maxLength: [60 , "Los apellidos no puede tener más de 60 caracteres"],
+      minLength: [3 , "Los apellidos necesita mínimo 3 caracteres"],
       required: "Los apellidos es obligatorio"
     },
     phone: {
       type: String,
-      match: [ PHONE_PATTERN, "El teléfono es incorrecto"]
+      match: [PHONE_PATTERN, "El teléfono es incorrecto"]
     },
     address: {
       type: {
         typeStreet: {
           type: String,
-          enum: typeStreets.map(typeStreet => typeStreet.value),
+          enum: typeStreet.map(street => street.value),
           trim: true,
           required: "El tipo de calle es obligatorio"
         },
@@ -66,11 +66,11 @@ const userSchema = new Schema (
         },
         numberStreet: {
           type: String,
-          match: [ ONLY_NUMBERS, "El número de la calle sólo puede contener números"]
+          match: [ONLY_NUMBERS, "El número de la calle sólo puede contener números"]
         },
         floor: {
-          String,
-          match: [ ONLY_NUMBERS, "El piso sólo puede contener números"]
+          type: String,
+          match: [ONLY_NUMBERS, "El piso sólo puede contener números"]
         },
         door: {
           type: String,
@@ -94,7 +94,7 @@ const userSchema = new Schema (
       required: "El código postal es obligatorio"
     },
     isProfessional: {
-      type: boolean
+      type: Boolean
     },
   },
   {
