@@ -1,5 +1,5 @@
 module.exports = {
   services: require("./services.controller"),
-  user: require("./user.controller"),
+  users: require("./users.controller"),
   orders: require("./orders.controller"),
 }

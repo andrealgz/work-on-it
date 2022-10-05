@@ -9,3 +9,25 @@ module.exports.createOrders = (req, res, next) => {
     .then(order => res.status(201).json(order))
     .catch(next)
 }
+
+module.exports.getAllOrders = (req, res, next) => {
+  Order
+    .find()
+    .then(order => res.status(200).json(order))
+    .catch(next)
+}
+
+module.exports.getOrder = (req, res, next) => {
+  const { id } = req.params;
+  
+  Order
+    .findById(id)
+    .then(order => {
+      if (order) {
+        res.status(200).json(order);
+      } else {
+        res.status(404).json({ error: "MECAGUEEEN" });
+      }
+    })
+    .catch(next)
+}

@@ -40,6 +40,18 @@ const orderSchema = new Schema (
         description: String,
       }
     },
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform: (doc, ret) => {
+        delete ret.__v;
+        ret.id = ret._id;
+        delete ret._id;
+        return ret;
+      },
+    },
   }
 )
 

@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "c265a067-e221-421f-a8a6-dc726bb794d7",
+		"_postman_id": "4684a7e1-6fa5-4073-9b52-73894ceb2933",
 		"name": "Work On It",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7691251"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -146,7 +145,7 @@
 					"response": []
 				},
 				{
-					"name": "List Order by Admin",
+					"name": "List Orders by Admin",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -183,6 +182,24 @@
 							],
 							"path": [
 								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/orders/633d9dd430470dbbe2892e44",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"orders",
+								"633d9dd430470dbbe2892e44"
 							]
 						}
 					},

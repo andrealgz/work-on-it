@@ -1,4 +1,6 @@
-const { User, Services, Order } = require("../models");
+const mongoose = require("mongoose")
+const { User, Service, Order } = require("../models");
+
 
 module.exports.getUser = (req, res, next) => {
   const { id } = req.params;
@@ -112,16 +114,18 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getOrders = (req, res, next) => {
   const { id } = req.params;
-  const result = {};
-  Services
+  const result =  {};
+
+  Service
     .find({ user: id })
     .then(service => {
       const filter = service.reduce((service, curService) => {
         service ? service.push({service: curService.id}) : [{service: curService.id}]
         return service;
       }, []);
+      const x = filter.length ? {$or: filter} : {service: "633d9d7f30470dbbe2892e46"};
       return Order
-        .find({$or: filter})
+        .find(x)
         .then(orders => {
           result.doing = orders;
           return Order
@@ -132,5 +136,5 @@ module.exports.getOrders = (req, res, next) => {
             })
         })
     })
-    .catch(next)
+  .catch(next)
 }
