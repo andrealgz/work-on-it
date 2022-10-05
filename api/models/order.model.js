@@ -3,15 +3,15 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema (
   {
-    idUser: {
+    user: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: "User"
     },
-    idPro: {
+    service: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "Professional"
+      ref: "Services"
     },
     orderNumber: {
       type: String,

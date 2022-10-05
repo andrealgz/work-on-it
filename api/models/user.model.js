@@ -128,6 +128,11 @@ userSchema.methods.checkPassword = function (passwordToMatch) {
   return bcrypt.compare(passwordToMatch, this.password)
 }
 
+userSchema.virtual("services", {
+  ref: "Services",
+  localField: "_id",
+  foreignField: "user",
+});
 
 
 
