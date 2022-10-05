@@ -39,8 +39,20 @@ const servicesSchema = new Schema (
       trim: true,
       enum: timeTables.map( timeTable => timeTable.value )
     },
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform: (doc, ret) => {
+        delete ret.__v;
+        ret.id = ret._id;
+        delete ret._id;
+        return ret;
+      },
+    },
   }
-)
+);
 
 const Services = mongoose.model('Services', servicesSchema);
 module.exports = Services;

@@ -28,25 +28,27 @@ module.exports.createUser = (req, res, next) => {
     postcode 
   } = req.body;
 
+  const user = {
+    email,
+    password,
+    nickname,
+    name,
+    surname,
+    phone,
+    locality, 
+    city, 
+    postcode,
+    address: {
+      typeStreet, 
+      street, 
+      numberStreet, 
+      floor, 
+      door
+    }
+  };
+
   User
-    .create({
-      email,
-      password,
-      nickname,
-      name,
-      surname,
-      phone,
-      locality, 
-      city, 
-      postcode,
-      address: {
-        typeStreet, 
-        street, 
-        numberStreet, 
-        floor, 
-        door
-      }
-    })
+    .create(user)
     .then(user => res.status(201).json(user))
     .catch(next)
 }

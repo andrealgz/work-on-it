@@ -100,13 +100,15 @@ const userSchema = new Schema (
       virtuals: true,
       transform: (doc, ret) => {
         delete ret.__v;
+        delete ret.password;
+        delete ret.email;
+        delete ret.phone;
         ret.id = ret._id;
         delete ret._id;
         return ret;
       },
     },
-  },
-
+  }
 );
 
 userSchema.pre('save', function (next) {

@@ -3,7 +3,8 @@ const { Services } = require("../models")
 module.exports.getAllServices = (req, res, next) => {
   Services
     .find()
-    .then(task => res.status(200).json(task))
+    .populate("user", "nickname phone")
+    .then(services => res.status(200).json(services))
     .catch(next)
 }
 
@@ -11,6 +12,7 @@ module.exports.getService = (req, res, next) => {
   const { id } = req.params;
   Services
     .findById(id)
+    .populate("user")
     .then(service => {
       if (service) {
         res.status(200).json(service)
@@ -22,5 +24,12 @@ module.exports.getService = (req, res, next) => {
 }
 
 module.exports.createService = (req, res, next) => {
-  res.status(401).json({ error: "aun no podemos crear servicios porque necesitamos usuarios" })
+
+  const { user, profession, bio, experience, rate, rating, disponibility } = req.body;
+  const service = { user, profession, bio, experience, rate, rating, disponibility };
+
+  Services
+    .create(service)
+    .then(service => res.status(201).json(service))
+    .catch(next)
 }

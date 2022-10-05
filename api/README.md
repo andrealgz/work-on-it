@@ -1,5 +1,6 @@
 "Work On It" API RESTFul HTTP
 
+
 ## User
 
 | http verb | path                | status codes | purpose        |
@@ -25,7 +26,6 @@
 | GET       | /api/v1/orders      | 200,         | list    |
 | GET       | /api/v1/orders/<id> | 200, 404     | detail  |
 | POST      | /api/v1/orders      | 201, 400     | create  |
-
 
 
 ## Auth
