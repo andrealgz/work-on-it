@@ -2,7 +2,7 @@ const expressSession = require("express-session")
 const MongoStore = require("connect-mongo")
 const mongoose = require("mongoose")
 
-const User = require("../models/user.model")
+const { User } = require("../models")
 
 module.exports.initSession = expressSession({
   secret: process.env.SESSION_SECRET || "Session secret",
