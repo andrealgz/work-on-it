@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema (
   {
-    user: {
+    customer: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: "User"
@@ -13,10 +13,10 @@ const orderSchema = new Schema (
       required: true,
       ref: "Services"
     },
-    orderNumber: {
-      type: String,
+    ownerService: {
+      type: Schema.Types.ObjectId,
       required: true,
-      trim: true,
+      ref: "User"
     },
     detailJob: {
       type: {
@@ -28,18 +28,16 @@ const orderSchema = new Schema (
           type: Number,
           required: true,
         },
+        _id: false
       }
     },
-    isDone: {
-      type: Boolean,
-      default: false,
-    },
+    status: String,
     review: {
       type: {
         rating: Number,
         description: String,
       }
-    },
+    }
   },
   {
     timestamps: true,
@@ -53,7 +51,18 @@ const orderSchema = new Schema (
       },
     },
   }
-)
+);
+
+orderSchema.pre('save', function (next) {
+  this.status = "En revisión";
+  next();
+});
+
+orderSchema.virtual("messages", {
+  ref: "Message",
+  localField: "_id",
+  foreignField: "order",
+});
 
 const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;

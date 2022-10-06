@@ -1,30 +1,22 @@
 const createError = require("http-errors");
 const { Service } = require("../models")
 
-module.exports.getAllServices = (req, res, next) => {
+module.exports.getServices = (req, res, next) => {
+  const { id } = req.params;
+  const criterial = {};
+
+  if (id) {
+    criterial._id = id;
+  }
+
   Service
-    .find()
+    .find(criterial)
     .populate("user", "nickname phone")
     .then(services => {
       if (services) {
         res.status(200).json(services);
       } else {
         next(createError(404, "Servicios no encontrados"));
-      }
-    })
-    .catch(next)
-}
-
-module.exports.getService = (req, res, next) => {
-  const { id } = req.params;
-  Service
-    .findById(id)
-    .populate("user")
-    .then(service => {
-      if (service) {
-        res.status(200).json(service);
-      } else {
-        next(createError(404, "Servicio no encontrado"));
       }
     })
     .catch(next)

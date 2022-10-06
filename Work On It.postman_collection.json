@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4684a7e1-6fa5-4073-9b52-73894ceb2933",
+		"_postman_id": "5bb2d2ed-3c66-49e7-a1bd-1d7323d8078c",
 		"name": "Work On It",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7691251"
 	},
 	"item": [
 		{
@@ -31,13 +32,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}{{VERSION}}/services/633d6c5e574af21af3682a58",
+							"raw": "{{URL}}{{VERSION}}/services/633f28089dce38332bb6956c",
 							"host": [
 								"{{URL}}{{VERSION}}"
 							],
 							"path": [
 								"services",
-								"633d6c5e574af21af3682a58"
+								"633f28089dce38332bb6956c"
 							]
 						}
 					},
@@ -50,7 +51,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": \"633d985a88cd1fdcd23cb19f\",\r\n    \"profession\": \"diy\",\r\n    \"bio\": \"Pruebas pruebas pruebas\",\r\n    \"experience\": \"junior\",\r\n    \"rate\": 1,\r\n    \"rating\": 22,\r\n    \"disponibility\": \"mornings\" \r\n}",
+							"raw": "{\r\n    \"user\": \"633f2a4751c1e912ae81f064\",\r\n    \"profession\": \"diy\",\r\n    \"bio\": \"Pruebas pruebas pruebas\",\r\n    \"experience\": \"junior\",\r\n    \"rate\": 1,\r\n    \"rating\": 22,\r\n    \"disponibility\": \"mornings\" \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,13 +82,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}{{VERSION}}/user/633ee984270bc742ca8ee3ca",
+							"raw": "{{URL}}{{VERSION}}/user",
 							"host": [
 								"{{URL}}{{VERSION}}"
 							],
 							"path": [
-								"user",
-								"633ee984270bc742ca8ee3ca"
+								"user"
 							]
 						}
 					},
@@ -104,14 +104,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}{{VERSION}}/user/633ee984270bc742ca8ee3ca/orders",
+							"raw": "{{URL}}{{VERSION}}/orders/633f2bbaa68fc4b7537ee28c",
 							"host": [
 								"{{URL}}{{VERSION}}"
 							],
 							"path": [
-								"user",
-								"633ee984270bc742ca8ee3ca",
-								"orders"
+								"orders",
+								"633f2bbaa68fc4b7537ee28c"
 							]
 						}
 					},
@@ -141,7 +140,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": \"633d985a88cd1fdcd23cb19f\",\r\n    \"service\": \"633d6c5e574af21af3682a58\",\r\n    \"orderNumber\": \"ORD00000120221005\",\r\n    \"rate\": 15.5,\r\n    \"hours\": 5\r\n}",
+							"raw": "{\r\n    \"customer\": \"633f27bbdabef8026072f81a\",\r\n    \"service\": \"633f2a5151c1e912ae81f067\",\r\n    \"ownerService\": \"633f2a4751c1e912ae81f064\",\r\n    \"rate\": 15.5,\r\n    \"hours\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -190,7 +189,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"email\": \"c.arranz.arevalo@gmail.com\", \r\n    \"password\": \"12345678\", \r\n    \"nickname\": \"Prueba9\", \r\n    \"name\": \"Cristian\", \r\n    \"surname\": \"Arranz Arevalo\", \r\n    \"phone\": \"\", \r\n    \"typeStreet\": \"street\", \r\n    \"street\": \"Zamora\", \r\n    \"numberStreet\": \"7\", \r\n    \"floor\": \"1\", \r\n    \"door\": \"B\", \r\n    \"locality\": \"PARLA\", \r\n    \"city\": \"MADRID\", \r\n    \"postcode\": \"28982\"\r\n  }",
+							"raw": "{ \r\n    \"email\": \"andrea_lgz@hotmail.com\", \r\n    \"password\": \"12345678\", \r\n    \"nickname\": \"Prueba2\", \r\n    \"name\": \"Andrea\", \r\n    \"surname\": \"Gonzalez\", \r\n    \"phone\": \"\", \r\n    \"address\": \"Hola\",\r\n    \"locality\": \"PARLA\"\r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -216,7 +215,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"andrealgz@hotmail.com\",\n    \"password\":\"12345678\"\n}",
+							"raw": "{\n    \"email\":\"c.arranz.arevalo@gmail.com\",\n    \"password\":\"12345678\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

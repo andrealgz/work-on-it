@@ -9,14 +9,8 @@ module.exports.register = (req, res, next) => {
     name, 
     surname, 
     phone, 
-    typeStreet, 
-    street, 
-    numberStreet, 
-    floor, 
-    door, 
-    locality, 
-    city, 
-    postcode 
+    address,
+    locality
   } = req.body;
 
   const infoUser = {
@@ -27,15 +21,7 @@ module.exports.register = (req, res, next) => {
     surname,
     phone,
     locality, 
-    city, 
-    postcode,
-    address: {
-      typeStreet, 
-      street, 
-      numberStreet, 
-      floor, 
-      door
-    }
+    address
   };
   
   User

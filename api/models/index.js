@@ -1,5 +1,6 @@
 module.exports = {
   Service: require("./service.model"),
   User: require("./user.model"),
-  Order: require("./order.model")
+  Order: require("./order.model"),
+  Message: require("./message.model")
 }

@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
-const { typeStreet, admin } = require("../data")
+const { admin } = require("../data")
 
 const WORK_FACTOR = 10;
 const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PW_PATTERN = /^.{8,}$/;
 const PHONE_PATTERN = /^\+?(6\d{2}|7[1-9]\d{1})\d{6}$/;
-const ONLY_NUMBERS = /^[0-9]*$/;
 
 
 const userSchema = new Schema (
@@ -51,47 +50,21 @@ const userSchema = new Schema (
       match: [PHONE_PATTERN, "El teléfono es incorrecto"]
     },
     address: {
-      type: {
-        typeStreet: {
-          type: String,
-          enum: typeStreet.map(street => street.value),
-          trim: true,
-          required: "El tipo de calle es obligatorio"
-        },
-        street: {
-          type: String,
-          required: "La calle es obligatoria",
-          trim: true,
-          maxLength: [50, "La calle no puede tener más de 50 caracteres"]
-        },
-        numberStreet: {
-          type: String,
-          match: [ONLY_NUMBERS, "El número de la calle sólo puede contener números"]
-        },
-        floor: {
-          type: String,
-          match: [ONLY_NUMBERS, "El piso sólo puede contener números"]
-        },
-        door: {
-          type: String,
-          trim: true,
-        }
-      }
+      type: String,
+      trim: true,
+      required: "La dirección es obligatoria"
     },
+    // location: {
+    //     type: {
+    //         type: String,
+    //         default: "Point"
+    //     },
+    //     coordinates: [Number]
+    // },
     locality: {
       type: String,
       trim: true,
       required: "La localidad es obligatoria"
-    },
-    city: {
-      type: String,
-      trim: true,
-      required: "La provincia es obligatoria"
-    },
-    postcode: {
-      type: String,
-      trim: true,
-      required: "El código postal es obligatorio"
     },
     isAdmin: Boolean,
   },
@@ -136,7 +109,17 @@ userSchema.virtual("services", {
   foreignField: "user",
 });
 
+userSchema.virtual("orderSent", {
+  ref: "Order",
+  localField: "_id",
+  foreignField: "customer",
+});
 
+userSchema.virtual("orderReceived", {
+  ref: "Order",
+  localField: "_id",
+  foreignField: "ownerService",
+});
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
