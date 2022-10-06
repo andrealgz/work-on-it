@@ -1,3 +1,4 @@
+const createError = require("http-errors");
 const { Order } = require('../models');
 
 module.exports.createOrders = (req, res, next) => {
@@ -6,14 +7,26 @@ module.exports.createOrders = (req, res, next) => {
 
   Order
     .create(order)
-    .then(order => res.status(201).json(order))
+    .then(order => {
+      if (order) {
+        res.status(201).json(order)
+      } else {
+        next(createError(400, "No se pudo crear la orden"));
+      }
+    })
     .catch(next)
 }
 
 module.exports.getAllOrders = (req, res, next) => {
   Order
     .find()
-    .then(order => res.status(200).json(order))
+    .then(order => {
+      if (order) {
+        res.status(200).json(order);
+      }else{
+        next(createError(404, "Orden no encontrada"));
+      }
+    })
     .catch(next)
 }
 
@@ -26,7 +39,7 @@ module.exports.getOrder = (req, res, next) => {
       if (order) {
         res.status(200).json(order);
       } else {
-        res.status(404).json({ error: "MECAGUEEEN" });
+        next(createError(404, "Orden no encontrada"));
       }
     })
     .catch(next)

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const createError = require("http-errors");
 const { User, Service, Order } = require("../models");
 
 
@@ -12,7 +13,7 @@ module.exports.getUser = (req, res, next) => {
       if (user) {
         res.status(200).json(user);
       } else {
-        next(createError(404, "El usuario no existe"))
+        next(createError(404, "Usuario no encontrado"))
       }
     })
     .catch(next)
@@ -62,7 +63,7 @@ module.exports.updateUser = (req, res, next) => {
       if (user) {
         res.status(200).json(user)
       } else {
-        next(createError(404, "El usuario no existe"))
+        next(createError(404, "Usuario no actualizado"))
       }
     })
     .catch(next)  

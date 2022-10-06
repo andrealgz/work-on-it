@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
-const { typeStreet } = require("../data")
+const { typeStreet, admin } = require("../data")
 
 const WORK_FACTOR = 10;
 const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -92,7 +92,8 @@ const userSchema = new Schema (
       type: String,
       trim: true,
       required: "El código postal es obligatorio"
-    }
+    },
+    isAdmin: Boolean,
   },
   {
     timestamps: true,
@@ -112,6 +113,7 @@ const userSchema = new Schema (
 );
 
 userSchema.pre('save', function (next) {
+  this.isAdmin = admin.includes(this.email);
   if (this.isModified('password')) {
     bcrypt.hash(this.password, WORK_FACTOR)
       .then(hash => {
@@ -129,7 +131,7 @@ userSchema.methods.checkPassword = function (passwordToMatch) {
 }
 
 userSchema.virtual("services", {
-  ref: "Services",
+  ref: "Service",
   localField: "_id",
   foreignField: "user",
 });

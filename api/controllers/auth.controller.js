@@ -19,7 +19,7 @@ module.exports.register = (req, res, next) => {
     postcode 
   } = req.body;
 
-  const user = {
+  const infoUser = {
     email,
     password,
     nickname,
@@ -37,10 +37,23 @@ module.exports.register = (req, res, next) => {
       door
     }
   };
-
+  
   User
-    .create(user)
-    .then(user => res.status(201).json(user))
+    .findOne({ $or: [{ email }, { nickname }]})
+    .then(user => {
+      if (user) {
+        next(
+          createError(400, {
+            message: "User validation failed",
+            errors: { email: { message: "Nickname o email registrado" } },
+          })
+        );
+      } else {
+        return User
+          .create(infoUser)
+          .then(user => res.status(201).json(user))
+      }
+    })
     .catch(next)
 };
 
@@ -49,7 +62,7 @@ module.exports.login = (req, res, next) => {
     next(
       createError(400, {
         message: "User validation failed",
-        errors: { password: { message: "Invalid email or password" } },
+        errors: { password: { message: "Email o contraseña inválidos" } },
       })
     );
   }

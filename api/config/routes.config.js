@@ -15,10 +15,10 @@ router.get("/user/:id/orders", users.getOrders);
 
 router.get("/services", secure.isLogged, services.getAllServices);
 router.get("/services/:id", services.getService);
-router.post("/services/create", services.createService);
+router.post("/services/create", secure.isLogged, services.createService);
 
 router.post("/orders", orders.createOrders);
-router.get("/orders", orders.getAllOrders);
+router.get("/orders", secure.isAdmin, orders.getAllOrders);
 router.get("/orders/:id", orders.getOrder);
 
 module.exports = router;

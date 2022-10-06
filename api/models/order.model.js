@@ -16,7 +16,7 @@ const orderSchema = new Schema (
     orderNumber: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     detailJob: {
       type: {
