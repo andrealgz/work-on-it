@@ -76,33 +76,6 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "Create User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"email\": \"pruebas2@example.es\", \r\n    \"password\": \"12345678\", \r\n    \"nickname\": \"Prueba2\", \r\n    \"name\": \"Cristian\", \r\n    \"surname\": \"Arranz Arevalo\", \r\n    \"phone\": \"675524689\", \r\n    \"typeStreet\": \"street\", \r\n    \"street\": \"Zamora\", \r\n    \"numberStreet\": \"7\", \r\n    \"floor\": \"1\", \r\n    \"door\": \"B\", \r\n    \"locality\": \"PARLA\", \r\n    \"city\": \"MADRID\", \r\n    \"postcode\": \"28982\"\r\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}{{VERSION}}/user/create",
-							"host": [
-								"{{URL}}{{VERSION}}"
-							],
-							"path": [
-								"user",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "List User",
 					"request": {
 						"method": "GET",
@@ -131,13 +104,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}{{VERSION}}/user/633d67a16fc4c51dc5198463/orders",
+							"raw": "{{URL}}{{VERSION}}/user/633d9d7f30470dbbe2892e41/orders",
 							"host": [
 								"{{URL}}{{VERSION}}"
 							],
 							"path": [
 								"user",
-								"633d67a16fc4c51dc5198463",
+								"633d9d7f30470dbbe2892e41",
 								"orders"
 							]
 						}
@@ -193,13 +166,87 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}{{VERSION}}/orders/633d9dd430470dbbe2892e44",
+							"raw": "{{URL}}{{VERSION}}/orders/633d9dd430470dbbe2892e43",
 							"host": [
 								"{{URL}}{{VERSION}}"
 							],
 							"path": [
 								"orders",
-								"633d9dd430470dbbe2892e44"
+								"633d9dd430470dbbe2892e43"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"email\": \"pruebas3@example.es\", \r\n    \"password\": \"12345678\", \r\n    \"nickname\": \"Prueba3\", \r\n    \"name\": \"Cristian\", \r\n    \"surname\": \"Arranz Arevalo\", \r\n    \"phone\": \"675524689\", \r\n    \"typeStreet\": \"street\", \r\n    \"street\": \"Zamora\", \r\n    \"numberStreet\": \"7\", \r\n    \"floor\": \"1\", \r\n    \"door\": \"B\", \r\n    \"locality\": \"PARLA\", \r\n    \"city\": \"MADRID\", \r\n    \"postcode\": \"28982\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/register",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"pruebas3@example.es\",\n    \"password\":\"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/login",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/logout",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"logout"
 							]
 						}
 					},

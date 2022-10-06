@@ -8,7 +8,6 @@
 | GET       | /api/v1/user/<id>          | 200, 404     | profile        |
 | GET       | /api/v1/user/<id>/orders   | 200, 404     | list orders    |
 | PATCH     | /api/v1/user/<id>          | 200, 404     | update profile |
-| POST      | /api/v1/user/create        | 201, 400     | create         |
 
 
 ## Service
@@ -31,10 +30,11 @@
 
 ## Auth
 
-| http verb | path           | status codes | purpose |
-|-----------|----------------|--------------|---------|
-| POST      | /api/v1/login  | 201, 400     | login   |
-| DELETE    | /api/v1/logout | 200, 404     | logout  |
+| http verb | path             | status codes | purpose  |
+|-----------|------------------|--------------|----------|
+| POST      | /api/v1/login    | 200, 400     | login    |
+| DELETE    | /api/v1/logout   | 200, 404     | logout   |
+| POST      | /api/v1/register | 201, 400     | register |
 
 
 ## Message

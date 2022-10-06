@@ -69,49 +69,6 @@ module.exports.updateUser = (req, res, next) => {
 
 }
 
-module.exports.createUser = (req, res, next) => {
-  const { 
-    email, 
-    password, 
-    nickname, 
-    name, 
-    surname, 
-    phone, 
-    typeStreet, 
-    street, 
-    numberStreet, 
-    floor, 
-    door, 
-    locality, 
-    city, 
-    postcode 
-  } = req.body;
-
-  const user = {
-    email,
-    password,
-    nickname,
-    name,
-    surname,
-    phone,
-    locality, 
-    city, 
-    postcode,
-    address: {
-      typeStreet, 
-      street, 
-      numberStreet, 
-      floor, 
-      door
-    }
-  };
-
-  User
-    .create(user)
-    .then(user => res.status(201).json(user))
-    .catch(next)
-}
-
 module.exports.getOrders = (req, res, next) => {
   const { id } = req.params;
   const result =  {};
@@ -120,16 +77,16 @@ module.exports.getOrders = (req, res, next) => {
     .find({ user: id })
     .then(service => {
       const filter = service.reduce((service, curService) => {
-        service ? service.push({service: curService.id}) : [{service: curService.id}]
+        service ? service.push({ service: curService.id }) : [{ service: curService.id }]
         return service;
       }, []);
-      const x = filter.length ? {$or: filter} : {service: "633d9d7f30470dbbe2892e46"};
+      const criterial = filter.length ? { $or:filter } : { service: id };
       return Order
-        .find(x)
+        .find(criterial)
         .then(orders => {
           result.doing = orders;
           return Order
-            .find({user: id})
+            .find({ user: id })
             .then(orders => {
               result.requested = orders;
               res.status(200).json(result);
