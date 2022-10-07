@@ -6,18 +6,19 @@ const { secure } = require("../middlewares")
 
 router.post("/register", auth.register);
 router.post("/login", auth.login);
-router.delete("/logout", auth.logout);
+router.delete("/logout", secure.isLogged, auth.logout);
 
-router.get("/user", secure.isAdmin, users.getUser);
-router.get("/user/:nickName", users.getUser);
-//router.patch("/user/:id", users.updateUser);
+router.get("/users", secure.isLogged, secure.isAdmin, users.getUser);
+router.get("/users/:nickName", secure.isLogged, users.getUser);
+//router.patch("/user/:nickName", secure.isLogged, users.updateUser);
 
 router.get("/services", services.getServices);
-router.get("/services/:id", services.getServices);
+router.get("/services/:id", secure.isLogged, services.getServices);
 router.post("/services/create", secure.isLogged, services.createService);
 
-router.post("/orders", orders.createOrders);
 router.get("/orders", secure.isAdmin, orders.getOrders);
 router.get("/orders/:id", orders.getOrders);
+router.post("/orders", orders.createOrders);
+router.post("/orders/messages", messages.setMessage);
 
 module.exports = router;

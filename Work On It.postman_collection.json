@@ -77,17 +77,35 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "List User",
+					"name": "List User by Admin",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}{{VERSION}}/user",
+							"raw": "{{URL}}{{VERSION}}/users",
 							"host": [
 								"{{URL}}{{VERSION}}"
 							],
 							"path": [
-								"user"
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail User by NickName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/users/Prueba1",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"users",
+								"Prueba1"
 							]
 						}
 					},
@@ -98,24 +116,6 @@
 		{
 			"name": "Order",
 			"item": [
-				{
-					"name": "List Orders by User",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}{{VERSION}}/orders/633f2bbaa68fc4b7537ee28c",
-							"host": [
-								"{{URL}}{{VERSION}}"
-							],
-							"path": [
-								"orders",
-								"633f2bbaa68fc4b7537ee28c"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "List Orders by Admin",
 					"request": {
@@ -128,6 +128,24 @@
 							],
 							"path": [
 								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/orders/633f2bbaa68fc4b7537ee28c",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"orders",
+								"633f2bbaa68fc4b7537ee28c"
 							]
 						}
 					},
@@ -154,24 +172,6 @@
 							],
 							"path": [
 								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Detail Order",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}{{VERSION}}/orders/633ef142973f94dd77097ebf",
-							"host": [
-								"{{URL}}{{VERSION}}"
-							],
-							"path": [
-								"orders",
-								"633ef142973f94dd77097ebf"
 							]
 						}
 					},
@@ -246,6 +246,38 @@
 							],
 							"path": [
 								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Create Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sender\": \"633f27bbdabef8026072f81a\",\r\n    \"receiver\": \"633f2a4751c1e912ae81f064\",\r\n    \"order\": \"633f2bbaa68fc4b7537ee28c\",\r\n    \"service\": \"633f2a5151c1e912ae81f067\",\r\n    \"message\": \"prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{VERSION}}/orders/messages",
+							"host": [
+								"{{URL}}{{VERSION}}"
+							],
+							"path": [
+								"orders",
+								"messages"
 							]
 						}
 					},

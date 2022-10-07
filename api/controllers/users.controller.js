@@ -46,7 +46,6 @@ module.exports.getUser = (req, res, next) => {
 }
 
 module.exports.updateUser = (req, res, next) => {
-  const { id } = req.params;
   const { 
     email, 
     password, 
@@ -70,7 +69,7 @@ module.exports.updateUser = (req, res, next) => {
   };
 
   User
-    .findByIdAndUpdate(id, user, { new: true, runValidators: true })
+    .findByIdAndUpdate(req.user.id, user, { new: true, runValidators: true })
     .then(user => {
       if (user) {
         res.status(200).json(user)
