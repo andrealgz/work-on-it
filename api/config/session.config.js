@@ -1,8 +1,8 @@
-const expressSession = require("express-session")
-const MongoStore = require("connect-mongo")
-const mongoose = require("mongoose")
+const expressSession = require("express-session");
+const MongoStore = require("connect-mongo");
+const mongoose = require("mongoose");
 
-const { User } = require("../models")
+const { User } = require("../models");
 
 module.exports.initSession = expressSession({
   secret: process.env.SESSION_SECRET || "Session secret",
@@ -22,8 +22,22 @@ module.exports.initSession = expressSession({
 module.exports.loadUser = (req, res, next) => {
   const { userId } = req.session;
   if (userId) {
-    User.findById(userId)
-      .then( user => {
+    User
+      .findById(userId)
+      .populate("services")
+      .populate({
+        path: "orderSent",
+        populate: {
+          path: "messages"
+        }
+      })
+      .populate({
+        path: "orderReceived",
+        populate: {
+          path: "messages"
+        }
+      })
+      .then(user => {
         req.user = user;
         next();
       })

@@ -34,7 +34,7 @@ module.exports.getUser = (req, res, next) => {
     .then(user => {
       if (user) {
         if (Object.keys(criterial).length && !user.length) {
-          next(createError(404, "Usuario no encontrado"))
+          next(createError(404, "Usuario no encontrado"));
         } else {
           res.status(200).json(user);
         }
@@ -78,5 +78,4 @@ module.exports.updateUser = (req, res, next) => {
       }
     })
     .catch(next)  
-
 }

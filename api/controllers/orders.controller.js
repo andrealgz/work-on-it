@@ -9,7 +9,7 @@ module.exports.createOrders = (req, res, next) => {
     .create(order)
     .then(order => {
       if (order) {
-        res.status(201).json(order)
+        res.status(201).json(order);
       } else {
         next(createError(400, "No se pudo crear la orden"));
       }
@@ -24,7 +24,7 @@ module.exports.getOrders = (req, res, next) => {
   const criterial = {};
 
   if (id) {
-    criterial._id = id
+    criterial._id = id;
   }
 
   Order

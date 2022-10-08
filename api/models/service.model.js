@@ -39,6 +39,14 @@ const serviceSchema = new Schema (
       trim: true,
       enum: timeTables.map( timeTable => timeTable.value )
     },
+    address: String,
+    // location: {
+    //     type: {
+    //         type: String,
+    //         default: "Point"
+    //     },
+    //     coordinates: [Number]
+    // },
   },
   {
     timestamps: true,

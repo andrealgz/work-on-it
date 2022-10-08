@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const { services, users, orders, auth, messages } = require("../controllers") ;
-const { secure } = require("../middlewares")
+const { services, users, orders, auth, messages } = require("../controllers");
+const { secure } = require("../middlewares");
 
 router.post("/register", auth.register);
 router.post("/login", auth.login);
@@ -17,8 +17,8 @@ router.get("/services/:id", secure.isLogged, services.getServices);
 router.post("/services/create", secure.isLogged, services.createService);
 
 router.get("/orders", secure.isAdmin, orders.getOrders);
-router.get("/orders/:id", orders.getOrders);
-router.post("/orders", orders.createOrders);
-router.post("/orders/messages", messages.setMessage);
+router.get("/orders/:id", secure.isLogged, secure.isOwner, orders.getOrders);
+router.post("/orders", secure.isLogged, orders.createOrders);
+router.post("/orders/messages", secure.isLogged, messages.setMessage);
 
 module.exports = router;

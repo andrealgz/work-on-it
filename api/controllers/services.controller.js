@@ -1,13 +1,22 @@
 const createError = require("http-errors");
-const { Service } = require("../models")
+const { Service } = require("../models");
 
 module.exports.getServices = (req, res, next) => {
   const { id } = req.params;
   const criterial = {};
 
   if (id) {
-    criterial._id = id;
+    if (id === 'me') {
+      criterial.user = req.user.id;
+    } else {
+      criterial._id = id;
+    }
+  } else {
+    if (req.user) {
+      criterial.user = { $ne: req.user.id };
+    } 
   }
+  
 
   Service
     .find(criterial)

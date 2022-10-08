@@ -54,7 +54,21 @@ module.exports.login = (req, res, next) => {
   }
 
   const { email, password } = req.body;
-  User.findOne({ email })
+  User
+    .findOne({ email })
+    .populate("services")
+    .populate({
+      path: "orderSent",
+      populate: {
+        path: "messages"
+      }
+    })
+    .populate({
+      path: "orderReceived",
+      populate: {
+        path: "messages"
+      }
+    })
     .then(user => {
       if (!user) {
         invalidAuthError();
@@ -71,7 +85,7 @@ module.exports.login = (req, res, next) => {
           });
       }
     })
-    .catch(next);
+    .catch(next)
 };
 
 module.exports.logout = (req, res, next) => {
