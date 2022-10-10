@@ -17,7 +17,7 @@ function NavBar() {
   const showSideBarRight = () => setSidebarRight(!SideBarRight);
   return (
     <>
-      <IconContext.Provider value={{color: "white"}}>
+      <IconContext.Provider value={{color: "#fff"}}>
         <div className="navbar">
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSideBarLeft}/>
