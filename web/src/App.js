@@ -1,11 +1,13 @@
-import { HomeScreen } from "./screens";
 import "./App.css"
+import Main from "./navigation/Main"
+import { NavBar } from "./components"
 
 function App() {
   return (
-    <div className="App">
-      <HomeScreen />
-    </div>
+    <>
+      <NavBar />
+      <Main />
+    </>  
   );
 }
 

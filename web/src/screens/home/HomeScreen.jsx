@@ -1,11 +1,10 @@
 import React from "react";
 
-import { NavBar } from "../../components";
 
 function HomeScreen() {
   return (
     <>
-      <NavBar />
+      ESTA ES LA HOME
     </>
   )
 }
