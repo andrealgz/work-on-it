@@ -18,7 +18,7 @@ router.post("/services/create", secure.isLogged, services.createService);
 
 router.get("/orders", secure.isAdmin, orders.getOrders);
 router.get("/orders/:id", secure.isLogged, secure.isOwner, orders.getOrders);
-router.post("/orders", secure.isLogged, orders.createOrders);
+router.post("/orders/create", secure.isLogged, orders.createOrders);
 router.post("/orders/messages", secure.isLogged, messages.setMessage);
 
 module.exports = router;
