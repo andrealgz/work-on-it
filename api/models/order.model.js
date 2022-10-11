@@ -36,6 +36,7 @@ const orderSchema = new Schema (
       type: {
         rating: Number,
         description: String,
+        _id: false
       }
     }
   },
@@ -55,6 +56,10 @@ const orderSchema = new Schema (
 
 orderSchema.pre('save', function (next) {
   this.status = "En revisión";
+  this.review = {
+    rating: 0,
+    description: ''
+  };
   next();
 });
 
