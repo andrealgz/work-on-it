@@ -31,6 +31,14 @@ const orderSchema = new Schema (
         _id: false
       }
     },
+    address: String,
+    location: {
+        type: {
+            type: String,
+            default: "Point"
+        },
+        coordinates: [Number]
+    },
     status: String,
     review: {
       type: {
