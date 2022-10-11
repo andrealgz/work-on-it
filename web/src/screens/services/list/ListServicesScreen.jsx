@@ -1,9 +1,9 @@
-
+import ListServices from "../../../components/services/list/ListServices"
 
 function ListServicesScreen() {
   return (
     <>
-      Aquí listamos los servicios
+      <ListServices />
     </>
   )
 }
