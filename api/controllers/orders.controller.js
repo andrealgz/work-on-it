@@ -30,6 +30,9 @@ module.exports.getOrders = (req, res, next) => {
   Order
     .find(criterial)
     .populate("messages")
+    .populate("customer")
+    .populate("service")
+    .populate("ownerService")
     .then(order => {
       if (order) {
         res.status(200).json(order);
