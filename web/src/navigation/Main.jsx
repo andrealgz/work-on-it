@@ -10,7 +10,7 @@ function NavigationRoutes() {
       <Route path="/services/:id" element={<Screens.HomeScreen />} />
       <Route path="/services/create" element={<Screens.HomeScreen />} />
       <Route path="/orders" element={<Screens.HomeScreen />} />
-      <Route path="/orders/:id" element={<Screens.HomeScreen />} />
+      <Route path="/orders/:id" element={<Screens.DetailOrderScreen />} />
       <Route path="/orders/create" element={<Screens.HomeScreen />} />
       <Route path="/user/:nickname" element={<Screens.HomeScreen />} />
     </Routes>
