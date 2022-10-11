@@ -16,11 +16,11 @@ module.exports.getServices = (req, res, next) => {
       criterial.user = { $ne: req.user.id };
     } 
   }
-  
 
   Service
     .find(criterial)
     .populate("user", "nickname phone")
+    .populate("orders")
     .then(services => {
       if (services) {
         res.status(200).json(services);
