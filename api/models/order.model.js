@@ -11,7 +11,7 @@ const orderSchema = new Schema (
     service: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "Services"
+      ref: "Service"
     },
     ownerService: {
       type: Schema.Types.ObjectId,
