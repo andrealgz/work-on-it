@@ -1,9 +1,11 @@
+import DetailService from "../../../components/services/detail/DetailService";
+import * as Services from "../../../services/Main";
 
 function DetailServiceScreen () {
 
   return(
     <>
-      Este es el detalle del servicio
+    <DetailService />
     </>
   )
 }

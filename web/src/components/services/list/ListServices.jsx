@@ -6,8 +6,12 @@ function ListServices() {
   const [services, setServices] = useState(null)
 
   useEffect(() => {
-    Services.getAllServices()
-      .then(services => setServices(services))
+    Services
+      .getAllServices()
+      .then(services => {
+        console.log(services)
+        setServices(services)
+      })
       .catch(error => console.error(error))
   },[])
 
@@ -16,12 +20,11 @@ function ListServices() {
       {services ? 
         services.map(service => (
           <div key={service.id}>
-            {service.bio}
+            {service.user.nickname}
             {service.profession}
             {service.experience}
-            {service.rate}
             {service.rating}
-            {service.disponibility}
+            {service.rate}
           </div>
       ))
         : <p>Cargando...</p>
