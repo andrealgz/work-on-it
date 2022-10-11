@@ -40,13 +40,13 @@ const serviceSchema = new Schema (
       enum: timeTables.map( timeTable => timeTable.value )
     },
     address: String,
-    // location: {
-    //     type: {
-    //         type: String,
-    //         default: "Point"
-    //     },
-    //     coordinates: [Number]
-    // },
+    location: {
+        type: {
+            type: String,
+            default: "Point"
+        },
+        coordinates: [Number]
+    },
   },
   {
     timestamps: true,
@@ -61,6 +61,11 @@ const serviceSchema = new Schema (
     },
   }
 );
+
+serviceSchema.pre('save', function (next) {
+  this.rating = 0;
+  next();
+});
 
 serviceSchema.virtual("orders", {
   ref: "Order",
