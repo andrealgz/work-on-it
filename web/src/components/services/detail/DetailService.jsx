@@ -1,5 +1,5 @@
 import * as Services from "../../../services/Main";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
 function DetailService() {

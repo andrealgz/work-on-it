@@ -1,3 +1,4 @@
+import React from "react";
 import DetailService from "../../../components/services/detail/DetailService";
 import * as Services from "../../../services/Main";
 
