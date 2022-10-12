@@ -1,4 +1,4 @@
-import ListServices from "../../../components/services/list/ListServices"
+import { ListServices } from "../../../components"
 
 function ListServicesScreen() {
   return (

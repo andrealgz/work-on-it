@@ -1,5 +1,4 @@
-import DetailService from "../../../components/services/detail/DetailService";
-import * as Services from "../../../services/Main";
+import { DetailService } from "../../../components";
 
 function DetailServiceScreen () {
 

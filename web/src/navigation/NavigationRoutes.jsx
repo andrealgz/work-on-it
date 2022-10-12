@@ -5,7 +5,6 @@ import { AccountContext } from "../contexts/AccountContext";
 
 function AccountGuard({ children }) {
   const { user } = useContext(AccountContext);
-  console.log(user);
 
   if (!user) {
     return <Navigate to="/account" />;
