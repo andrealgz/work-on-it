@@ -60,4 +60,8 @@ export function logout(data) {
   return http.delete("/logout", data);
 }
 
+export function getProfile() {
+  return http.get("/profile");
+}
+
 
