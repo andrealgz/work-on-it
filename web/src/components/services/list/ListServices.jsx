@@ -8,10 +8,7 @@ function ListServices() {
   useEffect(() => {
     Services
       .getAllServices()
-      .then(services => {
-        console.log(services)
-        setServices(services)
-      })
+      .then(services => setServices(services))
       .catch(error => console.error(error))
   },[])
 
