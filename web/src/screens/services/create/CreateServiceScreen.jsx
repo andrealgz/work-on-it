@@ -1,8 +1,10 @@
+import { CreateService } from "../../../components"
+
 function CreateServiceScreen () {
 
   return (
     <>
-      Creamos el servicio
+      <CreateService />
     </>
   )
 }
