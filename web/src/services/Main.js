@@ -13,7 +13,7 @@ http.interceptors.response.use(
     if (error?.response?.status === 401) {
       console.error("unauthenticated, redirect to login");
       localStorage.clear();
-      window.location.replace("/login");
+      window.location.replace("/account");
     }
 
     return Promise.reject(error);

@@ -5,6 +5,7 @@ import { AccountContext } from "../contexts/AccountContext";
 
 function AccountGuard({ children }) {
   const { user } = useContext(AccountContext);
+  console.log(user);
 
   if (!user) {
     return <Navigate to="/account" />;
@@ -16,16 +17,8 @@ function AccountGuard({ children }) {
 function NavigationRoutes() {
   return (
     <Routes>
-      <Route path="/" element={
-        <AccountGuard>
-          <Screens.HomeScreen />
-        </AccountGuard>
-      } />
-      <Route path="/account" element={
-        <AccountGuard>
-          <Screens.AccountScreen />
-        </AccountGuard>
-      } />
+      <Route path="/" element={ <Screens.HomeScreen /> } />
+      <Route path="/account" element={ <Screens.AccountScreen /> } />
       <Route path="/services" element={
         <AccountGuard>
           <Screens.ListServicesScreen />
@@ -58,7 +51,7 @@ function NavigationRoutes() {
       } />
       <Route path="/user/:nickname" element={
         <AccountGuard>
-          <Screens.HomeScreen />
+          <Screens.ListServicesScreen />
         </AccountGuard>
       } />
     </Routes>
