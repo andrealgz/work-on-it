@@ -1,4 +1,3 @@
-import React from "react";
 import ListServices from "../../../components/services/list/ListServices"
 
 function ListServicesScreen() {
