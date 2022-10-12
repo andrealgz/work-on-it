@@ -1,6 +1,6 @@
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { professions, timeTables } from "../../../data";
+import { professions, timeTables, experiences } from "../../../data";
 import Select from "react-select"
 
 import * as Services from "../../../services/Main"
@@ -15,7 +15,7 @@ function CreateService() {
       user: "",
       profession: data?.profession?.value,
       bio: data.bio,
-      experience: "",
+      experience: data?.profession?.value,
       rate: data.rate,
       disponibility: data?.timeTables?.value,
       address: ""
@@ -57,6 +57,7 @@ function CreateService() {
             <div className="input-group mb-1">
               <span className="input-group-text"><i className='fa fa-list fa-fw'></i></span>
               <Select className='form-control p-0' 
+                placeholder="Selecciona profesión"
                 value={professions.find((profession) => profession.value === value)} 
                 onChange={(profession) => onChange(profession)} 
                 onBlur={onBlur}
@@ -78,7 +79,8 @@ function CreateService() {
           render={({ field: { onBlur, onChange, value} }) => (
             <div className="input-group mb-1">
               <span className="input-group-text"><i className='fa fa-list fa-fw'></i></span>
-              <Select className='form-control p-0' 
+              <Select className='form-control p-0'
+                placeholder="Selecciona preferencia horaria"
                 value={timeTables.find((timeTable) => timeTable.value === value)} 
                 onChange={(timeTable) => onChange(timeTable)} 
                 onBlur={onBlur}
@@ -90,6 +92,29 @@ function CreateService() {
                   })
                 }}/>
               {errors.timeTables && (<div className="invalid-feedback">{errors.timeTables.message}</div>)}
+            </div>
+          )}
+        />
+
+        <Controller 
+          name="experiences"
+          control={control}
+          render={({ field: { onBlur, onChange, value} }) => (
+            <div className="input-group mb-1">
+              <span className="input-group-text"><i className='fa fa-list fa-fw'></i></span>
+              <Select className='form-control p-0'
+                placeholder="Selecciona años de experiencia"
+                value={experiences.find((experience) => experience.value === value)} 
+                onChange={(experience) => onChange(experience)} 
+                onBlur={onBlur}
+                options={experiences}
+                styles={{
+                  control: (base) => ({
+                    ...base,
+                    border: 0
+                  })
+                }}/>
+              {errors.experiences && (<div className="invalid-feedback">{errors.experiences.message}</div>)}
             </div>
           )}
         />
