@@ -17,7 +17,7 @@ function ListServices() {
       {services ? 
         services.map(service => (
           <div key={service.id}>
-            {service.user.nickname}
+            {service.user?.nickname}
             {service.profession}
             {service.experience}
             {service.rating}
