@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
+import { AccountContext } from "../../../contexts/AccountContext";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as HiIcons from "react-icons/hi";
-import { IconContext } from "react-icons"
+import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 
 import { SlideBar } from "../slide-bar/SlideBar";
@@ -10,6 +11,8 @@ import { SlideBar } from "../slide-bar/SlideBar";
 import "./NavBar.css"
 
 function NavBar() {
+  const { user } = useContext(AccountContext);
+
   const [sideBarLeft, setSidebarLeft] = useState(false);
   const [SideBarRight, setSidebarRight] = useState(false);
 
@@ -40,24 +43,25 @@ function NavBar() {
           </ul>
         </nav>
         <nav className={SideBarRight ? "nav-menu-right active" : "nav-menu-right"}>
-          <ul className="nav-menu-items">
+          <ul className="nav-menu-items" onClick={showSideBarRight}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars" >
-                <AiIcons.AiOutlineClose onClick={showSideBarRight}/>
+                <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            <form className="mx-5 text-white mt-5">
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                <input name="password" type="password" className="form-control" id="exampleInputPassword1" />
-              </div>
-              <button type="submit" className="btn btn-primary" onClick={showSideBarRight}>Login</button>
-            </form>
+            {
+              user ? 
+              (
+                <li className="navbar-toggle mx-3">
+                  <FaIcons.FaUser />
+                  <span><Link className="menu-bars-login" to={`/user/${user.nickname}`}>{user.nickname}</Link></span>
+                </li>
+              ) : 
+              <li className="navbar-toggle mx-3">
+                  <Link to="/account"> Registrate </Link> o <Link to="/account"> Conéctate</Link>
+              </li>
+            }
+            
           </ul>
         </nav>
       </IconContext.Provider>

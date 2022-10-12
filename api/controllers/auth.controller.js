@@ -93,3 +93,7 @@ module.exports.logout = (req, res, next) => {
   req.session = null;
   res.status(204).send();
 };
+
+module.exports.getProfile = (req, res, next) => {
+  res.json(req.user);
+}

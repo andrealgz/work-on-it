@@ -4,6 +4,7 @@ const router = express.Router();
 const { services, users, orders, auth, messages } = require("../controllers");
 const { secure } = require("../middlewares");
 
+router.get("/profile", secure.isLogged, auth.getProfile);
 router.post("/register", auth.register);
 router.post("/login", auth.login);
 router.delete("/logout", secure.isLogged, auth.logout);

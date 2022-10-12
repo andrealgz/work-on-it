@@ -1,12 +1,12 @@
 import "./App.css"
-import Main from "./navigation/Main"
+import NavigationRoutes from "./navigation/NavigationRoutes"
 import { NavBar } from "./components"
 
 function App() {
   return (
     <>
       <NavBar />
-      <Main />
+      <NavigationRoutes />
     </>  
   );
 }

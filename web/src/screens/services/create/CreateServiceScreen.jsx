@@ -1,4 +1,3 @@
-import React from "react";
 import { CreateService } from "../../../components"
 
 function CreateServiceScreen () {

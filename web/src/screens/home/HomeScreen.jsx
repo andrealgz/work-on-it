@@ -1,6 +1,3 @@
-import React from "react";
-
-
 function HomeScreen() {
   return (
     <>
@@ -9,4 +6,4 @@ function HomeScreen() {
   )
 }
 
-export default HomeScreen
+export default HomeScreen;
