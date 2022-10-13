@@ -12,7 +12,7 @@ import { SlideBar } from "../slide-bar/SlideBar";
 import "./NavBar.css"
 
 function NavBar() {
-  const { user } = useContext(AccountContext);
+  const { user, setUser } = useContext(AccountContext);
 
   const [sideBarLeft, setSidebarLeft] = useState(false);
   const [SideBarRight, setSidebarRight] = useState(false);
@@ -25,7 +25,7 @@ function NavBar() {
       .logout()
       .then(() => {
         localStorage.clear();
-        window.location.replace("/");
+        setUser(null);
       })
       .catch(error => console.error(error))
   }
@@ -69,8 +69,8 @@ function NavBar() {
                     <FaIcons.FaUser />
                     <span><Link className="menu-bars-login" to={`/user/${user.nickname}`}>{user.nickname}</Link></span>
                   </li>
-                  <li>
-                    <button onClick={handleClick}>Log Out</button>
+                  <li className="navbar-toggle mx-3">
+                    <button className="btn btn-primary" onClick={handleClick}>Logout</button>
                   </li>
                 </>
               ) : 
