@@ -5,6 +5,7 @@ import * as AiIcons from "react-icons/ai";
 import * as HiIcons from "react-icons/hi";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
+import * as Services from "../../../services/Main";
 
 import { SlideBar } from "../slide-bar/SlideBar";
 
@@ -18,6 +19,17 @@ function NavBar() {
 
   const showSideBarLeft = () => setSidebarLeft(!sideBarLeft);
   const showSideBarRight = () => setSidebarRight(!SideBarRight);
+
+  const handleClick = () =>  {
+    Services
+      .logout()
+      .then(() => {
+        localStorage.clear();
+        window.location.replace("/");
+      })
+      .catch(error => console.error(error))
+  }
+
   return (
     <>
       <IconContext.Provider value={{color: "#fff"}}>
@@ -43,8 +55,8 @@ function NavBar() {
           </ul>
         </nav>
         <nav className={SideBarRight ? "nav-menu-right active" : "nav-menu-right"}>
-          <ul className="nav-menu-items" onClick={showSideBarRight}>
-            <li className="navbar-toggle">
+          <ul className="nav-menu-items">
+            <li className="navbar-toggle" onClick={showSideBarRight}>
               <Link to="#" className="menu-bars" >
                 <AiIcons.AiOutlineClose />
               </Link>
@@ -52,10 +64,15 @@ function NavBar() {
             {
               user ? 
               (
-                <li className="navbar-toggle mx-3">
-                  <FaIcons.FaUser />
-                  <span><Link className="menu-bars-login" to={`/user/${user.nickname}`}>{user.nickname}</Link></span>
-                </li>
+                <>
+                  <li className="navbar-toggle mx-3">
+                    <FaIcons.FaUser />
+                    <span><Link className="menu-bars-login" to={`/user/${user.nickname}`}>{user.nickname}</Link></span>
+                  </li>
+                  <li>
+                    <button onClick={handleClick}>Log Out</button>
+                  </li>
+                </>
               ) : 
               <li className="navbar-toggle mx-3">
                   <Link to="/account"> Registrate </Link> o <Link to="/account"> Conéctate</Link>

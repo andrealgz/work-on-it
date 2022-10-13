@@ -1,11 +1,12 @@
-import { Login } from "../../../components";
+import { Login, Register } from "../../../components";
 
 function AccountScreen() {
   return (
     <>
       <Login />
+      <Register />
     </>
   )
 }
 
-export default AccountScreen
+export default AccountScreen;

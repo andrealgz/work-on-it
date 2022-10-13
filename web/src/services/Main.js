@@ -56,8 +56,8 @@ export function register(data) {
   return http.post("/register", data);
 }
 
-export function logout(data) {
-  return http.delete("/logout", data);
+export function logout() {
+  return http.delete("/logout");
 }
 
 export function getProfile() {

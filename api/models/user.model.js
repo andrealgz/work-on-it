@@ -43,7 +43,7 @@ const userSchema = new Schema (
       trim: true,
       maxLength: [60 , "Los apellidos no puede tener más de 60 caracteres"],
       minLength: [3 , "Los apellidos necesita mínimo 3 caracteres"],
-      required: "Los apellidos es obligatorio"
+      required: "Los apellidos son obligatorios"
     },
     phone: {
       type: String,
@@ -54,13 +54,13 @@ const userSchema = new Schema (
       trim: true,
       required: "La dirección es obligatoria"
     },
-    // location: {
-    //     type: {
-    //         type: String,
-    //         default: "Point"
-    //     },
-    //     coordinates: [Number]
-    // },
+    location: {
+      type: {
+          type: String,
+          default: "Point"
+      },
+      coordinates: [Number]
+    },
     locality: {
       type: String,
       trim: true,
