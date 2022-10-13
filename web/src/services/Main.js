@@ -12,8 +12,8 @@ http.interceptors.response.use(
   function (error) {
     if (error?.response?.status === 401) {
       console.error("unauthenticated, redirect to login");
-      localStorage.clear();
-      window.location.replace("/account");
+      // localStorage.clear();
+      window.location.replace("/");
     }
 
     return Promise.reject(error);
