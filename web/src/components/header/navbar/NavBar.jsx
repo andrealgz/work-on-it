@@ -24,7 +24,6 @@ function NavBar() {
     Services
       .logout()
       .then(() => {
-        console.log(123)
         localStorage.clear();
         window.location.replace("/");
       })
