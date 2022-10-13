@@ -21,7 +21,7 @@ http.interceptors.response.use(
 );
 
 export function getUserProfile(nickname) {
-  return http.get(`/user/${nickname}`)
+  return http.get(`/users/${nickname}`)
 }
 
 export function getAllServices() {

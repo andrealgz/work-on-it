@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const { status } = require("../data");
+
 const orderSchema = new Schema (
   {
     customer: {
@@ -39,7 +41,10 @@ const orderSchema = new Schema (
         },
         coordinates: [Number]
     },
-    status: String,
+    status: {
+      type: String,
+      enum: status.map(status => status.value),
+    },
     review: {
       type: {
         rating: Number,
@@ -63,7 +68,7 @@ const orderSchema = new Schema (
 );
 
 orderSchema.pre('save', function (next) {
-  this.status = "En revisión";
+  this.status = "review";
   this.review = {
     rating: 0,
     description: ''

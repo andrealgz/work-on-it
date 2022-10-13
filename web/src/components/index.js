@@ -4,4 +4,6 @@ export { default as DetailService } from "./services/detail/DetailService";
 export { default as ListServices } from "./services/list/ListServices";
 export { default as CreateService } from "./services/create/CreateService";
 export { default as DetailOrder } from "./orders/detail/DetailOrder";
+export { default as ListOrder } from "./orders/list/ListOrder";
 export { default as Register } from "./account/register/Register";
+export { default as Profile } from "./profile/Profile";

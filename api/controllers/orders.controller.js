@@ -2,7 +2,7 @@ const createError = require("http-errors");
 const { Order } = require('../models');
 
 module.exports.createOrders = (req, res, next) => {
-  const { customer, service, ownerService, rate, hours} = req.body;
+  const { customer, service, ownerService, rate, hours } = req.body;
   const order = { customer, service, ownerService, detailJob: {rate, hours}};
 
   Order
@@ -33,6 +33,32 @@ module.exports.getOrders = (req, res, next) => {
     .populate("customer")
     .populate("service")
     .populate("ownerService")
+    .then(order => {
+      if (order) {
+        res.status(200).json(order);
+      }else{
+        next(createError(404, "Orden no encontrada"));
+      }
+    })
+    .catch(next)
+}
+
+module.exports.updateOrders = (req, res, next) => {
+
+  const { id } = req.params;
+  const { status } = req.body;
+  const data = { status };
+
+  const criterial = {};
+
+  if (id) {
+    criterial._id = id;
+  }
+
+  console.log(data)
+
+  Order
+    .findByIdAndUpdate(criterial, data, {new: true, runValidators: true})
     .then(order => {
       if (order) {
         res.status(200).json(order);
