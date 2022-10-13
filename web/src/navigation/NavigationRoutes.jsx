@@ -48,9 +48,9 @@ function NavigationRoutes() {
           <Screens.HomeScreen />
         </AccountGuard>
       } />
-      <Route path="/user/:nickname" element={
+      <Route path="/users/:nickname" element={
         <AccountGuard>
-          <Screens.ListServicesScreen />
+          <Screens.ProfileScreen />
         </AccountGuard>
       } />
     </Routes>

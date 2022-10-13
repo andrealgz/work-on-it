@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const createError = require("http-errors");
-const { User, Service, Order } = require("../models");
+const { User } = require("../models");
 
 
 module.exports.getUser = (req, res, next) => {
@@ -22,13 +22,15 @@ module.exports.getUser = (req, res, next) => {
     .populate({
       path: "orderSent",
       populate: {
-        path: "messages"
+        path: "messages",
+        path: "service"
       }
     })
     .populate({
       path: "orderReceived",
       populate: {
-        path: "messages"
+        path: "messages",
+        path: "service"
       }
     })
     .then(user => {

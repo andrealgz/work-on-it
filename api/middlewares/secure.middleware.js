@@ -29,3 +29,14 @@ module.exports.isOwner = (req, res, next) => {
     next(createError(401));
   }
 }
+
+module.exports.isOwnerReceived = (req, res, next) => {
+  const { orderReceived } = req.user;
+  const { id } = req.params;
+  
+  if (orderReceived.some(order => order.id === id)) {
+    next();
+  } else {
+    next(createError(401));
+  }
+}

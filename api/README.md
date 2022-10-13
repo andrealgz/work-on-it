@@ -25,6 +25,7 @@
 |-----------|-------------------------|--------------|-----------------|
 | GET       | /api/v1/orders          | 200,         | list for admins |
 | GET       | /api/v1/orders/<id>     | 200, 404     | detail          |
+| PATCH     | /api/v1/orders/<id>     | 200, 404     | update          |
 | POST      | /api/v1/orders/create   | 201, 400     | create          |
 | POST      | /api/v1/orders/messages | 201, 400     | create message  |
 
