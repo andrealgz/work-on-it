@@ -1,4 +1,66 @@
-.login {
-  margin-top: 15vh;
-  margin-bottom: 15vh;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
+
+.container{
+  font-family: var(--body-font);
+}
+
+.service{
+  margin-top: 5%;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.img{
+  width: 800px;
+}
+
+.details{
+  margin-left: 5%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "EB Garamond", serif;
+}
+
+.bio{
+  font-size: 26px;
+  font-family: var(--italic-font);
+  font-style: italic;
+  margin-bottom: 14px;
+  transition-delay: 0.2s;
+}
+
+.nickname{
+  font-family: var(--italic-font);
+  font-size: 100px;
+  font-weight: 400;
+  margin-top: 10px;
+  line-height: 1em;
+}
+
+.list{
+  align-items: center;
+  font-family: var(--italic-font);
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 14px;
+  margin-bottom: 60px;
+}
+
+.reviews{
+  margin-top:10%;
+  justify-content: center
+}
+
+.reviews div{
+  height: 400px;
+  margin-bottom: 4rem;
+  width: 900px;
+}
+
+.reviews img{
+  height: 380px;
+  width: 500px;
 }
