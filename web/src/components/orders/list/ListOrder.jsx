@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { translation } from "../../../utils/translation";
 
 function ListOrder({ listOrders, className }) {
   return (
@@ -17,8 +18,8 @@ function ListOrder({ listOrders, className }) {
           listOrders.map(order => (
             <tr key={order.id}>
               <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-              <td>{order.service.profession}</td>
-              <td><Link to={`/orders/${order.id}`}>{order.status}</Link></td>
+              <td>{translation("professions", order.service.profession)}</td>
+              <td><Link to={`/orders/${order.id}`}>{translation("status", order.status)}</Link></td>
             </tr>
           )) : 
           <tr>
