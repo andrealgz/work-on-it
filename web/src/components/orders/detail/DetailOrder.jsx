@@ -145,11 +145,11 @@ function DetailOrderScreen() {
               <div className={`detail-order-message-panel border border-2 rounded mb-1 d-flex flex-column ${!order.messages.length && "justify-content-center align-items-center"}`}>
                 {
                   order.messages.length ? 
-                  order.messages.map(message => 
+                  order.messages.map((message, index) => 
                     (
-                      <div className={`d-flex flex-column align-items-${message.sender === user.id ? "start" : "end"}`}>
-                        <span className="rounded-pill bg-success bg-opacity-25 px-3 mx-2 mt-1" key={message.id}>{message.message}</span>
-                        <span className="detail-order-message-date px-3 mx-2" key={message.id}>{new Date(message.createdAt).toLocaleString()}</span>
+                      <div key={message.id} className={`d-flex flex-column align-items-${message.sender === user.id ? "start" : "end"}`}>
+                        <span className="rounded-pill bg-success bg-opacity-25 px-3 mx-2 mt-1" key={`message-${index}`}>{message.message}</span>
+                        <span className="detail-order-message-date px-3 mx-2" key={`date-${index}`}>{new Date(message.createdAt).toLocaleString()}</span>
                       </div>
                     )
                   ) : 
