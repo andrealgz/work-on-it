@@ -18,12 +18,9 @@ function NavigationRoutes() {
     <Routes>
       <Route path="/" element={ <Screens.HomeScreen /> } />
       <Route path="/account" element={ <Screens.AccountScreen /> } />
-      <Route path="/services" element={
-        <AccountGuard>
-          <Screens.ListServicesScreen />
-        </AccountGuard>
-      } />
-      <Route path="/services/:id" element={
+      <Route path="/services" element={ <Screens.ListServicesScreen /> } />
+      <Route path="/services/:profession" element={ <Screens.ListServicesScreen /> } />
+      <Route path="/service/:id" element={
         <AccountGuard>
           <Screens.DetailServiceScreen />
         </AccountGuard>

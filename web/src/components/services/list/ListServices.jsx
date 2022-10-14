@@ -1,16 +1,20 @@
-import { useEffect, useState  } from "react"
+import { useEffect, useState  } from "react";
+import { useParams } from "react-router";
+
 import * as Services from "../../../services/Main";
 
 function ListServices() {
-  
-  const [services, setServices] = useState(null)
+
+  const [services, setServices] = useState(null);
+
+  const { profession } = useParams();
 
   useEffect(() => {
     Services
-      .getAllServices()
+      .getAllServices(profession || null)
       .then(services => setServices(services))
       .catch(error => console.error(error))
-  },[])
+  },[profession])
 
   return (
     <>

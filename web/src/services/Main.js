@@ -24,12 +24,13 @@ export function getUserProfile(nickname) {
   return http.get(`/users/${nickname}`)
 }
 
-export function getAllServices() {
-  return http.get("/services")
+export function getAllServices(criterial) {
+  const url = `/services${criterial ? `/${criterial}` : ''}`;
+  return http.get(url)
 }
 
 export function getService(id) {
-  return http.get(`/services/${id}`)
+  return http.get(`/service/${id}`)
 }
 
 export function createService(service) {
