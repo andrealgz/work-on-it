@@ -55,10 +55,12 @@ module.exports.updateOrders = (req, res, next) => {
     criterial._id = id;
   }
 
-  console.log(data)
-
   Order
     .findByIdAndUpdate(criterial, data, {new: true, runValidators: true})
+    .populate("messages")
+    .populate("customer")
+    .populate("service")
+    .populate("ownerService")
     .then(order => {
       if (order) {
         res.status(200).json(order);

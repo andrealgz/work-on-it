@@ -12,11 +12,12 @@
 
 ## Service
 
-| http verb | path                    | status codes | purpose |
-|-----------|-------------------------|--------------|---------|
-| GET       | /api/v1/services        | 200,         | list    |
-| GET       | /api/v1/services/<id>   | 200,         | detail  |
-| POST      | /api/v1/services/create | 201, 404     | create  |
+| http verb | path                          | status codes | purpose     |
+|-----------|-------------------------------|--------------|-------------|
+| GET       | /api/v1/services              | 200,         | list        |
+| GET       | /api/v1/service/<id>          | 200,         | detail      |
+| GET       | /api/v1/services/<profession> | 200,         | filter list |
+| POST      | /api/v1/services/create       | 201, 404     | create      |
 
 
 ## Order
