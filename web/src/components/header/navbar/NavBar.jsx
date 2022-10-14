@@ -34,7 +34,7 @@ function NavBar() {
     <>
       <IconContext.Provider value={{color: "#fff"}}>
         <div className="navbar">
-          <Link to="#" className="menu-bars">
+          <Link to="/" className="menu-bars">
             <FaIcons.FaBars onClick={showSideBarLeft}/>
           </Link>
           <Link to="#" className="menu-bars">
@@ -67,7 +67,7 @@ function NavBar() {
                 <>
                   <li className="navbar-toggle mx-3">
                     <FaIcons.FaUser />
-                    <span><Link className="menu-bars-login" to={`/users/${user.nickname}`}>{user.nickname}</Link></span>
+                    <span><Link className="menu-bars-login" to={`/users/me`}>{user.nickname}</Link></span>
                   </li>
                   <li className="navbar-toggle mx-3">
                     <button className="btn btn-primary" onClick={handleClick}>Logout</button>
