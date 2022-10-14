@@ -2,7 +2,7 @@ const createError = require("http-errors");
 const { Service } = require("../models");
 
 module.exports.getServices = (req, res, next) => {
-  const { id } = req.params;
+  const { id, profession } = req.params;
   const criterial = {};
 
   if (id) {
@@ -14,7 +14,10 @@ module.exports.getServices = (req, res, next) => {
   } else {
     if (req.user) {
       criterial.user = { $ne: req.user.id };
-    } 
+    }
+    if (profession) {
+      criterial.profession = profession;
+    }
   }
 
   Service
