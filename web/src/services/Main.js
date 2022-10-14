@@ -44,6 +44,10 @@ export function createOrder(order) {
   return http.post("/orders/create", order)
 }
 
+export function updateOrder(id, order) {
+  return http.patch(`/orders/${id}`, order)
+}
+
 export function sendMessage(message) {
   return http.post("/orders/messages", message)
 }

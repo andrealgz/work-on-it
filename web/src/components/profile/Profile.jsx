@@ -13,10 +13,7 @@ function Profile() {
   useEffect(() => {
     Services
       .getUserProfile(nickname)
-      .then(user => {
-        console.log(user)
-        setUser(user)
-      })
+      .then(user => setUser(user))
       .catch(error => console.error(error))
   }, [nickname]) 
 

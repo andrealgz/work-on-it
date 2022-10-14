@@ -1,0 +1,17 @@
+.detail-order {
+  margin-top: 15vh;
+}
+
+.detail-order-message-panel {
+  height: 40vh;
+  margin-top: 1vh;
+  overflow-y: scroll;
+}
+
+.detail-order-message-panel span {
+  width: fit-content;
+}
+
+.detail-order-message-panel .detail-order-message-date {
+  font-size: 10px;
+}
