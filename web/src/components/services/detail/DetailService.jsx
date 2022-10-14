@@ -8,11 +8,10 @@ import "./DetailService.css";
 import { translation } from "../../../utils/translation";
 
 function DetailService() {
-  const { id } = useParams()
-  const [service, setService] = useState(null)
-  console.log(service)
+  const { id } = useParams();
+  const [service, setService] = useState(null);
 
-  const { user } = useContext(AccountContext)
+  const { user } = useContext(AccountContext);
 
   useEffect(() => {
     Services
