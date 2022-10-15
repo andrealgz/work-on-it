@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
+imp
 
 .container{
   font-family: var(--body-font);
@@ -63,4 +64,36 @@
 .reviews img{
   height: 380px;
   width: 500px;
+}
+
+.button{
+  background-color: #ffffff;
+  border: 1px solid rgba(43, 41, 41, 0.6);
+  position: relative;
+  outline: none;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 45px;
+  width: 130px;
+  opacity: 1;
+}
+
+.button:hover{
+  background-color: #ffffff;
+  animation: pulse 1s infinite;
+  transition: .3s;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(.9);
+  }
+    100% {
+    transform: scale(1);
+  }
 }

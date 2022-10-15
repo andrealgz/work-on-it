@@ -42,8 +42,8 @@ function DetailService() {
                 <div className="experience">Años de  experiencia: {translation("experiences", service.experience )}</div>
               </div>
 
-              <div>
-                { user.id !== service.user.id && <Link to={"/"} className="btn btn-primary">Contratar!</Link> }
+              <div className="button">
+                { user.id !== service.user.id && <Link to={"/"} style={{ color: 'inherit', textDecoration: 'inherit'}}>Contratar</Link> }
               </div>
             </div>      
           </div>
