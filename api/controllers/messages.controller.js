@@ -2,8 +2,10 @@ const { Message } = require("../models");
 const createError = require("http-errors")
 
 module.exports.setMessage = (req, res, next) => {
-  const { sender, receiver, order, service, message } = req.body;
-  const communication = { sender, receiver, order, service, message };
+  const { sender, receiver, service, message } = req.body;
+  const { id } = req.params;
+  const communication = { sender, receiver, order: id, service, message };
+
 
   Message
     .create(communication)

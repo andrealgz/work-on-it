@@ -40,3 +40,15 @@ module.exports.isOwnerReceived = (req, res, next) => {
     next(createError(401));
   }
 }
+
+module.exports.isOwnerSent = (req, res, next) => {
+  const { orderSent } = req.user;
+  const { id } = req.params;
+
+  
+  if (orderSent.some(order => order.id === id)) {
+    next();
+  } else {
+    next(createError(401));
+  }
+}
