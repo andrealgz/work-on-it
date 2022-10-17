@@ -18,7 +18,21 @@ const reviewSchema = new Schema(
       ref: "Order",
       type: mongoose.Schema.Types.ObjectId,
       required: true
-    }
+    },
+    photo: {
+      type: String,
+      default: 'https://res.cloudinary.com/dp520ozjl/image/upload/v1659034965/glovo/dvyi5n3bxrymxwrrjgcf.png',
+      validate: {
+        validator: function(image){
+          try {
+            new URL(image);
+            return true;
+          } catch(error){
+            return false;
+          }
+        },
+      }
+    },
   },
   {
     timestamps: true,

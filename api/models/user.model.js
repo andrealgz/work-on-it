@@ -66,6 +66,20 @@ const userSchema = new Schema (
       trim: true,
       required: "La localidad es obligatoria"
     },
+    photo: {
+      type: String,
+      default: 'https://res.cloudinary.com/dp520ozjl/image/upload/v1659034965/glovo/dvyi5n3bxrymxwrrjgcf.png',
+      validate: {
+        validator: function(image){
+          try {
+            new URL(image);
+            return true;
+          } catch(error){
+            return false;
+          }
+        },
+      }
+    },
     isAdmin: Boolean,
   },
   {
