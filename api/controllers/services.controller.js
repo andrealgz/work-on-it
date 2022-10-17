@@ -16,9 +16,15 @@ module.exports.getServices = (req, res, next) => {
       criterial.user = { $ne: req.user.id };
     }
     if (profession) {
-      criterial.profession = profession;
+      if (profession === 'me') {
+        criterial.user = req.user.id;
+      } else {
+        criterial.profession = profession;
+      }
     }
   }
+
+  console.log(criterial)
 
   Service
     .find(criterial)
