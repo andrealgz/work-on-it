@@ -1,3 +1,47 @@
-.profile {
-  margin-top: 12vh;
+.profile{
+  margin:4%;
+}
+
+.user-profile{
+  justify-content: space-around;
+}
+
+.img-profile{
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  height: 500px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:4%;
+}
+
+.img-profile img{
+  margin-bottom: 5%;
+}
+
+.patch-profile{
+  margin-left: 70%;
+}
+
+.patch-profile :hover{
+  color:rgb(182, 156, 108);
+}
+
+.info-user{
+  margin-top: 6%;
+  height: 450px;
+  padding:4%;
+  font-size: 12px;
+}
+
+.orders-profile{
+  margin-top: 5%;
+  padding: 3%;
+}
+
+.orders-category{
+  font-size: 15px;
+  color:rgb(51, 124, 130);
 }

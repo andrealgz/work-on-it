@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { services, users, orders, auth, messages } = require("../controllers");
+const { services, users, orders, auth, messages, reviews } = require("../controllers");
 const { secure } = require("../middlewares");
 
 router.get("/profile", secure.isLogged, auth.getProfile);
@@ -22,6 +22,7 @@ router.get("/orders", secure.isAdmin, orders.getOrders);
 router.get("/orders/:id", secure.isLogged, secure.isOwner, orders.getOrders);
 router.patch("/orders/:id", secure.isLogged, secure.isOwnerReceived, orders.updateOrders);
 router.post("/orders/create", secure.isLogged, orders.createOrders);
-router.post("/orders/messages", secure.isLogged, messages.setMessage);
+router.post("/order/:id/messages", secure.isLogged, secure.isOwner, messages.setMessage);
+router.post("/order/:id/review", secure.isLogged, secure.isOwnerSent, reviews.createReview);
 
 module.exports = router;

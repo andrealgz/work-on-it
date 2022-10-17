@@ -42,8 +42,8 @@ function DetailService() {
                 <div className="experience">Años de  experiencia: {translation("experiences", service.experience )}</div>
               </div>
 
-              <div>
-                { user.id !== service.user.id && <Link to={"/"} className="btn btn-primary">Contratar!</Link> }
+              <div className="button">
+                { user.id !== service.user.id && <Link to={"/"} style={{ color: 'inherit', textDecoration: 'inherit'}}>Contratar</Link> }
               </div>
             </div>      
           </div>
@@ -62,17 +62,17 @@ function DetailService() {
             >
                 <div>
                   <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="..."/>
-                  Rating!! Cuando el estado sea "done"
+                  Review
                 </div>
 
                 <div>
                   <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="img2"/>
-                  Aqui hay texto
+                  Review
                 </div>
 
                 <div>
                   <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="..."/>
-                  Aqui hay texto
+                  Review
                 </div>
             </Carousel>
           </div>
