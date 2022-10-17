@@ -41,10 +41,7 @@
   padding: 3%;
 }
 
-.orders-profile h4{
-  margin-right: 2%;
-}
-
-.orders-profile h6{
+.orders-category{
+  font-size: 15px;
   color:rgb(51, 124, 130);
 }

@@ -45,14 +45,23 @@ function ListServices() {
                   <div key={service.id} className="col-3">
                       <Link to={`/service/${service.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}}>
                         <div>
-                          <div className="profile-card">
-                            <img src="https://cflvdg.avoz.es/sc/VhmlADGQ6fh-z3-ezqRYiN6anZM=/480x/2022/02/09/00121644411841910536634/Foto/L01F2017.jpg" alt="image1" className="profile-icon" />
-                            <h4 className="nickname">{service.user?.nickname}</h4>
-                            <h5><div>{translation("professions", service.profession)}</div></h5>
-                            <div className="details">
-                              <div className="price">Precio/hora: {service.rate}€</div>
-                              <div className="price">Experiencia: {translation("experiences", service.experience)}</div>
-                              <div>Valoración:{service.rating}</div>
+                          <div className="list-card">
+                            <img src="https://cflvdg.avoz.es/sc/VhmlADGQ6fh-z3-ezqRYiN6anZM=/480x/2022/02/09/00121644411841910536634/Foto/L01F2017.jpg" alt="image1" className="list-img" />
+                            <h4 className="list-nickname">{service.user?.nickname}</h4>
+                            <h5><div className="list-profession">{translation("professions", service.profession)}</div></h5>
+                            <div className="list-details d-flex justify-content-around">
+                              <div className="text-center">
+                                <p>Precio/hora: </p>
+                                <p>{service.rate}€</p>
+                              </div>
+                              <div className="text-center">
+                                <p>Experiencia: </p>
+                                <p>{translation("experiences", service.experience)}</p>
+                              </div>
+                              <div className="text-center">
+                                <p>Valoración: </p>
+                                <p>{service.rating}/5</p>
+                              </div>
                             </div>
                           </div>
                         </div>  
@@ -70,12 +79,3 @@ function ListServices() {
 }
 
 export default ListServices;
-
-
-{/* <img src="https://cflvdg.avoz.es/sc/VhmlADGQ6fh-z3-ezqRYiN6anZM=/480x/2022/02/09/00121644411841910536634/Foto/L01F2017.jpg" classNameName="card-img-top" alt="img" />
-{service.user?.nickname}
-{translation("professions", service.profession)}
-{translation("experiences", service.experience)}
-{service.rating}
-{service.rate}
-{translation("timeTables", service.timeTable)} */}

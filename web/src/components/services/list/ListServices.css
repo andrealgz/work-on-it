@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Sofia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
 .title-services {
 	font-size: 30px;
 	margin-top: 25px;
@@ -7,8 +10,7 @@
 	margin-left: 3%;
 }
 
-
-.profile-card {
+.list-card {
 	max-width: 600px;
 	background: #fff;
 	padding: 30px;
@@ -21,34 +23,32 @@
 	margin:5%;
 }
 
-.profile-card:hover {
+.list-card:hover {
 	transform: scale(1.1);
 	box-shadow: 0 0 25px -5px #ccc;
 }
 
-.profile-icon {
+.list-img{
 	height: 300px;
 	width: 300px;
 	object-fit: cover;
 	border-radius: 2%;
 }
 
-.nickname {
-	font-size: 24px;
-	font-weight: bold;
-	margin: 25px 0 10px 0;
-	font-family: sofiam;
+.list-nickname {
+	font-size: 25px;
+	margin: 20px 0 6px 0;
+	font-family: 'Montserrat', sans-serif;
 }
 
-.details {
+.list-profession {
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(0, 0, 0, 0.259);
+}
+
+.list-details {
 	font-size: 20px;
-	color: rgb(174, 159, 106);
-	display: flex;
-	align-items: center;
-	align-content: center;
-	justify-content: center;
-}
-
-.price {
-	font-style: unset;
+	font-family: 'Didact Gothic', sans-serif;
+	width: 100%;
+	justify-content: space-around;
 }

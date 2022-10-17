@@ -45,30 +45,26 @@ function Profile() {
               <div className="col-4">
                 <div className="info-user card">
                   <Link to={"/"} className="patch-profile" style={{ color: 'inherit', textDecoration: 'inherit'}}>Editar  perfil?</Link>
-                  <div className="card-body">
+                  <div className="card-body d-flex flex-column justify-content-evenly">
                       <div>
-                      <div><h6>Nombre</h6></div>
-                      <div>{user.name}</div>
+                        <h6>Nombre</h6>
+                        <p>{user.name}</p>
                       </div>
-                    <hr/>
                     <div>
-                      <div><h6>Apellidos</h6></div>
-                      <div>{user.surname}</div>
+                      <h6>Apellidos</h6>
+                      <p>{user.surname}</p>
                     </div>
-                    <hr/>
                     <div>
-                      <div><h6>Dirección</h6></div>
-                      <div>{user.address}</div>
+                      <h6>Dirección</h6>
+                      <p>{user.address}</p>
                     </div>
-                    <hr/>
                     <div>
-                      <div><h6>Localidad</h6></div>
-                      <div>{user.locality}</div>
+                      <h6>Localidad</h6>
+                      <p>{user.locality}</p>
                     </div>
-                    <hr/>
                     <div className="row">
-                      <div><h6>Provincia</h6></div>
-                      <div>{user.city}</div>
+                      <h6>Provincia</h6>
+                      <p>{user.city}</p>
                     </div>
                   </div> 
                 </div>
@@ -80,9 +76,9 @@ function Profile() {
                 <div className="professional col">
                   <div className="card">
                     <div className="card-body">
-                      <div className="d-flex">
+                      <div className="d-flex justify-content-between">
                         <h4>Pedidos</h4>
-                        <h6>Como cliente <MdIcons.MdRoomService /></h6>
+                        <h4 className="orders-category">Como cliente <MdIcons.MdRoomService /></h4>
                       </div>
                       <small><ListOrder listOrders={user.orderSent} /></small>
                     </div>
@@ -92,9 +88,9 @@ function Profile() {
                 <div className="customer col">
                   <div className="card">
                     <div className="card-body">
-                      <div className="d-flex">
+                      <div className="d-flex justify-content-between">
                         <h4>Pedidos</h4>
-                        <h6>Como profesional <FiIcons.FiTool /></h6>
+                        <h4 className="orders-category">Como profesional <FiIcons.FiTool /></h4>
                       </div>
                       <small><ListOrder listOrders={user.orderReceived}/></small>
                     </div>
