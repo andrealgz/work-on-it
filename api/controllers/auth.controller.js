@@ -10,7 +10,8 @@ module.exports.register = (req, res, next) => {
     surname, 
     phone, 
     address,
-    locality
+    locality,
+    photo
   } = req.body;
 
   const infoUser = {
@@ -35,6 +36,7 @@ module.exports.register = (req, res, next) => {
           })
         );
       } else {
+        req.body.photo = req.file.path;
         return User
           .create(infoUser)
           .then(user => res.status(201).json(user))

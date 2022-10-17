@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-
+const upload = require("./multer.config");
 const { services, users, orders, auth, messages, reviews } = require("../controllers");
 const { secure } = require("../middlewares");
 
 router.get("/profile", secure.isLogged, auth.getProfile);
-router.post("/register", auth.register);
+router.post("/register", upload.single("photo"), auth.register);
 router.post("/login", auth.login);
 router.delete("/logout", secure.isLogged, auth.logout);
 
@@ -23,6 +23,6 @@ router.get("/orders/:id", secure.isLogged, secure.isOwner, orders.getOrders);
 router.patch("/orders/:id", secure.isLogged, secure.isOwnerReceived, orders.updateOrders);
 router.post("/orders/create", secure.isLogged, orders.createOrders);
 router.post("/order/:id/messages", secure.isLogged, secure.isOwner, messages.setMessage);
-router.post("/order/:id/review", secure.isLogged, secure.isOwnerSent, reviews.createReview);
+router.post("/order/:id/review", secure.isLogged, secure.isOwnerSent, upload.single("photo"), reviews.createReview);
 
 module.exports = router;
