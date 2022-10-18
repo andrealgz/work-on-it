@@ -36,7 +36,6 @@ module.exports.register = (req, res, next) => {
         );
       } else {
         infoUser.photo = req.file.path;
-        console.log(infoUser)
         return User
           .create(infoUser)
           .then(user => res.status(201).json(user))
