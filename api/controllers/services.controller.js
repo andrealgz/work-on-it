@@ -40,9 +40,20 @@ module.exports.getServices = (req, res, next) => {
 }
 
 module.exports.createService = (req, res, next) => {
-
-  const { user, profession, bio, experience, rate, rating, disponibility, address, location } = req.body;
-  const service = { user, profession, bio, experience, rate, rating, disponibility, address, location };
+  const { profession, bio, experience, rate, timeTables, address, longitude, latitude } = req.body;
+  const service = {
+    user: req.user.id,
+    profession: profession?.value,
+    bio,
+    experience: experience?.value,
+    rate,
+    disponibility: timeTables?.value,
+    address,
+    location: {
+      type: 'Point',
+      coordinates: [longitude, latitude]
+    }
+  }
 
   Service
     .create(service)
@@ -54,5 +65,4 @@ module.exports.createService = (req, res, next) => {
       }
     })
     .catch(next)
-
 }
