@@ -39,6 +39,31 @@ module.exports.getServices = (req, res, next) => {
     .catch(next)
 }
 
+
+module.exports.updateServices = (req, res, next) => {
+  const { id } = req.params;
+
+  const { address, bio, experience, latitude, longitude, profession, rate, status, disponibility } = req.body;
+  const data = { address, bio, experience, profession, rate, status, disponibility };
+  data.location = {
+    type: 'Point',
+    coordinates: [longitude, latitude]
+  }
+  
+  Service
+    .findByIdAndUpdate(id, data, { new: true, runValidators: true })
+    .populate("user", "nickname phone")
+    .populate("orders")
+    .then(services => {
+      if (services) {
+        res.status(200).json(services);
+      } else {
+        next(createError(404, "Servicios no encontrados"));
+      }
+    })
+    .catch(next)
+}
+
 module.exports.createService = (req, res, next) => {
   const { profession, bio, experience, rate, timeTables, address, longitude, latitude } = req.body;
   const service = {

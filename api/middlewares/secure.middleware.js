@@ -16,6 +16,18 @@ module.exports.isAdmin = (req, res, next) => {
   }
 }
 
+module.exports.isOwnerService = (req, res, next) => {
+  const { id } = req.params;
+  const { services } = req.user;
+  if (
+    services.some(service => service.id === id)
+  ) {
+    next();
+  } else {
+    next(createError(401));
+  }
+}
+
 module.exports.isOwner = (req, res, next) => {
   const { orderSent, orderReceived } = req.user;
   const { id } = req.params;
