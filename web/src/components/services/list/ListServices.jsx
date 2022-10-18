@@ -41,7 +41,25 @@ function ListServices() {
     
     Object.keys(initialSort).forEach(key => {
       if (key === type) {
-        setServices([...services].sort((a, b) => sortServices[type] ? a[type] - b[type] : b[type] - a[type]));
+        setServices([...services].sort((a, b) => {
+          if (sortServices[type]) {
+            if (a[type] > b[type]) {
+              return -1;
+            } else if (b[type] < a[type]) {
+              return 1;
+            } else {
+              return 0;
+            }
+          } else {
+            if (a[type] < b[type]) {
+              return -1;
+            } else if (b[type] > a[type]) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+        }));
       }
     })
   }
@@ -50,16 +68,16 @@ function ListServices() {
     <div className="container">
       <div className="title-services d-flex justify-content-center">Profesionales</div>
       <div className="filter-box d-flex justify-content-start my-4">
-        <div onClick={() => handleSort("profession")}>
+        <div className="filter-box-cursor" onClick={() => handleSort("profession")}>
           <h6>Especialidad {sortServices.profession ? <MdIcons.MdKeyboardArrowUp /> : <MdIcons.MdKeyboardArrowDown />}</h6>
         </div>
-        <div onClick={() => handleSort("rate")}>
+        <div className="filter-box-cursor" onClick={() => handleSort("rate")}>
           <h6>Precio {sortServices.rate ? <MdIcons.MdKeyboardArrowUp /> : <MdIcons.MdKeyboardArrowDown />}</h6>
         </div>
-        <div onClick={() => handleSort("experience")}>
+        <div className="filter-box-cursor" onClick={() => handleSort("experience")}>
           <h6>Experiencia {sortServices.experience ? <MdIcons.MdKeyboardArrowUp /> : <MdIcons.MdKeyboardArrowDown />}</h6>
         </div>
-        <div onClick={() => handleSort("rating")}>
+        <div className="filter-box-cursor" onClick={() => handleSort("rating")}>
           <h6>Valoración {sortServices.rating ? <MdIcons.MdKeyboardArrowUp /> : <MdIcons.MdKeyboardArrowDown />}</h6>
         </div>
       </div>
