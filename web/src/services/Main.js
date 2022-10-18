@@ -12,7 +12,7 @@ http.interceptors.response.use(
   function (error) {
     if (error?.response?.status === 401) {
       console.error("unauthenticated, redirect to login");
-      // localStorage.clear();
+      localStorage.clear();
       window.location.replace("/");
     }
 
@@ -35,6 +35,10 @@ export function getService(id) {
 
 export function createService(service) {
   return http.post("/services/create", service)
+}
+
+export function updateService(id, service) {
+  return http.patch(`/service/${id}`, service)
 }
 
 export function getOrder(id) {

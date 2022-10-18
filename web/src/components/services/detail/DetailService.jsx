@@ -1,6 +1,6 @@
 import * as Services from "../../../services/Main";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AccountContext } from "../../../contexts/AccountContext";
 import { Carousel } from 'react-responsive-carousel';
@@ -23,19 +23,20 @@ function DetailService() {
 
   const { user } = useContext(AccountContext);
 
-  const { register, handleSubmit, setError, control, formState: { errors, isValid }, watch } = useForm({ mode: 'onTouched' });
-  const navigation = useNavigate();
+  const { register, handleSubmit, control, formState: { errors, isValid } } = useForm({ mode: 'onTouched' });
 
   useEffect(() => {
     Services
       .getService(id)
       .then(service => setService(service[0]))
-      .catch(error =>  console.error(error) )
+      .catch(error =>  console.error(error))
   }, [id])
 
   const handleUpdateService = (data) => {
-    const service = {...data};
-    console.log(service)
+    Services
+      .updateService(service?.id, data)
+      .then(service => setService(service))
+      .catch(error =>  console.error(error))
   }
 
   if (service) {
@@ -142,7 +143,7 @@ function DetailService() {
             />
 
             <Controller 
-              name="timeTables"
+              name="disponibility"
               control={control}
               defaultValue={service?.disponibility}
               render={({ field: { onBlur, onChange, value} }) => (
@@ -210,7 +211,7 @@ function DetailService() {
             <div className="input-group mb-1">
               <span className="input-group-text"><FaIcons.FaMapSigns /></span>
               <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud" defaultValue={service.location.coordinates[0]}
-                {...register("lng", { 
+                {...register("longitude", { 
                   required: "La longitud es obligatoria", 
                 })}/>
             </div>
@@ -218,7 +219,7 @@ function DetailService() {
             <div className="input-group mb-1">
               <span className="input-group-text"><FaIcons.FaMapSigns /></span>
               <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud" defaultValue={service.location.coordinates[1]}
-                {...register("lat", { 
+                {...register("latitude", { 
                   required: "La latitud es obligatoria", 
                 })}/>
             </div>
