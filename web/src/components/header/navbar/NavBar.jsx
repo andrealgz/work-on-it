@@ -73,6 +73,10 @@ function NavBar() {
                     <AiIcons.AiFillTool />
                     <span><Link className="menu-bars-login" to={`/services/me`}>Gestionar tus servicios</Link></span>
                   </li>
+                  <li className="nav-text mx-3">
+                    <AiIcons.AiFillTool />
+                    <span><Link className="menu-bars-login" to={`/services/create`}>Crear un servicios</Link></span>
+                  </li>
                   <li className="navbar-toggle mx-3">
                     <button className="btn btn-primary" onClick={handleClick}>Logout</button>
                   </li>
