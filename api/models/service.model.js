@@ -47,6 +47,7 @@ const serviceSchema = new Schema (
         },
         coordinates: [Number]
     },
+    status: Boolean
   },
   {
     timestamps: true,
@@ -64,6 +65,7 @@ const serviceSchema = new Schema (
 
 serviceSchema.pre('save', function (next) {
   this.rating = 0;
+  this.status = true;
   next();
 });
 

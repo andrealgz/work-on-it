@@ -24,7 +24,6 @@ module.exports.getServices = (req, res, next) => {
     }
   }
 
-  console.log(criterial)
 
   Service
     .find(criterial)
