@@ -2,7 +2,6 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { professions, timeTables, experiences } from "../../../data";
 import Select from "react-select";
-import { useContext } from "react";
 import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
 import * as GiIcons from "react-icons/gi";
@@ -11,31 +10,15 @@ import * as FaIcons from "react-icons/fa";
 
 import "./CreateService.css";
 import * as Services from "../../../services/Main";
-import { AccountContext } from "../../../contexts/AccountContext";
 
 function CreateService() {
   const navigation = useNavigate();
-  const { user } = useContext(AccountContext)
 
   const { register, handleSubmit, setError, control, formState: { errors, isValid } } = useForm({ mode: 'onTouched' });
 
   const handleCreateService = (data) => {
-    const service = {
-      user: user.id,
-      profession: data?.profession?.value,
-      bio: data.bio,
-      experience: data?.experience?.value,
-      rate: data.rate,
-      disponibility: data?.timeTables?.value,
-      address: data.address,
-      location: {
-        type: 'Point',
-        coordinates: [data.lng, data.lat]
-      }
-    }
-
     Services
-      .createService(service)
+      .createService(data)
       .then(service => navigation(`/service/${service.id}`))
       .catch(error => {
         if (error.response?.data?.errors) {
@@ -153,7 +136,7 @@ function CreateService() {
           <div className="input-group mb-1">
             <span className="input-group-text"><FaIcons.FaMapSigns /></span>
             <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud"
-              {...register("lng", { 
+              {...register("longitude", { 
                 required: "La longitud es obligatoria", 
               })}/>
           </div>
@@ -161,7 +144,7 @@ function CreateService() {
           <div className="input-group mb-1">
             <span className="input-group-text"><FaIcons.FaMapSigns /></span>
             <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud"
-              {...register("lat", { 
+              {...register("latitude", { 
                 required: "La latitud es obligatoria", 
               })}/>
           </div>

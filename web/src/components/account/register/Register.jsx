@@ -10,25 +10,9 @@ function Register() {
 
   const { register, handleSubmit, setError, formState: { errors, isValid } } = useForm({ mode: "onTouched" });
 
-  const handleRegister = (data) => {
-    const user = {
-      email: data.email,
-      password: data.password,
-      nickname: data.nickname,
-      name: data.name,
-      surname: data.surname,
-      phone: data.phone,
-      address: data.address,
-      location:{
-        type: 'Point',
-        coordinates: [data.lng, data.lat]
-      },
-      locality: data.locality,
-      photo: data.photo
-    }
-    
+  const handleRegister = (data) => {    
     Services
-      .register(user)
+      .register(data)
       .then(() => navigation("/"))
       .catch(error => {
         if (error.response?.data?.errors) {
@@ -110,7 +94,7 @@ function Register() {
             <FaIcons.FaUser />
           </span>
           <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud"
-            {...register("lng", { 
+            {...register("longitude", { 
               required: "La longitud es obligatoria", 
             })}/>
         </div>
@@ -120,7 +104,7 @@ function Register() {
             <FaIcons.FaUser />
           </span>
           <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud"
-            {...register("lat", { 
+            {...register("latitude", { 
               required: "La latitud es obligatoria", 
             })}/>
         </div>

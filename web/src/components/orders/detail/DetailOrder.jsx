@@ -46,9 +46,7 @@ function DetailOrderScreen() {
 
   const handleMessage = (data) => {
     const message = {
-      sender: user.id,
-      receiver: user.id === order.customer.id ? order.ownerService.id : order.customer.id,
-      service: order.service.id,
+      order: order,
       message: data.message
     }
 
