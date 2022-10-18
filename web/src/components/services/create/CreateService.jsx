@@ -36,7 +36,7 @@ function CreateService() {
 
     Services
       .createService(service)
-      .then(service => navigation(`/services/${service.id}`))
+      .then(service => navigation(`/service/${service.id}`))
       .catch(error => {
         if (error.response?.data?.errors) {
           const { errors } = error.response.data;
@@ -151,7 +151,7 @@ function CreateService() {
           </div>
 
           <div className="input-group mb-1">
-            <span className="input-group-text"><i className="fa fa-tag fa-fw"></i></span>
+            <span className="input-group-text"><FaIcons.FaMapSigns /></span>
             <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud"
               {...register("lng", { 
                 required: "La longitud es obligatoria", 
@@ -159,7 +159,7 @@ function CreateService() {
           </div>
 
           <div className="input-group mb-1">
-            <span className="input-group-text"><i className="fa fa-tag fa-fw"></i></span>
+            <span className="input-group-text"><FaIcons.FaMapSigns /></span>
             <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud"
               {...register("lat", { 
                 required: "La latitud es obligatoria", 
