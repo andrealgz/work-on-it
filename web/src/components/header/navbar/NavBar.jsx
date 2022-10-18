@@ -33,7 +33,7 @@ function NavBar() {
   return (
     <>
       <IconContext.Provider value={{color: "#fff"}}>
-        <div className="navbar">
+        <div className="navbar fixed-top">
           <Link to="/" className="menu-bars">
             <FaIcons.FaBars onClick={showSideBarLeft}/>
           </Link>
@@ -69,13 +69,21 @@ function NavBar() {
                     <FaIcons.FaUser />
                     <span><Link className="menu-bars-login" to={`/users/me`}>{user.nickname}</Link></span>
                   </li>
+                  <li className="nav-text mx-3">
+                    <AiIcons.AiFillTool />
+                    <span><Link className="menu-bars-login" to={`/services/me`}>Gestionar tus servicios</Link></span>
+                  </li>
+                  <li className="nav-text mx-3">
+                    <AiIcons.AiFillTool />
+                    <span><Link className="menu-bars-login" to={`/services/create`}>Crear un servicios</Link></span>
+                  </li>
                   <li className="navbar-toggle mx-3">
                     <button className="btn btn-primary" onClick={handleClick}>Logout</button>
                   </li>
                 </>
               ) : 
-              <li className="navbar-toggle mx-3">
-                  <Link to="/account"> Registrate </Link> o <Link to="/account"> Conéctate</Link>
+              <li className="navbar-toggle d-flex justify-content-center">
+                  <Link to="/account" className="mx-1"> Registrate </Link> o <Link to="/account" className="mx-1"> Conéctate</Link>
               </li>
             }
             
