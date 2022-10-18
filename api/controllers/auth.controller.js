@@ -11,6 +11,8 @@ module.exports.register = (req, res, next) => {
     phone, 
     address,
     locality,
+    longitude,
+    latitude,
   } = req.body;
 
   const infoUser = {
@@ -36,6 +38,10 @@ module.exports.register = (req, res, next) => {
         );
       } else {
         infoUser.photo = req.file.path;
+        infoUser.location = {
+          type: 'Point',
+          coordinates: [longitude, latitude]
+        }
         return User
           .create(infoUser)
           .then(user => res.status(201).json(user))
