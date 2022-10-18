@@ -58,7 +58,14 @@ export function login(data) {
 }
 
 export function register(data) {
-  return http.post("/register", data);
+  data.photo = data.photo[0]
+  const dataForm = new FormData()
+  
+  Object.keys(data).forEach(key => {
+    dataForm.append(key, data[key])
+  })
+  
+  return http.post("/register", dataForm);
 }
 
 export function logout() {

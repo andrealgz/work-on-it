@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import * as Services from "../../../services/Main";
 import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
+import * as GiIcons from "react-icons/gi";
 
 function Register() {
   const navigation = useNavigate()
@@ -23,6 +24,7 @@ function Register() {
         coordinates: [data.lng, data.lat]
       },
       locality: data.locality,
+      photo: data.photo
     }
     
     Services
@@ -187,9 +189,20 @@ function Register() {
           )}
         </div>
 
+        <div className="input-group mb-1">
+          <span className="input-group-text">
+            <GiIcons.GiPhotoCamera/>
+          </span>
+          <input
+            type="file"
+            placeholder="Sube tu foto"
+            {...register("photo")}
+          />
+        </div>
+
         <div className="d-grid mt-2">
           <button className="btn btn-primary" type="submit" disabled={!isValid}>
-            Login
+            Registrarme
           </button>
         </div>
       </form>

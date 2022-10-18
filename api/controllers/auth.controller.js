@@ -10,7 +10,7 @@ module.exports.register = (req, res, next) => {
     surname, 
     phone, 
     address,
-    locality
+    locality,
   } = req.body;
 
   const infoUser = {
@@ -20,10 +20,10 @@ module.exports.register = (req, res, next) => {
     name,
     surname,
     phone,
-    locality, 
-    address
+    address,
+    locality
   };
-  
+
   User
     .findOne({ $or: [{ email }, { nickname }]})
     .then(user => {
@@ -35,6 +35,7 @@ module.exports.register = (req, res, next) => {
           })
         );
       } else {
+        infoUser.photo = req.file.path;
         return User
           .create(infoUser)
           .then(user => res.status(201).json(user))
