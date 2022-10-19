@@ -113,10 +113,13 @@
   font-size: 18px;
   all: unset;
   cursor: pointer;
+  width: 100px;
+  transition: 550ms;
 }
 
 .menu-bars-logout:hover {
-  width: 100px;
+  width: 80px;
+  transition: 650ms;
 }
 
 .menu-bars-logout:hover .logout{
