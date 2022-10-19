@@ -2,12 +2,23 @@ import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import * as Screens from "../screens";
 import { AccountContext } from "../contexts/AccountContext";
+import { useLocation } from "react-router";
 
 function AccountGuard({ children }) {
   const { user } = useContext(AccountContext);
 
   if (!user) {
     return <Navigate to="/account" />;
+  }
+
+  return children;
+}
+
+function ServiceGuard({ children }) {
+  const { state } = useLocation();
+
+  if (!state?.service) {
+    return <Navigate to="/" />;
   }
 
   return children;
@@ -42,7 +53,9 @@ function NavigationRoutes() {
       } />
       <Route path="/orders/create" element={
         <AccountGuard>
-          <Screens.HomeScreen />
+          <ServiceGuard>
+            <Screens.CreateOrderScreen/>
+          </ServiceGuard>
         </AccountGuard>
       } />
       <Route path="/users/:nickname" element={

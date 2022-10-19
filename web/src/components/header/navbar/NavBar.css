@@ -66,15 +66,15 @@
   text-decoration: none;
   color: #B58D71;
   font-size: 18px;
-  width: 95%;
   height: 100%;
-  display: flex;
-  align-items: center;
   border-radius: 4px;
+  transition: 550ms;
 }
 
 .nav-text a:hover {
   color:#413221;
+  margin-left: 10px;
+  transition: 650ms;
 }
 
 .nav-menu-items {
@@ -87,12 +87,13 @@
   height: 80px;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  color: #B58D71;
-  font-size: 18px;
 }
 
-.navbar-toggle :hover {
+.navbar-toggle button {
+  color: #B58D71;
+}
+
+.navbar-toggle button:hover {
   color:#413221;
 }
 
@@ -101,10 +102,17 @@
   border-radius: 50px;
 }
 
-.menu-bars-login{
+.navbar-toggle .menu-bars-login{
   text-decoration: none;
   color: #B58D71;
   font-size: 18px;
+  margin-left: 10px;
+  transition: 550ms;
+}
+.navbar-toggle a:hover {
+  margin-left: 20px;
+  color:#413221;
+  transition: 650ms;
 }
 
 .menu-bars-logout{
