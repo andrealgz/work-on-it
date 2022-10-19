@@ -16,6 +16,7 @@ router.get("/users/:nickName", secure.isLogged, users.getUser);
 router.get("/services", services.getServices);
 router.get("/services/:profession", services.getServices);
 router.get("/service/:id", secure.isLogged, services.getServices);
+router.patch("/service/:id", secure.isLogged, secure.isOwnerService, services.updateServices);
 router.post("/services/create", secure.isLogged, services.createService);
 
 router.get("/orders", secure.isAdmin, orders.getOrders);
