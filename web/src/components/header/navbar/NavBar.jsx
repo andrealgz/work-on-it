@@ -67,7 +67,7 @@ function NavBar() {
                 <>
                   <li className="navbar-toggle mx-3 d-flex align-items-center">
                       <img src={user.photo} className="profile-img" alt="profile-img"/>
-                      <Link className="menu-bars-login ms-2" to={`/users/me`}>{user.name}</Link>
+                      <Link className="menu-bars-login ms-2" to={`/users/me`}>{user.nickname}</Link>
                   </li>
                   <li className="nav-text ms-3">
                     <AiIcons.AiFillTool />
