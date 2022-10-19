@@ -78,9 +78,8 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
                   </li>
                 </>
               ) : 
-              <li className="navbar-toggle d-flex flex-column">
-                  <Link to="/account" className="mx-1"> Registrate </Link>
-                  <Link to="/account" className="mx-1"> Conéctate</Link>
+              <li className="navbar-toggle d-flex justify-content-center h-50 align-items-center">
+                  <Link to="/account" className="mx-1">Registrate</Link> o <Link to="/account" className="mx-1">Conéctate</Link>
               </li>
             }
             
