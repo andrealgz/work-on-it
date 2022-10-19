@@ -26,13 +26,13 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
 
   return (
     <>
-      <IconContext.Provider value={{color: "black"}}>
+      <IconContext.Provider value={{color: "#734722"}}>
         <div className="navbar fixed-top">
           <Link to="/" className="menu-bars">
-            <FaIcons.FaBars onClick={onClickLeft}/>
+            <FaIcons.FaBars fill="white" size={60} onClick={onClickLeft}/>
           </Link>
           <Link to="#" className="menu-bars">
-            <HiIcons.HiUserCircle onClick={onClickRight}/>
+            <HiIcons.HiUserCircle fill="white" size={60} onClick={onClickRight}/>
           </Link>
         </div>
         <nav className={stateLeft ? "nav-menu-left active" : "nav-menu-left"}>
@@ -54,25 +54,27 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
               user ? 
               (
                 <>
-                  <li className="navbar-toggle mx-3">
-                    <FaIcons.FaUser />
-                    <span><Link className="menu-bars-login" to={`/users/me`}>{user.nickname}</Link></span>
+                  <li className="navbar-toggle mx-3 d-flex align-items-center">
+                      <img src={user.photo} className="profile-img" alt="profile-img"/>
+                      <Link className="menu-bars-login ms-2" to={`/users/me`}>{user.nickname}</Link>
                   </li>
-                  <li className="nav-text mx-3">
+                  <li className="nav-text ms-3">
                     <AiIcons.AiFillTool />
-                    <span><Link className="menu-bars-login" to={`/services/me`}>Gestionar tus servicios</Link></span>
+                    <span className="w-100"><Link className="menu-bars-login" to={`/services/me`}>Gestionar tus servicios</Link></span>
                   </li>
-                  <li className="nav-text mx-3">
+                  <li className="nav-text ms-3">
                     <AiIcons.AiFillTool />
-                    <span><Link className="menu-bars-login" to={`/services/create`}>Crear un servicios</Link></span>
+                    <span className="w-100"><Link className="menu-bars-login" to={`/services/create`}>Crear un servicios</Link></span>
                   </li>
-                  <li className="navbar-toggle mx-3">
-                    <button className="btn btn-primary" onClick={handleClick}>Logout</button>
+                  <li className="navbar-toggle d-flex justify-content-center">
+                    <AiIcons.AiOutlineLogout />
+                    <button className="menu-bars-logout" onClick={handleClick}> Desconectarme</button>
                   </li>
                 </>
               ) : 
-              <li className="navbar-toggle d-flex justify-content-center">
-                  <Link to="/account" className="mx-1"> Registrate </Link> o <Link to="/account" className="mx-1"> Conéctate</Link>
+              <li className="navbar-toggle d-flex flex-column">
+                  <Link to="/account" className="mx-1"> Registrate </Link>
+                  <Link to="/account" className="mx-1"> Conéctate</Link>
               </li>
             }
             
