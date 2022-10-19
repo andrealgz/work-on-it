@@ -2,8 +2,16 @@ const createError = require("http-errors");
 const { Order } = require('../models');
 
 module.exports.createOrders = (req, res, next) => {
-  const { customer, service, ownerService, rate, hours } = req.body;
-  const order = { customer, service, ownerService, detailJob: {rate, hours}};
+  const { service, hours } = req.body;
+  const order = { 
+    customer: req.user.id, 
+    service: service.id, 
+    ownerService: service.user.id, 
+    detailJob: {
+      rate: service.rate, 
+      hours
+    }
+  };
 
   Order
     .create(order)
