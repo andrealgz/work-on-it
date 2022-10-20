@@ -53,6 +53,17 @@ export function updateOrder(id, order) {
   return http.patch(`/orders/${id}`, order)
 }
 
+export function createReview(id, review) {
+  review.photo = review.photo[0]
+  const reviewForm = new FormData()
+  
+  Object.keys(review).forEach(key => {
+    reviewForm.append(key, review[key])
+  })
+
+  return http.post(`/order/${id}/review`, reviewForm)
+}
+
 export function sendMessage(message, id) {
   return http.post(`/order/${id}/messages`, message)
 }

@@ -1,12 +1,26 @@
 const createError = require("http-errors");
-const { Review } = require("../models");
+const { Review, Order } = require("../models");
 
 module.exports.createReview = (req, res, next) => {
-  const { customer, text, order } = req.body;
-  const contribution = { customer, text, order };
+  const { rating, text } = req.body;
+  const { id } = req.params;
+  const contribution = { 
+    customer: req.user.id, 
+    text, 
+    rating: parseInt(rating), 
+    order: id 
+  };
+
+  contribution.photo = req.file.path;
+
+  console.log(contribution)
  
   Review
     .create(contribution)
-    .then(review => res.status(201).json(review))
+    .then(() => {
+      return Order
+        .findByIdAndUpdate(id, { status: "finish" }, { new: true, runValidators: true })
+        .then(() => res.status(201).json())
+    })
     .catch(next)
 }

@@ -25,7 +25,15 @@ module.exports.getServices = (req, res, next) => {
   Service
     .find(criterial)
     .populate("user")
-    .populate("orders")
+    .populate({
+      path: "orders",
+      populate: {
+        path: "reviews",
+        populate:{
+          path: "customer"
+        }
+      }
+    })
     .then(services => {
       if (services) {
         res.status(200).json(services);

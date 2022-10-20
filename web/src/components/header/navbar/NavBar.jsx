@@ -3,10 +3,10 @@ import { AccountContext } from "../../../contexts/AccountContext";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as HiIcons from "react-icons/hi";
+import * as RiIcons from "react-icons/ri";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 import * as Services from "../../../services/Main";
-
 import { SlideBar } from "../slide-bar/SlideBar";
 
 import "./NavBar.css"
@@ -31,8 +31,9 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
           <Link to="/" className="menu-bars">
             <FaIcons.FaBars fill="white" size={60} onClick={() => onClickLeft()}/>
           </Link>
-          <Link to="/" className="menu-bars">
-            <HiIcons.HiUserCircle fill="white" size={60} onClick={() => onClickRight()}/>
+          <Link to="/" className={`menu-bars ${user?.orderSent.some(order => order.status === "done") ? "menu-bars-action-required" : ""}`}>
+            <HiIcons.HiUserCircle className={user?.orderSent.some(order => order.status === "done") && "position-absolute"} fill="white" size={60} onClick={() => onClickRight()}></HiIcons.HiUserCircle>
+            { user?.orderSent.some(order => order.status === "done") && <RiIcons.RiErrorWarningFill className="position-absolute" fill="red" size={20} /> }
           </Link>
         </div>
         <nav className={stateLeft ? "nav-menu-left active" : "nav-menu-left"}>
@@ -62,7 +63,10 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
                 <>
                   <li className="navbar-toggle mx-3 d-flex align-items-center">
                       <img src={user.photo} className="profile-img" alt="profile-img"/>
-                      <Link className="menu-bars-login" to={`/users/me`}>{user.nickname}</Link>
+                      <Link className="menu-bars-login" to={`/users/me`}>
+                        {user.nickname}
+                        { user?.orderSent.some(order => order.status === "done") && <RiIcons.RiErrorWarningFill className="position-absolute" fill="red" size={20} /> }
+                      </Link>
                   </li>
                   <li className="nav-text ms-3">
                     <AiIcons.AiFillTool />

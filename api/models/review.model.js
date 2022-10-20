@@ -4,9 +4,15 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema(
   {
     customer: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: "User"
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User"
+    },
+    rating: {
+      type: Number,
+      required: true,
+      min: 1, 
+      max: 5
     },
     text: {
       type: String,

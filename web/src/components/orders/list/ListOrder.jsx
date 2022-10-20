@@ -16,10 +16,10 @@ function ListOrder({ listOrders, className }) {
         {
           listOrders.length ? 
           listOrders.map(order => (
-            <tr key={order.id}>
+            <tr key={order.id} className={order.status === "done" ? "bg-danger bg-opacity-25" : (order.status === "finish" ? "bg-success bg-opacity-25" : "")}>
               <td>{new Date(order.createdAt).toLocaleDateString()}</td>
               <td>{translation("professions", order.service.profession)}</td>
-              <td><Link to={`/orders/${order.id}`}>{translation("status", order.status)}</Link></td>
+              <td>{order.status === "finish" ? <span>Terminado</span> : <Link to={order.status === "done" ? `/orders/${order.id}/review` : `/orders/${order.id}`}>{translation("status", order.status)}</Link>}</td>
             </tr>
           )) : 
           <tr>

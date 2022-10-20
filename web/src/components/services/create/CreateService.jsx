@@ -33,8 +33,8 @@ function CreateService() {
   }
 
   return(
-    <div className="create-service">
-        <form className="form" onSubmit={handleSubmit(handleCreateService)}>
+    <div className="create-service container d-flex justify-content-end">
+        <form className="create-service-form" onSubmit={handleSubmit(handleCreateService)}>
           <h2 className="title">Subir servicio</h2>
           <div className="input-group mb-1">
             <span className="input-group-text"><IoIcons.IoIosText /></span>
@@ -45,7 +45,6 @@ function CreateService() {
               })} />
             {errors.bio && (<div className="invalid-feedback">{errors.bio.message}</div>)}
           </div>
-
           <Controller 
             name="profession" 
             control={control}
@@ -68,7 +67,6 @@ function CreateService() {
               </div>
             )}
           />
-
           <Controller 
             name="timeTables"
             control={control}
@@ -91,7 +89,6 @@ function CreateService() {
               </div>
             )}
           />
-
           <Controller 
             name="experience"
             control={control}
@@ -114,7 +111,6 @@ function CreateService() {
               </div>
             )}
           />
-
           <div className="input-group mb-1">
             <span className="input-group-text"><BiIcons.BiEuro /></span>
             <input type="number" className={`form-control ${errors.rate ? "is-invalid" : ''}`} placeholder="Añade el precio/hora" 
@@ -123,7 +119,6 @@ function CreateService() {
               })} />
             {errors.rate && (<div className="invalid-feedback">{errors.rate.message}</div>)}
           </div>
-            
           <div className="input-group mb-1">
             <span className="input-group-text"><FaIcons.FaMapSigns /></span>
             <input type="text" className={`form-control ${errors.address ? "is-invalid" : ''}`} placeholder="Añade la dirección" 
@@ -132,7 +127,6 @@ function CreateService() {
               })} />
             {errors.address && (<div className="invalid-feedback">{errors.address.message}</div>)}
           </div>
-
           <div className="input-group mb-1">
             <span className="input-group-text"><FaIcons.FaMapSigns /></span>
             <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud"
@@ -140,7 +134,6 @@ function CreateService() {
                 required: "La longitud es obligatoria", 
               })}/>
           </div>
-
           <div className="input-group mb-1">
             <span className="input-group-text"><FaIcons.FaMapSigns /></span>
             <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud"
@@ -148,7 +141,6 @@ function CreateService() {
                 required: "La latitud es obligatoria", 
               })}/>
           </div>
-
           <div className="d-grid mt-2">
             <button className="btn" type='submit' disabled={!isValid}>Crea tu servicio</button>
           </div>

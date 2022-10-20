@@ -51,6 +51,11 @@ function NavigationRoutes() {
           <Screens.DetailOrderScreen />
         </AccountGuard>
       } />
+      <Route path="/orders/:id/review" element={
+        <AccountGuard>
+          <Screens.ReviewOrderScreen />
+        </AccountGuard>
+      } />
       <Route path="/orders/create" element={
         <AccountGuard>
           <ServiceGuard>

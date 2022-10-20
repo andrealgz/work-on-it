@@ -65,7 +65,7 @@ function ListServices() {
   }
 
   return (
-    <div className="container">
+    <div className="list-service h-100">
       <div className="title-services d-flex justify-content-center">Profesionales</div>
       <div className="filter-box d-flex justify-content-start my-4">
         <div className="filter-box-cursor" onClick={() => handleSort("profession")}>
