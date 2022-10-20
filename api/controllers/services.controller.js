@@ -28,7 +28,10 @@ module.exports.getServices = (req, res, next) => {
     .populate({
       path: "orders",
       populate: {
-        path: "reviews"
+        path: "reviews",
+        populate:{
+          path: "customer"
+        }
       }
     })
     .then(services => {
