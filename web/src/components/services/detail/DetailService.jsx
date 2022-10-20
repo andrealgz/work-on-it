@@ -20,6 +20,7 @@ function DetailService() {
   const { id } = useParams();
   const navigation = useNavigate();
   const [service, setService] = useState(null);
+  const [reviews, setReviews] = useState(null);
 
   const { user } = useContext(AccountContext);
 
@@ -28,7 +29,10 @@ function DetailService() {
   useEffect(() => {
     Services
       .getService(id)
-      .then(service => setService(service[0]))
+      .then(service => {
+        setService(service[0])
+        setReviews(service[0].orders.filter(order => order.reviews.length).map(order => order.reviews[0]))
+      })
       .catch(error =>  console.error(error))
   }, [id])
 
@@ -65,30 +69,28 @@ function DetailService() {
               </div>      
             </div>
             <div className="reviews d-flex">
-              <Carousel 
-                className="home-screen-carousel"
-                autoPlay={false}
-                showArrows={true}
-                showIndicators={true}
-                showStatus={true}
-                showThumbs={false}
-                infiniteLoop={true}
-                stopOnHover={false}
-                axis="horizontal"
-              >
-                  <div>
-                    <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="..."/>
-                    Review
-                  </div>
-                  <div>
-                    <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="img2"/>
-                    Review
-                  </div>
-                  <div>
-                    <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="..."/>
-                    Review
-                  </div>
-              </Carousel>
+              {
+                service?.orders.some(order => order.reviews.length) ? 
+                <Carousel 
+                  className="home-screen-carousel"
+                  autoPlay={false}
+                  showArrows={true}
+                  showIndicators={true}
+                  showStatus={true}
+                  showThumbs={false}
+                  infiniteLoop={true}
+                  stopOnHover={false}
+                  axis="horizontal"
+                >
+                  {reviews.map(review => 
+                    <div key={review.id}>
+                      <img src={review.photo} alt={review.text}/>
+                      {review.text}
+                    </div>
+                  )}
+                </Carousel> :
+                <p>No tenemos reviews</p>
+              }
             </div>
           </div>
         </>
@@ -119,7 +121,6 @@ function DetailService() {
                 })} />
               {errors.bio && (<div className="invalid-feedback">{errors.bio.message}</div>)}
             </div>
-
             <Controller 
               name="profession" 
               control={control}
@@ -143,7 +144,6 @@ function DetailService() {
                 </div>
               )}
             />
-
             <Controller 
               name="disponibility"
               control={control}
@@ -167,7 +167,6 @@ function DetailService() {
                 </div>
               )}
             />
-
             <Controller 
               name="experience"
               control={control}
@@ -191,7 +190,6 @@ function DetailService() {
                 </div>
               )}
             />
-
             <div className="input-group mb-1">
               <span className="input-group-text"><BiIcons.BiEuro /></span>
               <input type="number" className={`form-control ${errors.rate ? "is-invalid" : ''}`} placeholder="Añade el precio/hora" defaultValue={service.rate}
@@ -200,7 +198,6 @@ function DetailService() {
                 })} />
               {errors.rate && (<div className="invalid-feedback">{errors.rate.message}</div>)}
             </div>
-              
             <div className="input-group mb-1">
               <span className="input-group-text"><FaIcons.FaMapSigns /></span>
               <input type="text" className={`form-control ${errors.address ? "is-invalid" : ''}`} placeholder="Añade la dirección" defaultValue={service.address}
@@ -209,7 +206,6 @@ function DetailService() {
                 })} />
               {errors.address && (<div className="invalid-feedback">{errors.address.message}</div>)}
             </div>
-
             <div className="input-group mb-1">
               <span className="input-group-text"><FaIcons.FaMapSigns /></span>
               <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud" defaultValue={service.location.coordinates[0]}
@@ -217,7 +213,6 @@ function DetailService() {
                   required: "La longitud es obligatoria", 
                 })}/>
             </div>
-
             <div className="input-group mb-1">
               <span className="input-group-text"><FaIcons.FaMapSigns /></span>
               <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud" defaultValue={service.location.coordinates[1]}
@@ -225,7 +220,6 @@ function DetailService() {
                   required: "La latitud es obligatoria", 
                 })}/>
             </div>
-
             <div className="d-grid mt-2">
               <button className="btn" type='submit' disabled={!isValid}>Crea tu servicio</button>
             </div>
