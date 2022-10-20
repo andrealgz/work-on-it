@@ -13,8 +13,6 @@ function ReviewOrder() {
   
   const { register, handleSubmit, formState: { errors, isValid } } = useForm({ mode: 'onTouched' });
 
-
-
   const handleReview = (data) => {
     Services
       .createReview(id, data)
@@ -35,13 +33,21 @@ function ReviewOrder() {
         <div className="input-group mb-1">
           <span className="input-group-text"><IoIcons.IoIosText /></span>
           <input type="number" className={`form-control ${errors.rating ? "is-invalid" : ''}`} placeholder="Rating del 1 al 5" 
-            {...register("rating")} />
+            {...register("rating", { 
+              required: "La reseña es obligatoria", 
+              max: { value: 5, message: "La puntuacion no debe pasar de 5" },
+              min: { value: 1, message: "La puntuacion no debe bajar de 1" }
+            })} />
           {errors.rating && (<div className="invalid-feedback">{errors.rating.message}</div>)}
         </div>
         <div className="input-group mb-1">
           <span className="input-group-text"><IoIcons.IoIosText /></span>
           <textarea type="text" className={`form-control ${errors.text ? "is-invalid" : ''}`} placeholder="Descripcion" 
-            {...register("text")} />
+            {...register("text", { 
+              required: "La reseña es obligatoria", 
+              maxLength: { value: 100, message: "La valoración no puede tener mas de 100 caracteres" },
+              minLength: { value: 10, message: "La valoración no puede tener menos de 10 caracteres" }
+            })} />
           {errors.text && (<div className="invalid-feedback">{errors.text.message}</div>)}
         </div>
         <div className="input-group mb-1">

@@ -70,7 +70,7 @@ function DetailService() {
             </div>
             <div className="reviews d-flex">
               {
-                service?.orders.some(order => order.reviews.length) ? 
+                reviews?.length ? 
                 <Carousel 
                   className="home-screen-carousel"
                   autoPlay={false}
@@ -85,7 +85,8 @@ function DetailService() {
                   {reviews.map(review => 
                     <div key={review.id}>
                       <img src={review.photo} alt={review.text}/>
-                      {review.text}
+                      <p><span className="mx-2">Puntuacion:{review.rating}</span><span className="mx-2">Usuario:{review.customer.nickname}</span></p>
+                      <p>{review.text}</p>
                     </div>
                   )}
                 </Carousel> :
