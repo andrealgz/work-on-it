@@ -35,9 +35,9 @@ function Profile() {
                     <img src="https://ca.slack-edge.com/T03BGN686QJ-U03CE8042BU-871f5c5f2740-192" alt="profile-img" className="rounded-circle" width="190" />
                     <div>
                       <h4>{user.nickname}</h4>
-                      <p>Bienvenido a tu perfil<p/>
-                      <p/>Desde aquí podrás gestionar todos tus pedidos, tanto los que ofreces como aquellos que necesitas</p>
-                          ¡Manos a la obra!
+                      <p>Bienvenido a tu perfil</p>
+                      <p>Desde aquí podrás gestionar todos tus pedidos, tanto los que ofreces como aquellos que necesitas</p>
+                      <p>¡Manos a la obra!</p>
                     </div>
                   </div>
                 </div>

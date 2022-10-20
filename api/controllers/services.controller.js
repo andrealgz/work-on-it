@@ -6,28 +6,25 @@ module.exports.getServices = (req, res, next) => {
   const criterial = {};
 
   if (id) {
-    if (id === 'me') {
-      criterial.user = req.user.id;
-    } else {
-      criterial._id = id;
-    }
+    criterial._id = id;
   } else {
+    criterial.status = true;
     if (req.user) {
       criterial.user = { $ne: req.user.id };
     }
     if (profession) {
       if (profession === 'me') {
         criterial.user = req.user.id;
+        delete criterial.status;
       } else {
         criterial.profession = profession;
       }
     }
   }
 
-
   Service
     .find(criterial)
-    .populate("user", "nickname phone")
+    .populate("user")
     .populate("orders")
     .then(services => {
       if (services) {
@@ -52,7 +49,7 @@ module.exports.updateServices = (req, res, next) => {
   
   Service
     .findByIdAndUpdate(id, data, { new: true, runValidators: true })
-    .populate("user", "nickname phone")
+    .populate("user")
     .populate("orders")
     .then(services => {
       if (services) {

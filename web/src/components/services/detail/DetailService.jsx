@@ -1,7 +1,6 @@
 import * as Services from "../../../services/Main";
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import { AccountContext } from "../../../contexts/AccountContext";
 import { Carousel } from 'react-responsive-carousel';
 import "./DetailService.css";
@@ -19,6 +18,7 @@ import * as FaIcons from "react-icons/fa";
 
 function DetailService() {
   const { id } = useParams();
+  const navigation = useNavigate();
   const [service, setService] = useState(null);
 
   const { user } = useContext(AccountContext);
@@ -39,6 +39,10 @@ function DetailService() {
       .catch(error =>  console.error(error))
   }
 
+  const handleCreateOrder = () => {
+    navigation("/orders/create", { state: { service } })
+  }
+
   if (service) {
     if (user.id !== service.user.id) {
       return (
@@ -57,9 +61,7 @@ function DetailService() {
                   <div className="disponibility">Disponibilidad: {translation("timeTables", service.disponibility )}</div>
                   <div className="experience">Años de  experiencia: {translation("experiences", service.experience )}</div>
                 </div>
-                <div className="button">
-                  <Link to={"/"} style={{ color: 'inherit', textDecoration: 'inherit'}}>Contratar</Link>
-                </div>
+                <button className="button" onClick={handleCreateOrder}>Contratar</button>
               </div>      
             </div>
             <div className="reviews d-flex">

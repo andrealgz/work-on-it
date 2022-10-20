@@ -29,14 +29,17 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
       <IconContext.Provider value={{color: "#734722"}}>
         <div className="navbar fixed-top">
           <Link to="/" className="menu-bars">
-            <FaIcons.FaBars fill="white" size={60} onClick={onClickLeft}/>
+            <FaIcons.FaBars fill="white" size={60} onClick={() => onClickLeft()}/>
           </Link>
-          <Link to="#" className="menu-bars">
-            <HiIcons.HiUserCircle fill="white" size={60} onClick={onClickRight}/>
+          <Link to="/" className="menu-bars">
+            <HiIcons.HiUserCircle fill="white" size={60} onClick={() => onClickRight()}/>
           </Link>
         </div>
         <nav className={stateLeft ? "nav-menu-left active" : "nav-menu-left"}>
-          <ul className="nav-menu-items" onClick={onClickLeft}>
+          <ul className="nav-menu-items" onClick={() => {
+              onClickLeft();
+              onClickRight(false)
+            }}>
             {SlideBar.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
@@ -49,14 +52,17 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
           </ul>
         </nav>
         <nav className={stateRight ? "nav-menu-right active" : "nav-menu-right"}>
-          <ul className="nav-menu-items">
+          <ul className="nav-menu-items" onClick={() => {
+            onClickRight();
+            onClickLeft(false);
+          }}>
             {
               user ? 
               (
                 <>
                   <li className="navbar-toggle mx-3 d-flex align-items-center">
                       <img src={user.photo} className="profile-img" alt="profile-img"/>
-                      <Link className="menu-bars-login ms-2" to={`/users/me`}>{user.nickname}</Link>
+                      <Link className="menu-bars-login" to={`/users/me`}>{user.nickname}</Link>
                   </li>
                   <li className="nav-text ms-3">
                     <AiIcons.AiFillTool />
@@ -72,9 +78,8 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
                   </li>
                 </>
               ) : 
-              <li className="navbar-toggle d-flex flex-column">
-                  <Link to="/account" className="mx-1"> Registrate </Link>
-                  <Link to="/account" className="mx-1"> Conéctate</Link>
+              <li className="navbar-toggle d-flex justify-content-center h-50 align-items-center">
+                  <Link to="/account" className="mx-1">Registrate</Link> o <Link to="/account" className="mx-1">Conéctate</Link>
               </li>
             }
             

@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as Services from "../../../services/Main";
+import { translation } from "../../../utils/translation";
 import { AccountContext } from "../../../contexts/AccountContext";
 import { useForm, Controller } from "react-hook-form";
 import { status } from "../../../data";
@@ -136,7 +137,7 @@ function DetailOrderScreen() {
                 </form> :
                 <div className="d-flex">
                   <label className="d-flex align-items-center me-3">Estado: </label>
-                  <span className="fw-bold fs-4">{order.status.toUpperCase()}</span>
+                  <span className="fw-bold fs-4">{translation("status", order.status ).toUpperCase()}</span>
                 </div>
               }
               <div className={`detail-order-message-panel border border-2 rounded mb-1 d-flex flex-column ${!order.messages.length && "justify-content-center align-items-center"}`}>
