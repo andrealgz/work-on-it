@@ -1,9 +1,10 @@
 .profile{
-  margin:4%;
+  background-color: aquamarine;
 }
 
 .user-profile{
   justify-content: space-around;
+  padding-top: 4em;
 }
 
 .img-profile{
