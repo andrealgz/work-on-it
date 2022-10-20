@@ -45,13 +45,6 @@ const orderSchema = new Schema (
       type: String,
       enum: status.map(status => status.value),
     },
-    review: {
-      type: {
-        rating: Number,
-        description: String,
-        _id: false
-      }
-    }
   },
   {
     timestamps: true,
@@ -78,6 +71,12 @@ orderSchema.pre('save', function (next) {
 
 orderSchema.virtual("messages", {
   ref: "Message",
+  localField: "_id",
+  foreignField: "order",
+});
+
+orderSchema.virtual("reviews", {
+  ref: "Review",
   localField: "_id",
   foreignField: "order",
 });
