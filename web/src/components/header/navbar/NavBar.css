@@ -10,7 +10,12 @@
   margin-left: 2rem;
   margin-right: 2rem;
   font-size: 2rem;
-  background: none;
+  position: relative;
+}
+
+.menu-bars-action-required{
+  left: -3rem;
+  top: -2rem;
 }
 
 .nav-menu-left {
