@@ -19,7 +19,7 @@ module.exports.createReview = (req, res, next) => {
     .create(contribution)
     .then(() => {
       return Order
-        .findByIdAndUpdate(id, { status: "finish" })
+        .findByIdAndUpdate(id, { status: "finish" }, { new: true, runValidators: true })
         .then(() => res.status(201).json())
     })
     .catch(next)
