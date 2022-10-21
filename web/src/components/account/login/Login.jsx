@@ -32,8 +32,9 @@ function Login() {
   };
 
   return (
-    <div className="login container d-flex flex-column align-items-center">
-      <form className="w-50" onSubmit={handleSubmit(handleLogin)}>
+    <div className="login w-25 d-flex flex-column justify-content-center align-items-center">
+      <h3 className="mb-5">¿Ya eres usuario? ¡Conectaté!</h3>
+      <form className="w-100" onSubmit={handleSubmit(handleLogin)}>
         <div className="input-group mb-1">
           <span className="input-group-text">
             <FaIcons.FaUser />
@@ -70,7 +71,7 @@ function Login() {
 
         <div className="d-grid mt-2">
           <button className="btn btn-primary" type="submit" disabled={!isValid}>
-            Login
+            Conectame
           </button>
         </div>
       </form>

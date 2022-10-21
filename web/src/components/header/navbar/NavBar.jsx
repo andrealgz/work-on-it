@@ -29,7 +29,7 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
       <IconContext.Provider value={{color: "#734722"}}>
         <div className="navbar fixed-top">
           <Link to="/" className="menu-bars">
-            <FaIcons.FaBars fill="white" size={60} onClick={() => onClickLeft()}/>
+            <FaIcons.FaBars fill="white" size={40} onClick={() => onClickLeft()}/>
           </Link>
           <Link to="/" className={`menu-bars ${user?.orderSent.some(order => order.status === "done") ? "menu-bars-action-required" : ""}`}>
             <HiIcons.HiUserCircle className={user?.orderSent.some(order => order.status === "done") && "position-absolute"} fill="white" size={60} onClick={() => onClickRight()}></HiIcons.HiUserCircle>
@@ -61,12 +61,12 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
               user ? 
               (
                 <>
-                  <li className="navbar-toggle mx-3 d-flex align-items-center">
+                  <li className="navbar-toggle mx-3 mt-5">
+                    <Link className="menu-bars-login" to={`/users/me`}>
                       <img src={user.photo} className="profile-img" alt="profile-img"/>
-                      <Link className="menu-bars-login" to={`/users/me`}>
-                        {user.nickname}
-                        { user?.orderSent.some(order => order.status === "done") && <RiIcons.RiErrorWarningFill className="position-absolute" fill="red" size={20} /> }
-                      </Link>
+                      {user.nickname}
+                      { user?.orderSent.some(order => order.status === "done") && <RiIcons.RiErrorWarningFill className="position-absolute" fill="red" size={20} /> }
+                    </Link>
                   </li>
                   <li className="nav-text ms-3">
                     <AiIcons.AiFillTool />
@@ -78,12 +78,12 @@ function NavBar({ stateLeft, stateRight, onClickLeft, onClickRight }) {
                   </li>
                   <li className="navbar-toggle d-flex justify-content-center">
                     <AiIcons.AiOutlineLogout />
-                    <button className="menu-bars-logout" onClick={handleClick}> Desconectarme</button>
+                    <button className="menu-bars-logout" onClick={handleClick}>Desconectarme</button>
                   </li>
                 </>
               ) : 
               <li className="navbar-toggle d-flex justify-content-center h-50 align-items-center">
-                  <Link to="/account" className="mx-1">Registrate</Link> o <Link to="/account" className="mx-1">Conéctate</Link>
+                  <Link to="/account" className="mx-1 navbar-toggle-account">Conéctate</Link> o <Link to="/account" className="mx-1 navbar-toggle-account">Registrate</Link>
               </li>
             }
             
