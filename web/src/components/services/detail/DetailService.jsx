@@ -56,7 +56,7 @@ function DetailService() {
           <div className="container">
             <div className="service d-flex">
               <div className="img">
-                <img src="https://cflvdg.avoz.es/sc/VhmlADGQ6fh-z3-ezqRYiN6anZM=/480x/2022/02/09/00121644411841910536634/Foto/L01F2017.jpg" className="card-img-top" alt="..."/>
+                <img src={service.user?.photo} className={service.user?.nickname} alt="..."/>
               </div>
               <div className="details d-flex">
                 <h5 className="nickname">{service.user.nickname}</h5>
