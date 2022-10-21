@@ -31,7 +31,7 @@ function Profile() {
               <div className="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
                 <div className="img-profile card d-flex">
                   <div className="align-items-center text-center">
-                    <img src="https://ca.slack-edge.com/T03BGN686QJ-U03CE8042BU-871f5c5f2740-192" alt="profile-img" className="rounded-circle" width="190" />
+                    <img src={user.photo} alt={user.name} className="rounded-circle" width="190" />
                     <div>
                       <h4>{user.nickname}</h4>
                       <p>Bienvenido a tu perfil</p>

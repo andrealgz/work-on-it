@@ -90,7 +90,7 @@ function ListServices() {
                 services.map(service => (
                   <div key={service.id} className="col-3 px-0">
                       <Link to={`/service/${service.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}} className="list-card d-flex flex-column align-items-center px-2 pt-3">
-                          <img src="https://cflvdg.avoz.es/sc/VhmlADGQ6fh-z3-ezqRYiN6anZM=/480x/2022/02/09/00121644411841910536634/Foto/L01F2017.jpg" alt="image1" className="list-img" />
+                          <img src={service.user?.photo} alt={service.user?.nickname} className="list-img" />
                           <h4 className="list-nickname">{service.user?.nickname}</h4>
                           <h5><div className="list-profession">{translation("professions", service.profession)}</div></h5>
                           <div className="list-details d-flex justify-content-around">
