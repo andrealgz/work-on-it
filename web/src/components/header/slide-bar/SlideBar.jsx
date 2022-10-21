@@ -7,12 +7,6 @@ import * as BiIcons from "react-icons/bi";
 
 export const SlideBar = [
   {
-    title: "Home",
-    path: "/",
-    icon: <AiIcons.AiFillHome />,
-    cName: "nav-text"
-  },
-  {
     title: "Todos los servicios",
     path: "/services",
     icon: <BiIcons.BiWorld />,
