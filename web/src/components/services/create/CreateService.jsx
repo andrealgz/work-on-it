@@ -33,116 +33,107 @@ function CreateService() {
   }
 
   return(
-    <div className="create-service container d-flex justify-content-end">
+    <div className="create-service h-100 d-flex justify-content-end align-items-center">
         <form className="create-service-form" onSubmit={handleSubmit(handleCreateService)}>
-          <h2 className="title">Subir servicio</h2>
-          <div className="input-group mb-1">
-            <span className="input-group-text"><IoIcons.IoIosText /></span>
-            <textarea type="text" className={`form-control ${errors.bio ? "is-invalid" : ''}`} placeholder="Descríbete" 
-              {...register("bio", { 
-                required: "La descripción es obligatoria", 
-                maxLength: { value: 300, message: "La descripción puede contener hasta 300 caracteres" }
-              })} />
-            {errors.bio && (<div className="invalid-feedback">{errors.bio.message}</div>)}
-          </div>
-          <Controller 
-            name="profession" 
-            control={control}
-            render={({ field: { onBlur, onChange, value} }) => (
-              <div className="input-group mb-1">
-                <span className="input-group-text"><BsIcons.BsTools /></span>
-                <Select className='form-control p-0'
-                  placeholder="Selecciona las profesión"
-                  value={professions.find((profession) => profession.value === value)} 
-                  onChange={(profession) => onChange(profession)} 
-                  onBlur={onBlur}
-                  options={professions}
-                  styles={{
-                    control: (base) => ({
-                      ...base,
-                      border: 0
-                    })
-                  }}/>
-                {errors.professions && (<div className="invalid-feedback">{errors.professions.message}</div>)}
+          <div className="row">
+            <div className="col-6 d-flex flex-column justify-content-between">
+              <div className="input-group w-75">
+                <span className="input-group-text"><BiIcons.BiEuro /></span>
+                <input type="number" className={`form-control ${errors.rate ? "is-invalid" : ''}`} placeholder="Añade el precio/hora" 
+                  {...register("rate", { 
+                    required: "El precio es obligatorio", 
+                  })} />
+                {errors.rate && (<div className="invalid-feedback">{errors.rate.message}</div>)}
               </div>
-            )}
-          />
-          <Controller 
-            name="timeTables"
-            control={control}
-            render={({ field: { onBlur, onChange, value} }) => (
-              <div className="input-group mb-1">
-                <span className="input-group-text"><IoIcons.IoMdTime /></span>
-                <Select className='form-control p-0'
-                  placeholder="Selecciona preferencia horaria"
-                  value={timeTables.find((timeTable) => timeTable.value === value)} 
-                  onChange={(timeTable) => onChange(timeTable)} 
-                  onBlur={onBlur}
-                  options={timeTables}
-                  styles={{
-                    control: (base) => ({
-                      ...base,
-                      border: 0
-                    })
-                  }}/>
-                {errors.timeTables && (<div className="invalid-feedback">{errors.timeTables.message}</div>)}
+              <div className="input-group">
+                <span className="input-group-text"><FaIcons.FaMapSigns /></span>
+                <input type="text" className={`form-control ${errors.address ? "is-invalid" : ''}`} placeholder="Añade la dirección" 
+                  {...register("address", { 
+                    required: "La dirección es obligatoria", 
+                  })} />
+                {errors.address && (<div className="invalid-feedback">{errors.address.message}</div>)}
               </div>
-            )}
-          />
-          <Controller 
-            name="experience"
-            control={control}
-            render={({ field: { onBlur, onChange, value} }) => (
-              <div className="input-group mb-1">
-                <span className="input-group-text"><GiIcons.GiPlayerTime /></span>
-                <Select className='form-control p-0'
-                  placeholder="Selecciona los años de experiencia"
-                  value={experiences.find((experience) => experience.value === value)} 
-                  onChange={(experience) => onChange(experience)} 
-                  onBlur={onBlur}
-                  options={experiences}
-                  styles={{
-                    control: (base) => ({
-                      ...base,
-                      border: 0
-                    })
-                  }}/>
-                {errors.experiences && (<div className="invalid-feedback">{errors.experiences.message}</div>)}
+              <Controller 
+                name="profession" 
+                control={control}
+                render={({ field: { onBlur, onChange, value} }) => (
+                  <div className="input-group">
+                    <span className="input-group-text"><BsIcons.BsTools /></span>
+                    <Select className='form-control p-0'
+                      placeholder="Selecciona las profesión"
+                      value={professions.find((profession) => profession.value === value)} 
+                      onChange={(profession) => onChange(profession)} 
+                      onBlur={onBlur}
+                      options={professions}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          border: 0
+                        })
+                      }}/>
+                    {errors.professions && (<div className="invalid-feedback">{errors.professions.message}</div>)}
+                  </div>
+                )}
+              />
+              <Controller 
+                name="experience"
+                control={control}
+                render={({ field: { onBlur, onChange, value} }) => (
+                  <div className="input-group">
+                    <span className="input-group-text"><GiIcons.GiPlayerTime /></span>
+                    <Select className='form-control p-0'
+                      placeholder="Selecciona los años de experiencia"
+                      value={experiences.find((experience) => experience.value === value)} 
+                      onChange={(experience) => onChange(experience)} 
+                      onBlur={onBlur}
+                      options={experiences}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          border: 0
+                        })
+                      }}/>
+                    {errors.experiences && (<div className="invalid-feedback">{errors.experiences.message}</div>)}
+                  </div>
+                )}
+              />
+              <Controller 
+                name="timeTables"
+                control={control}
+                render={({ field: { onBlur, onChange, value} }) => (
+                  <div className="input-group">
+                    <span className="input-group-text"><IoIcons.IoMdTime /></span>
+                    <Select className='form-control p-0'
+                      placeholder="Selecciona preferencia horaria"
+                      value={timeTables.find((timeTable) => timeTable.value === value)} 
+                      onChange={(timeTable) => onChange(timeTable)} 
+                      onBlur={onBlur}
+                      options={timeTables}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          border: 0
+                        })
+                      }}/>
+                    {errors.timeTables && (<div className="invalid-feedback">{errors.timeTables.message}</div>)}
+                  </div>
+                )}
+              />
+            </div>
+            <div className="col-6 d-flex flex-column justify-content-between">
+              <div className="input-group">
+                <span className="input-group-text"><IoIcons.IoIosText /></span>
+                <textarea type="text" rows="8" className={`form-control ${errors.bio ? "is-invalid" : ''}`} placeholder="Descríbete" 
+                  {...register("bio", { 
+                    required: "La descripción es obligatoria", 
+                    maxLength: { value: 300, message: "La descripción puede contener hasta 300 caracteres" }
+                  })} />
+                {errors.bio && (<div className="invalid-feedback">{errors.bio.message}</div>)}
               </div>
-            )}
-          />
-          <div className="input-group mb-1">
-            <span className="input-group-text"><BiIcons.BiEuro /></span>
-            <input type="number" className={`form-control ${errors.rate ? "is-invalid" : ''}`} placeholder="Añade el precio/hora" 
-              {...register("rate", { 
-                required: "El precio es obligatorio", 
-              })} />
-            {errors.rate && (<div className="invalid-feedback">{errors.rate.message}</div>)}
-          </div>
-          <div className="input-group mb-1">
-            <span className="input-group-text"><FaIcons.FaMapSigns /></span>
-            <input type="text" className={`form-control ${errors.address ? "is-invalid" : ''}`} placeholder="Añade la dirección" 
-              {...register("address", { 
-                required: "La dirección es obligatoria", 
-              })} />
-            {errors.address && (<div className="invalid-feedback">{errors.address.message}</div>)}
-          </div>
-          <div className="input-group mb-1">
-            <span className="input-group-text"><FaIcons.FaMapSigns /></span>
-            <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud"
-              {...register("longitude", { 
-                required: "La longitud es obligatoria", 
-              })}/>
-          </div>
-          <div className="input-group mb-1">
-            <span className="input-group-text"><FaIcons.FaMapSigns /></span>
-            <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud"
-              {...register("latitude", { 
-                required: "La latitud es obligatoria", 
-              })}/>
-          </div>
-          <div className="d-grid mt-2">
-            <button className="btn" type='submit' disabled={!isValid}>Crea tu servicio</button>
+              <div className="d-grid mt-2">
+                <button className="btn" type='submit' disabled={!isValid}>Crea tu servicio</button>
+              </div>
+            </div>
           </div>
         </form>
     </div>

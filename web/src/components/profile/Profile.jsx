@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import { ListOrder } from "../";
 import { AccountContext } from "../../contexts/AccountContext";
-import { Link } from "react-router-dom";
 import * as MdIcons from "react-icons/md";
 import * as FiIcons from "react-icons/fi";
 
@@ -44,7 +43,6 @@ function Profile() {
               </div>  
               <div className="col-4">
                 <div className="info-user card">
-                  <Link to={"/"} className="patch-profile" style={{ color: 'inherit', textDecoration: 'inherit'}}>Editar  perfil?</Link>
                   <div className="card-body d-flex flex-column justify-content-evenly">
                       <div>
                         <h6>Nombre</h6>
