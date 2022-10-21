@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { translation } from "../../../utils/translation";
 import * as MdIcons from "react-icons/md";
+import { BarLoader } from "react-spinners"
 
 import "./ListServices.css";
 import * as Services from "../../../services/Main";
@@ -82,7 +83,7 @@ function ListServices() {
         </div>
       </div>
       <div className="services container">
-        <div className="row">
+        <div className={`row ${!services && "align-items-center"}`}>
           {
             services ? 
               services.length ? 
@@ -110,7 +111,13 @@ function ListServices() {
                   </div>
                 )) :
               <div className="col-12 text-center"><p>No hay ningun servicio</p></div>
-            : <p>Cargando...</p>
+            : <BarLoader
+                color="#413221"
+                height={10}
+                loading
+                speedMultiplier={1}
+                width={300}
+              />
           } 
         </div>
       </div>

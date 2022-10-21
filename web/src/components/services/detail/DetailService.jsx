@@ -10,6 +10,8 @@ import { professions, timeTables, experiences } from "../../../data";
 import Select from "react-select";
 import { Switch } from '@mui/material';
 
+import { BarLoader } from "react-spinners"
+
 import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
 import * as GiIcons from "react-icons/gi";
@@ -230,7 +232,19 @@ function DetailService() {
     }
 
   } else {
-    return <p>Cargando...</p>
+    return (
+      <>
+        <div className="container">
+        <BarLoader
+          color="#413221"
+          height={10}
+          loading
+          speedMultiplier={1}
+          width={300}
+        /> 
+        </div>
+      </>
+    )
   }
 }
 

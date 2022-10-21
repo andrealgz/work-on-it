@@ -92,14 +92,7 @@
   height: 80px;
   display: flex;
   align-items: center;
-}
-
-.navbar-toggle button {
   color: #B58D71;
-}
-
-.navbar-toggle button:hover {
-  color:#413221;
 }
 
 .profile-img {
@@ -114,8 +107,28 @@
   margin-left: 10px;
   transition: 550ms;
 }
+
+.navbar-toggle .navbar-toggle-account {
+  text-decoration: none;
+  margin-top: 0px;
+  color:#B58D71;
+  font-size: 18px;
+  transition: 650ms;
+}
+
 .navbar-toggle a:hover {
   margin-left: 20px;
+  color:#413221;
+  transition: 650ms;
+}
+
+.navbar-toggle button:hover{
+  color:#413221;
+  transition: 650ms;
+}
+
+.navbar-toggle .navbar-toggle-account:hover {
+  margin-top: -20px;
   color:#413221;
   transition: 650ms;
 }

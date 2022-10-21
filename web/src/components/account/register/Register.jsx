@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import * as Services from "../../../services/Main";
 import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
 import * as MdIcons from "react-icons/md";
 import * as GiIcons from "react-icons/gi";
+import * as HiIcons from "react-icons/hi";
 
 function Register() {
   const navigation = useNavigate()
@@ -26,9 +29,9 @@ function Register() {
 
 
   return (
-    <div className="login container d-flex flex-column align-items-center">
-      <form className="w-50" onSubmit={handleSubmit(handleRegister)}>
-
+    <div className="login w-25 d-flex flex-column justify-content-center align-items-center">
+      <h3 className="mb-5">¡Registrate y empieza la aventura!</h3>
+      <form className="w-100" onSubmit={handleSubmit(handleRegister)}>
         <div className="input-group mb-1">
           <span className="input-group-text">
             <FaIcons.FaUser />
@@ -45,10 +48,9 @@ function Register() {
             <div className="invalid-feedback">{errors.name.message}</div>
           )}
         </div>
-
         <div className="input-group mb-1">
           <span className="input-group-text">
-            <FaIcons.FaUser />
+            <FaIcons.FaUserFriends />
           </span>
           <input
             type="text"
@@ -62,10 +64,9 @@ function Register() {
             <div className="invalid-feedback">{errors.surname.message}</div>
           )}
         </div>
-
         <div className="input-group mb-1">
           <span className="input-group-text">
-            <FaIcons.FaUser />
+            <AiIcons.AiFillPhone />
           </span>
           <input
             type="text"
@@ -77,10 +78,9 @@ function Register() {
             <div className="invalid-feedback">{errors.phone.message}</div>
           )}
         </div>
-
         <div className="input-group mb-1">
           <span className="input-group-text">
-            <FaIcons.FaUser />
+            <BsIcons.BsMailbox />
           </span>
           <input type="text" className={`form-control ${errors.address ? "is-invalid" : ''}`} placeholder="Dirección" 
             {...register("address", { 
@@ -88,30 +88,9 @@ function Register() {
             })} />
           {errors.address && (<div className="invalid-feedback">{errors.address.message}</div>)}
         </div>
-
         <div className="input-group mb-1">
           <span className="input-group-text">
-            <FaIcons.FaUser />
-          </span>
-          <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud"
-            {...register("longitude", { 
-              required: "La longitud es obligatoria", 
-            })}/>
-        </div>
-
-        <div className="input-group mb-1">
-          <span className="input-group-text">
-            <FaIcons.FaUser />
-          </span>
-          <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud"
-            {...register("latitude", { 
-              required: "La latitud es obligatoria", 
-            })}/>
-        </div>
-
-        <div className="input-group mb-1">
-          <span className="input-group-text">
-            <FaIcons.FaUser />
+            <HiIcons.HiLocationMarker />
           </span>
           <input type="text" className={`form-control ${errors.locality ? "is-invalid" : ''}`} placeholder="Localidad" 
             {...register("locality", { 
@@ -119,11 +98,9 @@ function Register() {
             })} />
           {errors.locality && (<div className="invalid-feedback">{errors.locality.message}</div>)}
         </div>
-
-
         <div className="input-group mb-1">
           <span className="input-group-text">
-            <FaIcons.FaUser />
+            <BsIcons.BsHash />
           </span>
           <input
             type="text"
@@ -137,11 +114,9 @@ function Register() {
             <div className="invalid-feedback">{errors.nickname.message}</div>
           )}
         </div>
-
-
         <div className="input-group mb-1">
           <span className="input-group-text">
-            <FaIcons.FaUser />
+            <AiIcons.AiOutlineMail />
           </span>
           <input
             type="email"
@@ -155,7 +130,6 @@ function Register() {
             <div className="invalid-feedback">{errors.email.message}</div>
           )}
         </div>
-
         <div className="input-group mb-1">
           <span className="input-group-text">
             <MdIcons.MdPassword />
@@ -172,7 +146,6 @@ function Register() {
             <div className="invalid-feedback">{errors.password.message}</div>
           )}
         </div>
-
         <div className="input-group mb-1">
           <span className="input-group-text">
             <GiIcons.GiPhotoCamera/>
@@ -183,7 +156,6 @@ function Register() {
             {...register("photo")}
           />
         </div>
-
         <div className="d-grid mt-2">
           <button className="btn btn-primary" type="submit" disabled={!isValid}>
             Registrarme
