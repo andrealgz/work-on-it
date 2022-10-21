@@ -5,6 +5,7 @@ import { AccountContext } from "../../../contexts/AccountContext";
 import * as Services from "../../../services/Main.js";
 import * as IoIcons from "react-icons/io";
 import * as GiIcons from "react-icons/gi";
+import "./ReviewOrder.css";
 
 function ReviewOrder() {
   const { id } = useParams();
@@ -28,7 +29,7 @@ function ReviewOrder() {
   }
 
   return (
-    <div className="review-order container h-75 d-flex flex-column justify-content-center">
+    <div className="review-order h-100 d-flex flex-column align-items-center justify-content-center w-50">
       <form className="form" onSubmit={handleSubmit(handleReview)}>
         <div className="input-group mb-1">
           <span className="input-group-text"><IoIcons.IoIosText /></span>
@@ -42,7 +43,7 @@ function ReviewOrder() {
         </div>
         <div className="input-group mb-1">
           <span className="input-group-text"><IoIcons.IoIosText /></span>
-          <textarea type="text" className={`form-control ${errors.text ? "is-invalid" : ''}`} placeholder="Descripcion" 
+          <textarea type="text" rows="7" className={`form-control ${errors.text ? "is-invalid" : ''}`} placeholder="Descripcion" 
             {...register("text", { 
               required: "La reseña es obligatoria", 
               maxLength: { value: 100, message: "La valoración no puede tener mas de 100 caracteres" },
