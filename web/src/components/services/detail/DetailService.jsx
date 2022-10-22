@@ -11,6 +11,8 @@ import Select from "react-select";
 import { Switch } from '@mui/material';
 
 import { BarLoader } from "react-spinners";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 function DetailService() {
   const { id } = useParams();
@@ -33,10 +35,14 @@ function DetailService() {
   }, [id])
 
   const handleUpdateService = (data) => {
+    document.querySelector(".message-update-service").classList.add("active");
     Services
       .updateService(service?.id, data)
       .then(service => setService(service))
       .catch(error =>  console.error(error))
+    setTimeout(() => {
+      document.querySelector(".message-update-service").classList.remove("active");
+    }, 2000)
   }
 
   const handleCreateOrder = () => {
@@ -94,8 +100,13 @@ function DetailService() {
     );
     } else if (user.id === service.user.id) {
       return (
-        <div className="me-service-screen h-100 d-flex">
-          <h2 className="me-service-title">Mi servicio</h2>
+        <div className="me-service-screen h-100 w-100 d-flex flex-column align-items-center justify-content-between">
+          <h2 className="me-service-title w-100">Mi servicio</h2>
+          <div className="d-flex justify-content-center message-update-service">
+            <Stack spacing={2}>
+              <Alert severity="success">Los cambios se han guardado correctamente</Alert>
+            </Stack>
+          </div>
           <form className="me-service-form d-flex flex-column justify-content-between" onSubmit={handleSubmit(handleUpdateService)}>
             <div className="d-flex mb-5 justify-content-end">
               <div>Desactivar servicio          
@@ -195,7 +206,7 @@ function DetailService() {
               <div className="col-7 d-flex flex-column justify-content-around">
                 <div>
                   <span className="mb-1">Descripción</span>
-                  <textarea type="text" rows="6" className={`form-control ${errors.bio ? "is-invalid" : ''}`}
+                  <textarea type="text" rows="6" className={`form-control ${errors.bio ? "is-invalid" : ''}`} defaultValue={service.bio}
                     {...register("bio", { 
                       required: "La descripción es obligatoria", 
                       maxLength: { value: 300, message: "La descripción puede contener hasta 300 caracteres" }
