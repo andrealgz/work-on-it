@@ -15,3 +15,11 @@
 .select-status-order {
   width: 10vw;
 }
+
+.detail-order {
+  background-color: antiquewhite;
+}
+
+.detail-order>.row {
+  padding-top: 5%
+}
