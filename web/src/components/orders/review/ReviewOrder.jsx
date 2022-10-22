@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useParams, useNavigate } from "react-router";
 import { useContext } from "react";
 import { AccountContext } from "../../../contexts/AccountContext";
@@ -6,13 +6,14 @@ import * as Services from "../../../services/Main.js";
 import * as IoIcons from "react-icons/io";
 import * as GiIcons from "react-icons/gi";
 import "./ReviewOrder.css";
+import { Rating } from "@mui/material";
 
 function ReviewOrder() {
   const { id } = useParams();
   const navigation = useNavigate();
   const value = useContext(AccountContext);
   
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm({ mode: 'onTouched' });
+  const { register, handleSubmit, control, formState: { errors, isValid } } = useForm({ mode: 'onTouched' });
 
   const handleReview = (data) => {
     Services
@@ -32,14 +33,20 @@ function ReviewOrder() {
     <div className="review-order h-100 d-flex flex-column align-items-center justify-content-center w-50">
       <form className="form" onSubmit={handleSubmit(handleReview)}>
         <div className="input-group mb-1">
-          <span className="input-group-text"><IoIcons.IoIosText /></span>
-          <input type="number" className={`form-control ${errors.rating ? "is-invalid" : ''}`} placeholder="Rating del 1 al 5" 
-            {...register("rating", { 
-              required: "La reseña es obligatoria", 
-              max: { value: 5, message: "La puntuacion no debe pasar de 5" },
-              min: { value: 1, message: "La puntuacion no debe bajar de 1" }
-            })} />
-          {errors.rating && (<div className="invalid-feedback">{errors.rating.message}</div>)}
+          <span>Valoración: </span>
+          <Controller
+            control={control}
+            name="rating"
+            type="number"
+            defaultValue={0}
+            render={({ field: { onChange, value} }) => (
+                <Rating
+                  name="simple-controlled"
+                  value={parseInt(value)}
+                  onChange={onChange}
+                />
+            )}  
+          />
         </div>
         <div className="input-group mb-1">
           <span className="input-group-text"><IoIcons.IoIosText /></span>

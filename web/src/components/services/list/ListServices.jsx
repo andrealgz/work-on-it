@@ -7,6 +7,7 @@ import { BarLoader } from "react-spinners"
 
 import "./ListServices.css";
 import * as Services from "../../../services/Main";
+import { Rating } from "@mui/material";
 
 const initialSort = {
   profession: true,
@@ -88,11 +89,13 @@ function ListServices() {
             services ? 
               services.length ? 
                 services.map(service => (
-                  <div key={service.id} className="col-3 px-0">
-                      <Link to={`/service/${service.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}} className="list-card d-flex flex-column align-items-center px-2 pt-3">
+                  <div key={service.id} className="col-4 px-0">
+                      <Link to={`/service/${service.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}} className="list-card d-flex flex-column justify-content-around align-items-center px-2">
                           <img src={service.user?.photo} alt={service.user?.nickname} className="list-img" />
-                          <h4 className="list-nickname">{service.user?.nickname}</h4>
-                          <h5><div className="list-profession">{translation("professions", service.profession)}</div></h5>
+                          <div className="text-center">
+                            <h4 className="list-nickname m-0">{service.user?.nickname}</h4>
+                            <h5><div className="list-profession">{translation("professions", service.profession)}</div></h5>
+                          </div>
                           <div className="list-details d-flex justify-content-around">
                             <div className="text-center">
                               <p>Precio/hora</p>
@@ -104,7 +107,12 @@ function ListServices() {
                             </div>
                             <div className="text-center">
                               <p>Valoración</p>
-                              <p>{service.rating}/5</p>
+                              <Rating 
+                                name="read-only"
+                                value={service.rating}
+                                size="small"
+                                readOnly
+                              />
                             </div>
                           </div>
                       </Link>
