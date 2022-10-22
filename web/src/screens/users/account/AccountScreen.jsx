@@ -3,9 +3,9 @@ import "./AccountScreen.css";
 
 function AccountScreen() {
   return (
-    <div className="d-flex justify-content-evenly h-100 account-screen">
-      <Login />
+    <div className="d-flex justify-content-around h-100 account-screen">
       <Register />
+      <Login />
     </div>
   )
 }

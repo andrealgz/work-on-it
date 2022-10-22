@@ -7,6 +7,8 @@ import * as BsIcons from "react-icons/bs";
 import * as MdIcons from "react-icons/md";
 import * as GiIcons from "react-icons/gi";
 import * as HiIcons from "react-icons/hi";
+import "./Register.css";
+import { PulseLoader } from "react-spinners";
 
 function Register() {
   const navigation = useNavigate()
@@ -29,11 +31,13 @@ function Register() {
 
 
   return (
-    <div className="login w-25 d-flex flex-column justify-content-center align-items-center">
-      <h3 className="mb-5">¡Registrate y empieza la aventura!</h3>
-      <form className="w-100" onSubmit={handleSubmit(handleRegister)}>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+    <div className="register w-25 d-flex flex-column justify-content-center align-items-center">
+      <h3 className="title mb-2">Cargando tu nuevo hogar</h3>
+      <PulseLoader color="white" size={4} />
+      
+      <form className="w-100 shadow-sm p-3 mb-5 rounded" onSubmit={handleSubmit(handleRegister)}>
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <FaIcons.FaUser />
           </span>
           <input
@@ -48,8 +52,8 @@ function Register() {
             <div className="invalid-feedback">{errors.name.message}</div>
           )}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <FaIcons.FaUserFriends />
           </span>
           <input
@@ -64,8 +68,8 @@ function Register() {
             <div className="invalid-feedback">{errors.surname.message}</div>
           )}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <AiIcons.AiFillPhone />
           </span>
           <input
@@ -78,8 +82,8 @@ function Register() {
             <div className="invalid-feedback">{errors.phone.message}</div>
           )}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <BsIcons.BsMailbox />
           </span>
           <input type="text" className={`form-control ${errors.address ? "is-invalid" : ''}`} placeholder="Dirección" 
@@ -88,8 +92,8 @@ function Register() {
             })} />
           {errors.address && (<div className="invalid-feedback">{errors.address.message}</div>)}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <HiIcons.HiLocationMarker />
           </span>
           <input type="text" className={`form-control ${errors.locality ? "is-invalid" : ''}`} placeholder="Localidad" 
@@ -98,8 +102,8 @@ function Register() {
             })} />
           {errors.locality && (<div className="invalid-feedback">{errors.locality.message}</div>)}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <BsIcons.BsHash />
           </span>
           <input
@@ -114,8 +118,8 @@ function Register() {
             <div className="invalid-feedback">{errors.nickname.message}</div>
           )}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <AiIcons.AiOutlineMail />
           </span>
           <input
@@ -130,8 +134,8 @@ function Register() {
             <div className="invalid-feedback">{errors.email.message}</div>
           )}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <MdIcons.MdPassword />
           </span>
           <input
@@ -146,18 +150,19 @@ function Register() {
             <div className="invalid-feedback">{errors.password.message}</div>
           )}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <GiIcons.GiPhotoCamera/>
           </span>
           <input
+            className="file"
             type="file"
             placeholder="Sube tu foto"
             {...register("photo")}
           />
         </div>
-        <div className="d-grid mt-2">
-          <button className="btn btn-primary" type="submit" disabled={!isValid}>
+        <div className="d-grid mt-4 justify-content-center">
+          <button className="register-button" type="submit" disabled={!isValid}>
             Registrarme
           </button>
         </div>
