@@ -52,6 +52,7 @@ module.exports.getOrders = (req, res, next) => {
     .populate("customer")
     .populate("service")
     .populate("ownerService")
+    .populate("reviews")
     .then(order => {
       if (order) {
         res.status(200).json(order);
@@ -91,6 +92,7 @@ module.exports.updateOrders = (req, res, next) => {
     .populate("customer")
     .populate("service")
     .populate("ownerService")
+    .populate("reviews")
     .then(order => {
       if (order) {
         res.status(200).json(order);

@@ -19,7 +19,7 @@ function ListOrder({ listOrders, className }) {
             <tr key={order.id} className={order.status === "done" ? "bg-danger bg-opacity-25" : (order.status === "finish" ? "bg-success bg-opacity-25" : "")}>
               <td>{new Date(order.createdAt).toLocaleDateString()}</td>
               <td>{translation("professions", order.service.profession)}</td>
-              <td>{order.status === "finish" ? <span>Terminado</span> : <Link to={order.status === "done" ? `/orders/${order.id}/review` : `/orders/${order.id}`}>{translation("status", order.status)}</Link>}</td>
+              <td><Link to={order.status === "done" ? `/orders/${order.id}/review` : `/orders/${order.id}`}>{order.status === "finish" ? "Terminado" : translation("status", order.status)}</Link></td>
             </tr>
           )) : 
           <tr>
