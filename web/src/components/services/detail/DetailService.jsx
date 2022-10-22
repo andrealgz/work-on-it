@@ -212,21 +212,6 @@ function DetailService() {
                 </div>
               </div>
             </div>
-            {/* <div className="input-group mb-1">
-              <span className="input-group-text"><FaIcons.FaMapSigns /></span>
-              <input type="number" className={`form-control ${errors.lng ? "is-invalid" : ''}`} placeholder="Longitud" defaultValue={service.location.coordinates[0]}
-                {...register("longitude", { 
-                  required: "La longitud es obligatoria", 
-                })}/>
-            </div>
-            <div className="input-group mb-1">
-              <span className="input-group-text"><FaIcons.FaMapSigns /></span>
-              <input type="number" className={`form-control ${errors.lat ? "is-invalid" : ''}`} placeholder="Latitud" defaultValue={service.location.coordinates[1]}
-                {...register("latitude", { 
-                  required: "La latitud es obligatoria", 
-                })}/>
-            </div> */}
-
             <div className="me-service-update d-flex justify-content-center">
               <button className="btn" type='submit' disabled={!isValid}>Actualizar servicio</button>
             </div>
@@ -238,14 +223,14 @@ function DetailService() {
   } else {
     return (
       <>
-        <div className="container">
-        <BarLoader
-          color="#413221"
-          height={10}
-          loading
-          speedMultiplier={1}
-          width={300}
-        /> 
+        <div className="d-flex justify-content-center align-items-center h-100">
+          <BarLoader
+            color="#413221"
+            height={10}
+            loading
+            speedMultiplier={1}
+            width={300}
+          /> 
         </div>
       </>
     )

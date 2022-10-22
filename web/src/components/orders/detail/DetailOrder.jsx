@@ -10,6 +10,7 @@ import * as IconsTi from "react-icons/ti";
 import * as IconsGi from "react-icons/gi";
 
 import "./DetailOrder.css";
+import { BarLoader } from "react-spinners";
 
 function DetailOrderScreen() {
   const [order, setOrder] = useState(null);
@@ -195,8 +196,14 @@ function DetailOrderScreen() {
               </div>
             </div>
           </div>
-        ) :
-        (<p>Loading...</p>)
+        ) : 
+        <BarLoader
+          color="#413221"
+          height={10}
+          loading
+          speedMultiplier={1}
+          width={300}
+        />
       }
     </div>
   )
