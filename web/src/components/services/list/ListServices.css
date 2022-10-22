@@ -1,8 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Sofia&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
-
 .list-service {
-	background-color: antiquewhite;
+	background-color:#E7DFD8;
 }
 
 .title-services {
@@ -36,16 +33,13 @@
 
 .list-nickname {
 	margin: 20px 0 6px 0;
-	font-family: 'Montserrat', sans-serif;
 }
 
 .list-profession {
-	font-family: 'Montserrat', sans-serif;
 	color: rgba(0, 0, 0, 0.259);
 }
 
 .list-details {
-	font-family: 'Didact Gothic', sans-serif;
 	width: 100%;
 	justify-content: space-around;
 }
