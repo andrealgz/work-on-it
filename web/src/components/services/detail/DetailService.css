@@ -1,5 +1,5 @@
 .service{
-  margin-top: 5%;
+  padding-top: 5%;
   align-content: center;
   justify-content: center;
   align-items: center;
@@ -109,6 +109,10 @@
 .message-update-service.active {
   margin-bottom: 7rem;
   transition: 350ms;
+}
+
+.service-detail {
+  background-color: antiquewhite;
 }
 
 .me-service-form{

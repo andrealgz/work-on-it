@@ -8,7 +8,7 @@ import { translation } from "../../../utils/translation";
 import { useForm, Controller } from "react-hook-form";
 import { professions, timeTables, experiences } from "../../../data";
 import Select from "react-select";
-import { Switch } from '@mui/material';
+import { Rating, Switch } from '@mui/material';
 
 import { BarLoader } from "react-spinners";
 import Alert from '@mui/material/Alert';
@@ -53,7 +53,7 @@ function DetailService() {
     if (user.id !== service.user.id) {
       return (
         <>
-          <div className="container">
+          <div className="service-detail">
             <div className="service d-flex">
               <div className="img">
                 <img src={service.user?.photo} className={service.user?.nickname} alt="..."/>
@@ -66,6 +66,13 @@ function DetailService() {
                   <div className="price">{service.rate}€ precio/hora</div>
                   <div className="disponibility">Disponibilidad: {translation("timeTables", service.disponibility )}</div>
                   <div className="experience">Años de  experiencia: {translation("experiences", service.experience )}</div>
+                  <div className="rating d-flex align-items-center">Valoración: 
+                    <Rating
+                      name="read-only"
+                      value={service.rating}
+                      readOnly
+                    />
+                  </div>
                 </div>
                 <button className="button" onClick={handleCreateOrder}>Contratar</button>
               </div>      
@@ -86,9 +93,18 @@ function DetailService() {
                 >
                   {reviews.map(review => 
                     <div key={review.id}>
-                      <img src={review.photo} alt={review.text}/>
-                      <p><span className="mx-2">Puntuacion:{review.rating}</span><span className="mx-2">Usuario:{review.customer.nickname}</span></p>
-                      <p>{review.text}</p>
+                      <img className="w-75" src={review.photo} alt={review.text}/>
+                      <p className="text-center">{review.text}</p>
+                      <p className="d-flex justify-content-evenly">
+                        <span>{review.customer.nickname}</span>
+                        <span>
+                          <Rating
+                            name="read-only"
+                            value={review.rating}
+                            readOnly
+                          />
+                        </span>
+                      </p>
                     </div>
                   )}
                 </Carousel> :
