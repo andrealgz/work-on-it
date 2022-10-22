@@ -37,7 +37,18 @@ module.exports.getOrders = (req, res, next) => {
 
   Order
     .find(criterial)
-    .populate("messages")
+    .populate({
+      path: "messages",
+      populate: {
+        path: "sender",
+      }
+    })
+    .populate({
+      path: "messages",
+      populate: {
+        path: "receiver",
+      }
+    })
     .populate("customer")
     .populate("service")
     .populate("ownerService")
@@ -65,7 +76,18 @@ module.exports.updateOrders = (req, res, next) => {
 
   Order
     .findByIdAndUpdate(criterial, data, {new: true, runValidators: true})
-    .populate("messages")
+    .populate({
+      path: "messages",
+      populate: {
+        path: "sender"
+      }
+    })
+    .populate({
+      path: "messages",
+      populate: {
+        path: "receiver"
+      }
+    })
     .populate("customer")
     .populate("service")
     .populate("ownerService")

@@ -1,9 +1,5 @@
-.detail-order {
-  margin-top: 15vh;
-}
-
 .detail-order-message-panel {
-  height: 40vh;
+  height: 50vh;
   margin-top: 1vh;
   overflow-y: scroll;
 }

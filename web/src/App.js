@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <NavBar stateLeft={sideBarLeft} onClickLeft={showSideBarLeft} stateRight={sideBarRight} onClickRight={showSideBarRight}/>
-      <div className={`navigation-routes ${location.pathname === "/" || location.pathname.includes("/service") || location.pathname.includes("/services") || location.pathname.includes("/users") || location.pathname.includes("/account") || location.pathname.includes("/review") ? "h-100" : "" }`} onClick={() => {
+      <div className={`navigation-routes ${location.pathname === "/" || location.pathname.includes("/service") || location.pathname.includes("/services") || location.pathname.includes("/orders") || location.pathname.includes("/users") || location.pathname.includes("/account") || location.pathname.includes("/review") ? "h-100" : "" }`} onClick={() => {
         showSideBarLeft(false);
         showSideBarRight(false);
       }}>
