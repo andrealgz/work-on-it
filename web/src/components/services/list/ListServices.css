@@ -1,10 +1,12 @@
 .list-service {
-	background-color:#E7DFD8;
+	background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666442259/work-on-it/Professionals-list_gif_cdsuln.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .title-services {
-	font-size: 30px;
-	padding-top: 4em;
+	font-size: 40px;
+	padding-top: 2em;
 }
 
 .filter-box div {
@@ -15,8 +17,8 @@
 	border-radius: 6px;
 	box-shadow: 0 0 2px 0 #ccc;
 	transition: .3s;
-	margin:5%;
-	height: 55vh;
+	margin: 5%;
+	height: 35vh;
 	padding-top: 1vh;
 	padding-bottom: 1vh;
 	background-color: white;

@@ -1,13 +1,8 @@
-.login {
-  margin-top: 15vh;
-  margin-bottom: 15vh;
-}
-
-.login .title{
+.register .title{
   color:white;
 }
 
-.login-button{
+.register-button{
   background-color: #ede8e283;
   border: 1px solid rgba(91, 85, 85, 0.758);
   outline: none;
@@ -19,13 +14,13 @@
   color: rgba(91, 85, 85, 0.758);
 }
 
-.login-button:hover{
+.register-button:hover{
   background-color: #ffffff;
   animation: pulse 1s infinite;
   transition: .3s;
 }
 
-.login input{
+.register input{
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
@@ -35,6 +30,6 @@
   background: transparent;
 }
 
-.login span{
+.register span{
   margin-right: 15px;
 }

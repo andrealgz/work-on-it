@@ -5,6 +5,7 @@ import { AccountContext } from "../../../contexts/AccountContext";
 import * as Services from "../../../services/Main";
 import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
+import * as GiIcons from "react-icons/gi";
 
 import "./Login.css";
 
@@ -33,10 +34,10 @@ function Login() {
 
   return (
     <div className="login w-25 d-flex flex-column justify-content-center align-items-center">
-      <h3 className="mb-5">¿Ya eres usuario? ¡Conectaté!</h3>
-      <form className="w-100" onSubmit={handleSubmit(handleLogin)}>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+      <h3 className="title mb-5">De nuevo en casa <GiIcons.GiKey /></h3>
+      <form className="w-100 shadow-sm p-3 mb-5 rounded" onSubmit={handleSubmit(handleLogin)}>
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <FaIcons.FaUser />
           </span>
           <input
@@ -52,8 +53,8 @@ function Login() {
           )}
         </div>
 
-        <div className="input-group mb-1">
-          <span className="input-group-text">
+        <div className="input-group mb-1 d-flex align-items-center">
+          <span>
             <MdIcons.MdPassword />
           </span>
           <input
@@ -69,9 +70,9 @@ function Login() {
           )}
         </div>
 
-        <div className="d-grid mt-2">
-          <button className="btn btn-primary" type="submit" disabled={!isValid}>
-            Conectame
+        <div className="d-grid mt-4 justify-content-center">
+          <button className="login-button" type="submit" disabled={!isValid}>
+            Conectarme
           </button>
         </div>
       </form>
