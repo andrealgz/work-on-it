@@ -231,13 +231,15 @@ function DetailOrderScreen() {
             }  
           </>
         ) : 
-        <BarLoader
-          color="#413221"
-          height={10}
-          loading
-          speedMultiplier={1}
-          width={300}
-        />
+        <div className="d-flex justify-content-center align-items-center">
+          <BarLoader
+            color="#413221"
+            height={10}
+            loading
+            speedMultiplier={1}
+            width={300}
+          />
+        </div>
       }
     </div>
   )
