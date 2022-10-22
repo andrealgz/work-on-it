@@ -1,3 +1,5 @@
 .profile-screen{
-  background-color: #E7DFD8;
+  background-image:url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666443594/work-on-it/Profile-background_gif_odqhkh.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

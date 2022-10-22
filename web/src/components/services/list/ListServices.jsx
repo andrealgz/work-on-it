@@ -83,13 +83,13 @@ function ListServices() {
           <h6>Valoración {sortServices.rating ? <MdIcons.MdKeyboardArrowUp /> : <MdIcons.MdKeyboardArrowDown />}</h6>
         </div>
       </div>
-      <div className="services container h-100">
+      <div className="services container">
         <div className={`row ${!services ? "justify-content-center align-items-center" : ""}`}>
           {
             services ? 
               services.length ? 
                 services.map(service => (
-                  <div key={service.id} className="col-4 px-0">
+                  <div key={service.id} className="col-3 px-0">
                       <Link to={`/service/${service.id}`} style={{ color: 'inherit', textDecoration: 'inherit'}} className="list-card d-flex flex-column justify-content-around align-items-center px-2">
                           <img src={service.user?.photo} alt={service.user?.nickname} className="list-img" />
                           <div className="text-center">
