@@ -18,6 +18,7 @@
 
 .detail-order {
   background-color: antiquewhite;
+  overflow-x: hidden;
 }
 
 .detail-order>.row {
