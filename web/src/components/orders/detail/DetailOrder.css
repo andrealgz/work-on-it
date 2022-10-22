@@ -11,3 +11,7 @@
 .detail-order-message-panel .detail-order-message-date {
   font-size: 10px;
 }
+
+.select-status-order {
+  width: 10vw;
+}

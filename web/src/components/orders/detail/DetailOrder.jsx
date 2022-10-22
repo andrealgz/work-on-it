@@ -135,7 +135,7 @@ function DetailOrderScreen() {
                         render={({ field: { onBlur, onChange, value } }) => (
                           <div className="d-flex">
                             <label className="d-flex align-items-center me-3">Estado: </label>
-                            <Select className="form-control p-0 w-25"
+                            <Select className="form-control p-0 select-status-order"
                               value={status.find(status => status.value === value)} 
                               onChange={status => onChange(status)} 
                               onBlur={onBlur}
