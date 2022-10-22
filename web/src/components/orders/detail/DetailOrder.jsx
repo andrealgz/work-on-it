@@ -123,7 +123,7 @@ function DetailOrderScreen() {
                       <span>Horas contratadas: {order.detailJob.hours}</span>
                       <h3>Total: {order.detailJob.rate * order.detailJob.hours}€</h3>
                     </div>
-                    <img className="rounded-circle" width="150" src="https://imagen.research.google/main_gallery_images/a-photo-of-a-corgi-dog-riding-a-bike-in-times-square.jpg" alt="Logo Work On It" />
+                    <img className="rounded-circle" width="150" src="https://res.cloudinary.com/dc7llr1ic/image/upload/v1666425746/work-on-it/Logo_completo_ijgotg.png" alt="Logo Work On It" />
                   </div>
                 </div>
                 <div className="col-6 d-flex align-items-center">
@@ -169,10 +169,12 @@ function DetailOrderScreen() {
                       order.messages.map((message, index) => 
                         (
                           <div key={message.id} className={`d-flex flex-column align-items-${message.sender.nickname !== user.nickname ? "start" : "end"}`}>
-                            <span className={`rounded-pill ${message.sender.nickname !== user.nickname ? "bg-primary" : "bg-success"} bg-opacity-25 px-3 mx-2 mt-2`} key={`message-${index}`}>
-                              <img className="rounded-circle me-2" width="15" src={message.sender.photo} alt={message.sender.nickname} />
-                              {message.message}
-                            </span>
+                            <div className={`d-flex ${message.sender.nickname !== user.nickname ? "flex-row-reverse" : ""}`}>
+                              <img className="rounded-circle mt-2" width="35" src={message.sender.photo} alt={message.sender.nickname} />
+                              <span className={`rounded-pill d-flex align-items-center ${message.sender.nickname !== user.nickname ? "bg-primary" : "bg-success"} bg-opacity-25 px-3 mx-2 mt-2`} key={`message-${index}`}>
+                                {message.message}
+                              </span>
+                            </div>
                             <span className="detail-order-message-date px-3 mx-2" key={`date-${index}`}>{new Date(message.createdAt).toLocaleString()}</span>
                           </div>
                         )
