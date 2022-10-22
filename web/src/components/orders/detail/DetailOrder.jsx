@@ -16,8 +16,6 @@ function DetailOrderScreen() {
   const { id } = useParams();
   const { user } = useContext(AccountContext);
 
-  console.log(order);
-
   const { register, handleSubmit, setError, control, formState: { errors } } = useForm({ mode: 'onTouched' });
 
   useEffect(() => {
