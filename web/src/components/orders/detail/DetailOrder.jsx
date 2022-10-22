@@ -10,6 +10,7 @@ import * as IconsTi from "react-icons/ti";
 import * as IconsGi from "react-icons/gi";
 
 import "./DetailOrder.css";
+import { BarLoader } from "react-spinners";
 
 function DetailOrderScreen() {
   const [order, setOrder] = useState(null);
@@ -135,7 +136,7 @@ function DetailOrderScreen() {
                         render={({ field: { onBlur, onChange, value } }) => (
                           <div className="d-flex">
                             <label className="d-flex align-items-center me-3">Estado: </label>
-                            <Select className="form-control p-0 w-25"
+                            <Select className="form-control p-0 select-status-order"
                               value={status.find(status => status.value === value)} 
                               onChange={status => onChange(status)} 
                               onBlur={onBlur}
@@ -195,8 +196,14 @@ function DetailOrderScreen() {
               </div>
             </div>
           </div>
-        ) :
-        (<p>Loading...</p>)
+        ) : 
+        <BarLoader
+          color="#413221"
+          height={10}
+          loading
+          speedMultiplier={1}
+          width={300}
+        />
       }
     </div>
   )

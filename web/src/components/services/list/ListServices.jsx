@@ -82,8 +82,8 @@ function ListServices() {
           <h6>Valoración {sortServices.rating ? <MdIcons.MdKeyboardArrowUp /> : <MdIcons.MdKeyboardArrowDown />}</h6>
         </div>
       </div>
-      <div className="services container">
-        <div className={`row ${!services && "align-items-center"}`}>
+      <div className="services container h-100">
+        <div className={`row ${!services ? "justify-content-center align-items-center" : ""}`}>
           {
             services ? 
               services.length ? 
