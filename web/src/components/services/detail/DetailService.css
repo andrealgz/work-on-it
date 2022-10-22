@@ -1,5 +1,5 @@
 .service{
-  margin-top: 5%;
+  padding-top: 5%;
   align-content: center;
   justify-content: center;
   align-items: center;
@@ -91,13 +91,28 @@
   background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666436080/work-on-it/Background-004_anbscd.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: hidden;
 }
 
 .me-service-title{
-  padding-top: 3%;
-  margin-left: 10%;
+  margin-top: 2.5%;
+  padding-left: 10%;
   color:white;
   font-size: 50px;
+}
+
+.message-update-service {
+  margin-bottom: -4rem;
+  transition: 350ms;
+}
+
+.message-update-service.active {
+  margin-bottom: 7rem;
+  transition: 350ms;
+}
+
+.service-detail {
+  background-color: antiquewhite;
 }
 
 .me-service-form{

@@ -16,7 +16,10 @@
 	box-shadow: 0 0 2px 0 #ccc;
 	transition: .3s;
 	margin:5%;
-	background-color: rgba(255, 255, 255, 0.357);
+	height: 55vh;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	background-color: white;
 }
 
 .list-card:hover {
@@ -25,14 +28,10 @@
 }
 
 .list-img{
-	height: 150px;
-	width: 150px;
+	height: 58%;
+	width: 100%;
 	object-fit: cover;
-	border-radius: 50%;
-}
-
-.list-nickname {
-	margin: 20px 0 6px 0;
+	border-radius: 5%;
 }
 
 .list-profession {

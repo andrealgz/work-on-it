@@ -8,9 +8,11 @@ import { translation } from "../../../utils/translation";
 import { useForm, Controller } from "react-hook-form";
 import { professions, timeTables, experiences } from "../../../data";
 import Select from "react-select";
-import { Switch } from '@mui/material';
+import { Rating, Switch } from '@mui/material';
 
 import { BarLoader } from "react-spinners";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 function DetailService() {
   const { id } = useParams();
@@ -33,10 +35,14 @@ function DetailService() {
   }, [id])
 
   const handleUpdateService = (data) => {
+    document.querySelector(".message-update-service").classList.add("active");
     Services
       .updateService(service?.id, data)
       .then(service => setService(service))
       .catch(error =>  console.error(error))
+    setTimeout(() => {
+      document.querySelector(".message-update-service").classList.remove("active");
+    }, 2000)
   }
 
   const handleCreateOrder = () => {
@@ -47,7 +53,7 @@ function DetailService() {
     if (user.id !== service.user.id) {
       return (
         <>
-          <div className="container">
+          <div className="service-detail">
             <div className="service d-flex">
               <div className="img">
                 <img src={service.user?.photo} className={service.user?.nickname} alt="..."/>
@@ -60,6 +66,13 @@ function DetailService() {
                   <div className="price">{service.rate}€ precio/hora</div>
                   <div className="disponibility">Disponibilidad: {translation("timeTables", service.disponibility )}</div>
                   <div className="experience">Años de  experiencia: {translation("experiences", service.experience )}</div>
+                  <div className="rating d-flex align-items-center">Valoración: 
+                    <Rating
+                      name="read-only"
+                      value={service.rating}
+                      readOnly
+                    />
+                  </div>
                 </div>
                 <button className="button" onClick={handleCreateOrder}>Contratar</button>
               </div>      
@@ -80,9 +93,18 @@ function DetailService() {
                 >
                   {reviews.map(review => 
                     <div key={review.id}>
-                      <img src={review.photo} alt={review.text}/>
-                      <p><span className="mx-2">Puntuacion:{review.rating}</span><span className="mx-2">Usuario:{review.customer.nickname}</span></p>
-                      <p>{review.text}</p>
+                      <img className="w-75" src={review.photo} alt={review.text}/>
+                      <p className="text-center">{review.text}</p>
+                      <p className="d-flex justify-content-evenly">
+                        <span>{review.customer.nickname}</span>
+                        <span>
+                          <Rating
+                            name="read-only"
+                            value={review.rating}
+                            readOnly
+                          />
+                        </span>
+                      </p>
                     </div>
                   )}
                 </Carousel> :
@@ -94,8 +116,13 @@ function DetailService() {
     );
     } else if (user.id === service.user.id) {
       return (
-        <div className="me-service-screen h-100 d-flex">
-          <h2 className="me-service-title">Mi servicio</h2>
+        <div className="me-service-screen h-100 w-100 d-flex flex-column align-items-center justify-content-between">
+          <h2 className="me-service-title w-100">Mi servicio</h2>
+          <div className="d-flex justify-content-center message-update-service">
+            <Stack spacing={2}>
+              <Alert severity="success">Los cambios se han guardado correctamente</Alert>
+            </Stack>
+          </div>
           <form className="me-service-form d-flex flex-column justify-content-between" onSubmit={handleSubmit(handleUpdateService)}>
             <div className="d-flex mb-5 justify-content-end">
               <div>Desactivar servicio          
@@ -195,7 +222,7 @@ function DetailService() {
               <div className="col-7 d-flex flex-column justify-content-around">
                 <div>
                   <span className="mb-1">Descripción</span>
-                  <textarea type="text" rows="6" className={`form-control ${errors.bio ? "is-invalid" : ''}`}
+                  <textarea type="text" rows="6" className={`form-control ${errors.bio ? "is-invalid" : ''}`} defaultValue={service.bio}
                     {...register("bio", { 
                       required: "La descripción es obligatoria", 
                       maxLength: { value: 300, message: "La descripción puede contener hasta 300 caracteres" }
