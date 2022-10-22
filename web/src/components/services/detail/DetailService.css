@@ -86,3 +86,44 @@
     transform: scale(1);
   }
 }
+
+.me-service-screen{
+  background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666393581/work-on-it/Background_xuwh64.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.me-service-title{
+  padding-top: 3%;
+  margin-left: 10%;
+  color:white;
+  font-size: 50px;
+}
+
+.me-service-form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(139, 136, 136, 0.263);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.me-service-form input, .me-service-form textarea{
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.me-service-screen .row{
+  height: 20rem ;
+}
