@@ -9,6 +9,7 @@ import { useForm, Controller } from "react-hook-form";
 import { professions, timeTables, experiences } from "../../../data";
 import Select from "react-select";
 import { Rating, Switch } from '@mui/material';
+import * as RiIcons from "react-icons/ri";
 
 import { BarLoader } from "react-spinners";
 import Alert from '@mui/material/Alert';
@@ -53,30 +54,49 @@ function DetailService() {
     if (user.id !== service.user.id) {
       return (
         <>
-          <div className="service-detail">
-            <div className="service d-flex">
-              <div className="img">
-                <img src={service.user?.photo} className={service.user?.nickname} alt="..."/>
+          <div className="service-detail h-100 d-flex flex-column justify-content-center">
+            <div className="row d-flex justify-content-center align-items-center">
+              <div className="col-sm-5 d-flex justify-content-center">
+                  <img className="photo" src={service.user?.photo} alt="{service.user?.nickname}"/>
               </div>
-              <div className="details d-flex">
-                <h5 className="nickname">{service.user.nickname}</h5>
-                <h5 className="profession">{translation("professions", service.profession )}</h5>
-                <p className="bio">{service.bio}</p>
-                <div className="list">
-                  <div className="price">{service.rate}€ precio/hora</div>
-                  <div className="disponibility">Disponibilidad: {translation("timeTables", service.disponibility )}</div>
-                  <div className="experience">Años de  experiencia: {translation("experiences", service.experience )}</div>
-                  <div className="rating d-flex align-items-center">Valoración: 
-                    <Rating
-                      name="read-only"
-                      value={service.rating}
-                      readOnly
-                    />
+              <div className="info col-sm-5 d-flex flex-column">
+                <h5 className="nickname d-flex justify-content-center">{service.user.nickname}</h5>
+                  <h5 className="profession d-flex justify-content-center mb-5">{translation("professions", service.profession )}</h5>
+                  <div className="globo mb-3 d-flex flex-column">
+                      <span className="bio">
+                      <div className="open-quote d-flex justify-content-start"><RiIcons.RiDoubleQuotesL size={20} fill="#0000007a"/></div>
+                        {service.bio}
+                        <div className="close-quote d-flex justify-content-end"><RiIcons.RiDoubleQuotesR size={20} fill="#0000007a" /></div>
+                      </span>
                   </div>
-                </div>
-                <button className="button" onClick={handleCreateOrder}>Contratar</button>
-              </div>      
+                  <div className="list d-flex justify-content-around">
+                    <div className="price d-flex flex-column align-items-center">
+                      <b>Precio/hora</b>
+                      <p>{service.rate}€</p>
+                    </div>
+                    <div className="disponibility d-flex flex-column align-items-center">
+                      <b>Disponibilidad</b>
+                      <p>{translation("timeTables", service.disponibility )}</p>
+                    </div>
+                    <div className="experience d-flex flex-column align-items-center">
+                      <b>Años de  experiencia</b>
+                      <p>{translation("experiences", service.experience )}</p>
+                      </div>
+                    <div className="rating d-flex flex-column align-items-center">
+                      <b>Valoración</b>
+                      <Rating
+                        name="read-only"
+                        value={service.rating}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-center">
+                    <button className="btn" onClick={handleCreateOrder}>Contratar</button>
+                  </div>
+              </div>
             </div>
+
             <div className="reviews d-flex">
               {
                 reviews?.length ? 
@@ -108,7 +128,7 @@ function DetailService() {
                     </div>
                   )}
                 </Carousel> :
-                <p>No tenemos reviews</p>
+                <p>Todavía no hay reseñas</p>
               }
             </div>
           </div>
