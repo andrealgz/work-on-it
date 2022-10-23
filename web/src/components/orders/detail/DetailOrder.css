@@ -1,3 +1,12 @@
+.detail-order-box{
+  background-color: #45726bad;
+  color: white;
+}
+
+.detail-order-box-order{
+  margin-right: 25%;
+}
+
 .detail-order-message-panel {
   height: 50vh;
   margin-top: 1vh;
@@ -21,10 +30,20 @@
   overflow-x: hidden;
 }
 
-.detail-order>.row {
-  padding-top: 5%
+.bg-success{
+  --bs-bg-opacity: 1;
+  background-color: #F0C6AA!important;
 }
 
-.detail-order-box{
-  background-color: #ffffff3d;
+.bg-primary{
+  --bs-bg-opacity: 1;
+  background-color: #B0B9A7!important;
+}
+
+.button-send{
+  width: 35px;
+  border: none;
+  border-radius: 10px;
+  outline: none!important;
+  background: #F0C6AA;
 }
