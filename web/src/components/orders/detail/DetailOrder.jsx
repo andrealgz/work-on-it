@@ -162,8 +162,8 @@ function DetailOrderScreen() {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-12">
-                      <div className={`detail-order-message-panel w-75 border border-2 rounded d-flex flex-column ${!order.messages.length ? "justify-content-center align-items-center" : ""}`}>
+                    <div className="col-9">
+                      <div className={`detail-order-message-panel border border-2 rounded d-flex flex-column ${!order.messages.length ? "justify-content-center align-items-center" : ""}`}>
                         {
                           order.messages.length ? 
                           order.messages.map((message, index) => 
