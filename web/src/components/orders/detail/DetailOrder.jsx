@@ -13,7 +13,7 @@ import * as IconsBi from "react-icons/bi";
 
 import "./DetailOrder.css";
 import { BarLoader } from "react-spinners";
-import { Rating } from '@mui/material';
+import { Alert, Rating, Stack } from '@mui/material';
 
 function DetailOrderScreen() {
   const [order, setOrder] = useState(null);
@@ -30,6 +30,7 @@ function DetailOrderScreen() {
   }, [id]);
 
   const handleUpdateOrder = (data) => {
+    document.querySelector(".message-update-order").classList.add("active");
     const order = {
       status: data.status.value
     }
@@ -47,6 +48,9 @@ function DetailOrderScreen() {
             })
         }
       })
+    setTimeout(() => {
+      document.querySelector(".message-update-order").classList.remove("active");
+    }, 2000)
   }
 
   const handleMessage = (data) => {
@@ -72,7 +76,7 @@ function DetailOrderScreen() {
       {
         order ?
         (
-          <>
+          <div className="d-flex pt-5 flex-column align-items-center">
             <div className="row h-100 justify-content-center align-content-center">
               <div className="detail-order-box-order d-flex justify-content-end">
                 <img className="rounded-circle" width="150" src="https://res.cloudinary.com/dc7llr1ic/image/upload/v1666425746/work-on-it/Logo_completo_ijgotg.png" alt="Logo Work On It" />
@@ -89,29 +93,29 @@ function DetailOrderScreen() {
                     <div className="detail-order-box row border border-2 rounded p-4">
                       <h3 className="mb-2 d-flex justify-content-center">Solicitante</h3>
                       <div className="col-6 d-flex flex-column">
-                        <img className="rounded-circle m-3" width="150" src={order.customer.photo} alt={order.customer.nickname} />
+                        <img className="rounded-circle m-3" src={order.customer.photo} alt={order.customer.nickname} />
                       </div>
                       <div className="col-6 d-flex flex-column justify-content-center">
                         <span className="fw-bold fs-4">@{order.customer.id === user.id ? <Link to={"/users/me"}>{order.customer.nickname}</Link> : order.customer.nickname}</span>
                         <span className="fw-bold fs-4"><IconsBi.BiBeenHere />{order.customer.locality}</span>
                       </div>
                       <div className="col-6 d-flex flex-column">
-                        <span className="fw-bold fs-4 d-flex justify-content-center">{order.customer.name}</span>
-                        <span className="fw-bold fs-4 d-flex justify-content-center">{order.customer.surname}</span>
+                        <span className="fw-bold fs-4 text-center">{order.customer.name}</span>
+                        <span className="fw-bold fs-4 text-center">{order.customer.surname}</span>
                       </div>
                     </div>
                     <div className="detail-order-box row border border-2 rounded p-4 mt-2">
                       <h3 className="mb-2 d-flex justify-content-center">Profesional</h3>
                       <div className="col-6 d-flex flex-column">
-                        <img className="rounded-circle m-3" width="150" src={order.ownerService.photo} alt={order.ownerService.nickname} />
+                        <img className="rounded-circle m-3" src={order.ownerService.photo} alt={order.ownerService.nickname} />
                       </div>
                       <div className="col-6 d-flex flex-column justify-content-center">
                         <span className="fw-bold fs-4">@{order.ownerService.id === user.id ? <Link to={"/users/me"}>{order.ownerService.nickname}</Link> : order.ownerService.nickname}</span>
                         <span className="fw-bold fs-4"><IconsBi.BiBeenHere />{order.ownerService.locality}</span>
                       </div>
                       <div className="col-6 d-flex flex-column">
-                        <span className="fw-bold fs-4 d-flex justify-content-center">{order.ownerService.name}</span>
-                        <span className="fw-bold fs-4 d-flex justify-content-center">{order.ownerService.surname}</span>
+                        <span className="fw-bold fs-4 text-center">{order.ownerService.name}</span>
+                        <span className="fw-bold fs-4 text-center">{order.ownerService.surname}</span>
                       </div>
                     </div>
                   </div>
@@ -128,7 +132,7 @@ function DetailOrderScreen() {
                                 defaultValue={order?.status}
                                 render={({ field: { onBlur, onChange, value } }) => (
                                   <div className="d-flex">
-                                    <label className="d-flex align-items-center me-3 justify-content-end">Estado: </label>
+                                    <label className="d-flex align-items-center me-3 justify-content-start">Estado: </label>
                                     <Select className="form-control p-0 select-status-order"
                                       value={status.find(status => status.value === value)} 
                                       onChange={status => onChange(status)} 
@@ -216,8 +220,13 @@ function DetailOrderScreen() {
                   </p>
                 </div>
               </div>
-            }  
-          </>
+            }
+            <div className="d-flex justify-content-center message-update-order">
+              <Stack spacing={2}>
+                <Alert severity="success">Los cambios se han guardado correctamente</Alert>
+              </Stack>
+            </div>
+          </div>
         ) : 
         <div className="h-100 d-flex justify-content-center align-items-center">
           <BarLoader

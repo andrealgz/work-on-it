@@ -1,17 +1,18 @@
-import { useLocation, useNavigate, useState } from "react-router";
-import { useContext } from "react"
+import { useLocation, useNavigate } from "react-router";
+import { useContext, useState } from "react"
 import { translation } from "../../../utils/translation";
 import { AccountContext } from "../../../contexts/AccountContext";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as Services from "../../../services/Main";
 import "./CreateOrder.css"
 
 function CreateOrder() {
   const { state } = useLocation();
+  const [total, setTotal] = useState(0);
   const { user } = useContext(AccountContext);
   const navigation = useNavigate();
   
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm({ mode: "onTouched" });
+  const { control, handleSubmit, formState: { errors, isValid } } = useForm({ mode: "onTouched" });
 
   const handleCreateOrder = (data) => {
     const { hours } = data;
@@ -63,13 +64,25 @@ function CreateOrder() {
           <form className="form" onSubmit={handleSubmit(handleCreateOrder)}>
             <p className="fst-italic text-start">Seleccione las horas que necesitas</p>
             <div className="houres mb-1 w-25">
-              <input type="number" className={`form-control ${errors.hours ? "is-invalid" : ''}`}
-                placeholder="Nº horas"
-                {...register("hours", { 
-                  required: "Las horas son obligatorias", 
-                })}/>
+            <Controller
+              name="hours"
+              control={control}
+              render={({ field }) => {
+                return <input 
+                  type="number" 
+                  className={`form-control ${errors.hours ? "is-invalid" : ''}`} 
+                  {...field}
+                  value={field.value || 0}
+                  onChange={(e) => {
+                    field.onChange(parseInt(e.target.value));
+                    setTotal(state.service.rate * e.target.value)
+                  }}
+                />;
+              }}
+            />
             </div>
-            <div className="d-grid mt-5 justify-content-end">
+            <p className="h4 mt-3"><strong>TOTAL: {total}€</strong></p>
+            <div className="d-grid mt-3 justify-content-end">
               <button className={`btn ${isValid}`} type='submit' disabled={!isValid}>Aceptar</button>
             </div>
           </form>

@@ -47,3 +47,14 @@
   outline: none!important;
   background: #F0C6AA;
 }
+
+.message-update-order {
+  position: absolute;
+  top: -50px;
+  transition: 350ms;
+}
+
+.message-update-order.active {
+  top: 10px;
+  transition: 350ms;
+}

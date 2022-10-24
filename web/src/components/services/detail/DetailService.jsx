@@ -54,7 +54,7 @@ function DetailService() {
     if (user.id !== service.user.id) {
       return (
         <>
-          <div className="service-detail h-100 d-flex flex-column justify-content-center">
+          <div className="service-detail h-100">
             <div className="row d-flex justify-content-center align-items-center">
               <div className="col-sm-5 d-flex justify-content-center">
                   <img className="photo" src={service.user?.photo} alt="{service.user?.nickname}"/>
@@ -136,13 +136,8 @@ function DetailService() {
     );
     } else if (user.id === service.user.id) {
       return (
-        <div className="me-service-screen h-100 w-100 d-flex flex-column align-items-center justify-content-between">
+        <div className="me-service-screen h-100 w-100 d-flex flex-column align-items-center">
           <h2 className="me-service-title w-100">Mi servicio</h2>
-          <div className="d-flex justify-content-center message-update-service">
-            <Stack spacing={2}>
-              <Alert severity="success">Los cambios se han guardado correctamente</Alert>
-            </Stack>
-          </div>
           <form className="me-service-form d-flex flex-column justify-content-between" onSubmit={handleSubmit(handleUpdateService)}>
             <div className="d-flex mb-5 justify-content-end">
               <div>Desactivar servicio          
@@ -263,6 +258,11 @@ function DetailService() {
               <button className="btn" type='submit' disabled={!isValid}>Actualizar servicio</button>
             </div>
           </form>
+          <div className="d-flex justify-content-center message-update-service">
+            <Stack spacing={2}>
+              <Alert severity="success">Los cambios se han guardado correctamente</Alert>
+            </Stack>
+          </div>
         </div>
       )
     }

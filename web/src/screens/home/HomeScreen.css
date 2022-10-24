@@ -3,6 +3,10 @@
   background-size: cover;
 }
 
+.home-screen-carousel-image {
+  object-fit: cover;
+}
+
 .home-screen-carousel .carousel-slider, .slider-wrapper, .slider-wrapper ul , .slider-wrapper ul li {
   height: 100%!important;
 }

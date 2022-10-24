@@ -2,6 +2,8 @@
   background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666537546/work-on-it/Background-009_mgbwih.png");
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 10vh;
+  overflow-x: hidden;
 }
 .service-detail .photo{
   width: 70%;
@@ -98,29 +100,27 @@
 }
 
 .me-service-title{
-  margin-top: 2.5%;
+  margin-top: 10vh;
   padding-left: 10%;
   color:white;
   font-size: 50px;
 }
 
 .message-update-service {
-  margin-bottom: -4rem;
+  position: absolute;
+  top: -50px;
   transition: 350ms;
 }
 
 .message-update-service.active {
-  margin-bottom: 7rem;
+  top: 10px;
   transition: 350ms;
 }
 
 .me-service-form{
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  margin-top: 10vh;
   width: 60%;
   padding: 40px;
-  transform: translate(-50%, -50%);
   background: rgb(139 136 136 / 60%);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);

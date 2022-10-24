@@ -17,9 +17,9 @@ function HomeScreen() {
           stopOnHover={false}
           axis='vertical'
         >
-          <div className="home-img img1 h-100"></div>
-          <div className="home-img img2 h-100"></div>
-          <div className="home-img img3 h-100"></div>
+          <img className="home-screen-carousel-image h-100" src="https://res.cloudinary.com/dc7llr1ic/image/upload/v1666445737/work-on-it/home_psavsr.png" alt="Home_IMG_carousel" />
+          <img className="home-screen-carousel-image h-100" src="https://res.cloudinary.com/dc7llr1ic/image/upload/v1666445737/work-on-it/home2_rwhhvi.png" alt="Home_IMG_carousel" />
+          <img className="home-screen-carousel-image h-100" src="https://res.cloudinary.com/dc7llr1ic/image/upload/v1666445741/work-on-it/home3_bfxveo.png" alt="Home_IMG_carousel" />
       </Carousel>
     </>
   )
