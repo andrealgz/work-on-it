@@ -121,7 +121,7 @@ function DetailOrderScreen() {
                   </div>
                   <div className="col-9">
                     <div className="row">
-                      <div className="col-6 d-flex align-items-center justify-content-end">
+                      <div className="col-6 d-flex align-items-center justify-content-start">
                         {
                           order.status !== "finish" ?
                             order.ownerService.id === user.id ? 
@@ -132,7 +132,7 @@ function DetailOrderScreen() {
                                 defaultValue={order?.status}
                                 render={({ field: { onBlur, onChange, value } }) => (
                                   <div className="d-flex">
-                                    <label className="d-flex align-items-center me-3 justify-content-start">Estado: </label>
+                                    <label className="d-flex align-items-center me-3 justify-content-end">Estado: </label>
                                     <Select className="form-control p-0 select-status-order"
                                       value={status.find(status => status.value === value)} 
                                       onChange={status => onChange(status)} 
