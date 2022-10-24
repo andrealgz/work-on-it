@@ -8,3 +8,4 @@ export { default as ListOrder } from "./orders/list/ListOrder";
 export { default as ReviewOrder } from "./orders/review/ReviewOrder";
 export { default as Register } from "./account/register/Register";
 export { default as Profile } from "./profile/Profile";
+export { default as CreateOrder } from "./orders/create/CreateOrder";

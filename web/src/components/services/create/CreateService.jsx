@@ -2,11 +2,6 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { professions, timeTables, experiences } from "../../../data";
 import Select from "react-select";
-import * as IoIcons from "react-icons/io";
-import * as BsIcons from "react-icons/bs";
-import * as GiIcons from "react-icons/gi";
-import * as BiIcons from "react-icons/bi";
-import * as FaIcons from "react-icons/fa";
 
 import "./CreateService.css";
 import * as Services from "../../../services/Main";
@@ -37,16 +32,14 @@ function CreateService() {
         <form className="create-service-form" onSubmit={handleSubmit(handleCreateService)}>
           <div className="row">
             <div className="col-6 d-flex flex-column justify-content-between">
-              <div className="input-group w-75">
-                <span className="input-group-text"><BiIcons.BiEuro /></span>
+              <div className="w-75 input-group mb-1 d-flex align-items-center">
                 <input type="number" className={`form-control ${errors.rate ? "is-invalid" : ''}`} placeholder="Añade el precio/hora" 
                   {...register("rate", { 
                     required: "El precio es obligatorio", 
                   })} />
                 {errors.rate && (<div className="invalid-feedback">{errors.rate.message}</div>)}
               </div>
-              <div className="input-group">
-                <span className="input-group-text"><FaIcons.FaMapSigns /></span>
+              <div className="input-group mb-1 d-flex align-items-center">
                 <input type="text" className={`form-control ${errors.address ? "is-invalid" : ''}`} placeholder="Añade la dirección" 
                   {...register("address", { 
                     required: "La dirección es obligatoria", 
@@ -54,12 +47,11 @@ function CreateService() {
                 {errors.address && (<div className="invalid-feedback">{errors.address.message}</div>)}
               </div>
               <Controller 
-                name="profession" 
+                name="profession"
                 control={control}
                 render={({ field: { onBlur, onChange, value} }) => (
-                  <div className="input-group">
-                    <span className="input-group-text"><BsIcons.BsTools /></span>
-                    <Select className='form-control p-0'
+                  <div className="input-group mb-1 d-flex align-items-center">
+                    <Select className="form-control p-0"
                       placeholder="Selecciona las profesión"
                       value={professions.find((profession) => profession.value === value)} 
                       onChange={(profession) => onChange(profession)} 
@@ -79,8 +71,7 @@ function CreateService() {
                 name="experience"
                 control={control}
                 render={({ field: { onBlur, onChange, value} }) => (
-                  <div className="input-group">
-                    <span className="input-group-text"><GiIcons.GiPlayerTime /></span>
+                  <div className="input-group mb-1 d-flex align-items-center">
                     <Select className='form-control p-0'
                       placeholder="Selecciona los años de experiencia"
                       value={experiences.find((experience) => experience.value === value)} 
@@ -101,8 +92,7 @@ function CreateService() {
                 name="timeTables"
                 control={control}
                 render={({ field: { onBlur, onChange, value} }) => (
-                  <div className="input-group">
-                    <span className="input-group-text"><IoIcons.IoMdTime /></span>
+                  <div className="input-group mb-1 d-flex align-items-center">
                     <Select className='form-control p-0'
                       placeholder="Selecciona preferencia horaria"
                       value={timeTables.find((timeTable) => timeTable.value === value)} 
@@ -121,8 +111,7 @@ function CreateService() {
               />
             </div>
             <div className="col-6 d-flex flex-column justify-content-between">
-              <div className="input-group">
-                <span className="input-group-text"><IoIcons.IoIosText /></span>
+              <div className="input-group mb-1 d-flex align-items-center">
                 <textarea type="text" rows="8" className={`form-control ${errors.bio ? "is-invalid" : ''}`} placeholder="Descríbete" 
                   {...register("bio", { 
                     required: "La descripción es obligatoria", 
@@ -130,8 +119,8 @@ function CreateService() {
                   })} />
                 {errors.bio && (<div className="invalid-feedback">{errors.bio.message}</div>)}
               </div>
-              <div className="d-grid mt-2">
-                <button className="btn" type='submit' disabled={!isValid}>Crea tu servicio</button>
+              <div className="d-grid mt-2 justify-content-center">
+                <button className="create-button" type='submit' disabled={!isValid}>Crea tu servicio</button>
               </div>
             </div>
           </div>

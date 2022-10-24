@@ -1,11 +1,12 @@
 import { DetailService } from "../../../components";
+import "./DetailServiceScreen.css"
 
 function DetailServiceScreen () {
 
   return(
-    <>
-    <DetailService />
-    </>
+    <div className="detail-service-screen h-100">
+      <DetailService />
+    </div>
   )
 }
 

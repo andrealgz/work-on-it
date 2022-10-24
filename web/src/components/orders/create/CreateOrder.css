@@ -1,0 +1,37 @@
+.create-order{
+  margin-left: 20%;
+}
+
+.create-order .photo{
+  border-radius: 5%;
+  width: 250px;
+}
+
+.create-order-title{
+  font-family: 30px;
+  color: #154854;
+}
+
+.fst-italic{
+  color: #4e4945;
+  font-size: 20px;
+}
+
+.fst-italic p{
+  color: #C0A089;
+  font-size: 18px;
+}
+
+.create-order-box{
+  background-color: rgba(255, 255, 255, 0.577);
+}
+
+.create-order button{
+  background-color: #25807a80;
+  border-radius: 10%;
+}
+
+.create-order button:hover{
+  transform: scale(1.1);
+  background-color: #C0A089;
+}

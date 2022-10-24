@@ -1,76 +1,86 @@
-.service{
-  padding-top: 5%;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
+.service-detail{
+  background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666537546/work-on-it/Background-009_mgbwih.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.service-detail .photo{
+  width: 70%;
+  border-radius: 4%;
 }
 
-.img{
-  width: 800px;
-}
-
-.details{
-  margin-left: 5%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: "EB Garamond", serif;
-}
-
-.bio{
-  font-size: 26px;
-  font-style: italic;
-  margin-bottom: 14px;
-  transition-delay: 0.2s;
-}
-
-.nickname{
-  font-size: 100px;
-  font-weight: 400;
+.service-detail .nickname{
+  font-size: 60px;
   margin-top: 10px;
   line-height: 1em;
 }
 
-.list{
-  align-items: center;
+.globo{
+  border-radius: var(--borde);
+  padding: 1%;
+  --borde: 2em;
+  z-index: 1; 
+  background-color: rgba(255, 255, 255, 0.807);
+  filter: drop-shadow(0px 0px 1px rgb(226, 222, 222)) ;
+}
+
+.globo::before{
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: -5px;
+  top: 50px;
+  background-color: rgba(255, 255, 255, 0.466);
+  transform: skewX(45deg);
+}
+
+.service-detail .bio{
+  font-size: 18px;
+  margin-left:4%;
+  margin-right: 4%;
+}
+
+.service-detail .list{
   font-weight: 400;
   font-size: 20px;
   margin-top: 14px;
   margin-bottom: 60px;
 }
 
-.reviews{
-  margin-top:10%;
-  justify-content: center
+.service-detail b{
+  margin-bottom: 2%;
 }
 
-.reviews div{
+.service-detail .reviews{
+  margin-top:10%;
+  justify-content: center;
+}
+
+.service-detail .reviews div{
   margin-bottom: 4rem;
   width: 900px;
 }
 
-.reviews img{
+.service-detail .reviews img{
   height: 380px;
   width: 500px;
 }
 
-.button{
-  background-color: #ffffff;
-  border: 1px solid rgba(43, 41, 41, 0.6);
-  position: relative;
+.service-detail .btn{
+  background-color: #f1eeeaaf;
+  border: 1px solid rgba(91, 85, 85, 0.758);
   outline: none;
   border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  height: 45px;
-  width: 130px;
   opacity: 1;
+  color: rgba(91, 85, 85, 0.758);
+  height: 2em;
+  width: 9em;
+  font-size: 20px;
 }
 
-.button:hover{
-  background-color: #ffffff;
+.service-detail .btn:hover{
+  background-color: rgba(92, 89, 89, 0.453);
   animation: pulse 1s infinite;
   transition: .3s;
 }
@@ -85,13 +95,6 @@
     100% {
     transform: scale(1);
   }
-}
-
-.me-service-screen{
-  background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666436080/work-on-it/Background-004_anbscd.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow-y: hidden;
 }
 
 .me-service-title{
@@ -111,10 +114,6 @@
   transition: 350ms;
 }
 
-.service-detail {
-  background-color: antiquewhite;
-}
-
 .me-service-form{
   position: absolute;
   top: 50%;
@@ -122,7 +121,7 @@
   width: 60%;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(139, 136, 136, 0.263);
+  background: rgb(139 136 136 / 60%);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;

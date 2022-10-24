@@ -12,8 +12,34 @@
   margin-top: 2%;
 }
 
-.create-service {
-  background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666366111/work-on-it/service-create-001_ghzq0i.gif");
-  background-size: cover;
-  background-repeat: no-repeat;
+.create-service input{
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.create-service span{
+  margin-right: 15px;
+}
+
+.create-button{
+  background-color: #ede8e283;
+  border: 1px solid rgba(91, 85, 85, 0.758);
+  outline: none;
+  border-radius: 50px;
+  cursor: pointer;
+  opacity: 1;
+  color: rgba(91, 85, 85, 0.758);
+  height: 2em;
+  width: 10em;
+}
+
+.create-button:hover{
+  background-color: #ffffff;
+  animation: pulse 1s infinite;
+  transition: .3s;
 }
