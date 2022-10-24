@@ -87,7 +87,7 @@ function DetailOrderScreen() {
               </div>
             </div>
             <div className="d-flex h-100 justify-content-center align-content-center">
-              <div className="row">
+              <div className="row justify-content-center">
                 <div className="col-3 d-flex flex-column justify-content-center align-content-center">
                   <div className="detail-order-box row border border-2 rounded p-4">
                     <h3 className="mb-2 d-flex justify-content-center">Solicitante</h3>
@@ -118,7 +118,7 @@ function DetailOrderScreen() {
                     </div>
                   </div>
                 </div>
-                <div className="col-9">
+                <div className="col-7">
                   <div className="row">
                     <div className="col-6 d-flex align-items-center justify-content-start">
                       {
@@ -162,7 +162,7 @@ function DetailOrderScreen() {
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-9">
+                    <div className="col-12">
                       <div className={`detail-order-message-panel border border-2 rounded d-flex flex-column ${!order.messages.length ? "justify-content-center align-items-center" : ""}`}>
                         {
                           order.messages.length ? 
