@@ -7,6 +7,12 @@
   margin-right: 25%;
 }
 
+.detail-order-box img{
+  height: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
 .detail-order-message-panel {
   height: 50vh;
   margin-top: 1vh;
@@ -29,6 +35,9 @@
 .detail-order {
   overflow-x: hidden;
 }
+.detail-order>div {
+  padding-top: 12vh;
+}
 
 .bg-success{
   --bs-bg-opacity: 1;
@@ -46,4 +55,15 @@
   border-radius: 10px;
   outline: none!important;
   background: #F0C6AA;
+}
+
+.message-update-order {
+  position: absolute;
+  top: -50px;
+  transition: 350ms;
+}
+
+.message-update-order.active {
+  top: 10px;
+  transition: 350ms;
 }

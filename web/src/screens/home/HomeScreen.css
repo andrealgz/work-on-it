@@ -3,18 +3,10 @@
   background-size: cover;
 }
 
+.home-screen-carousel-image {
+  object-fit: cover;
+}
+
 .home-screen-carousel .carousel-slider, .slider-wrapper, .slider-wrapper ul , .slider-wrapper ul li {
   height: 100%!important;
-}
-
-.home-screen-carousel .home-img.img1{
-  background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666445737/work-on-it/home_psavsr.png");
-}
-
-.home-screen-carousel .home-img.img2{
-  background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666445737/work-on-it/home2_rwhhvi.png");
-}
-
-.home-screen-carousel .home-img.img3{
-  background-image: url("https://res.cloudinary.com/dc7llr1ic/image/upload/v1666445741/work-on-it/home3_bfxveo.png");
 }

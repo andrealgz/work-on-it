@@ -31,7 +31,7 @@ function Profile() {
               <div className="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
                 <div className="img-profile card d-flex">
                   <div className="align-items-center text-center">
-                    <img src={user.photo} alt={user.name} className="rounded-circle" width="190" />
+                    <img src={user.photo} alt={user.name} className="rounded-circle" />
                     <div>
                       <h4>{user.nickname}</h4>
                       <p>Bienvenido a tu perfil</p>
@@ -59,10 +59,6 @@ function Profile() {
                     <div>
                       <h6>Localidad</h6>
                       <p>{user.locality}</p>
-                    </div>
-                    <div className="row">
-                      <h6>Provincia</h6>
-                      <p>{user.city}</p>
                     </div>
                   </div> 
                 </div>
