@@ -81,7 +81,7 @@ function CreateOrder() {
               }}
             />
             </div>
-            <p className="h4 mt-3"><strong>TOTAL: {total}€</strong></p>
+            <p className="h4 mt-3 text-end"><strong>TOTAL: {total}€</strong></p>
             <div className="d-grid mt-3 justify-content-end">
               <button className={`btn ${isValid}`} type='submit' disabled={!isValid}>Aceptar</button>
             </div>
