@@ -64,9 +64,9 @@ function DetailService() {
                   <h5 className="profession d-flex justify-content-center mb-5">{translation("professions", service.profession )}</h5>
                   <div className="globo mb-3 d-flex flex-column">
                     <div className="bio d-flex">
-                      <div className="open-quote d-flex justify-content-start me-2"><RiIcons.RiDoubleQuotesL size={20} fill="#0000007a"/></div>
+                      <div className="d-flex justify-content-start me-2"><RiIcons.RiDoubleQuotesL size={20} fill="#0000007a"/></div>
                         {service.bio}
-                      <div className="close-quote d-flex align-items-end ms-1"><RiIcons.RiDoubleQuotesR size={20} fill="#0000007a" /></div>
+                      <div className="d-flex align-items-end ms-1"><RiIcons.RiDoubleQuotesR size={20} fill="#0000007a" /></div>
                     </div>
                   </div>
                   <div className="list d-flex justify-content-around">

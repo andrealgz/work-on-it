@@ -76,7 +76,7 @@ function DetailOrderScreen() {
       {
         order ?
         (
-          <div className="d-flex pt-5 flex-column align-items-center">
+          <div className="d-flex flex-column align-items-center">
             <div className="row h-100 justify-content-center align-content-center">
               <div className="detail-order-box-order d-flex justify-content-end">
                 <img className="rounded-circle" width="150" src="https://res.cloudinary.com/dc7llr1ic/image/upload/v1666425746/work-on-it/Logo_completo_ijgotg.png" alt="Logo Work On It" />
