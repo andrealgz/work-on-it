@@ -67,7 +67,7 @@ function Profile() {
             {
               user.id === userConnected.user.id &&
               <div className="orders-profile row">
-                <div className="professional col">
+                <div className="col">
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex justify-content-between">
@@ -79,7 +79,7 @@ function Profile() {
                   </div>
                 </div>  
 
-                <div className="customer col">
+                <div className="col">
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex justify-content-between">

@@ -88,7 +88,7 @@ function DetailOrderScreen() {
             </div>
             <div className="d-flex h-100 justify-content-center align-content-center">
               <div className="row justify-content-center">
-                <div className="col-3 d-flex flex-column justify-content-center align-content-center">
+                <div className="col-4 d-flex flex-column justify-content-center align-content-center">
                   <div className="detail-order-box row border border-2 rounded p-4">
                     <h3 className="mb-2 d-flex justify-content-center">Solicitante</h3>
                     <div className="col-6 d-flex flex-column">
@@ -171,7 +171,7 @@ function DetailOrderScreen() {
                               <div key={message.id} className={`d-flex flex-column align-items-${message.sender.nickname !== user.nickname ? "start" : "end"}`}>
                                 <div className={`d-flex ${message.sender.nickname !== user.nickname ? "flex-row-reverse" : ""}`}>
                                   <img className="rounded-circle mt-2" width="35" src={message.sender.photo} alt={message.sender.nickname} />
-                                  <span className={`rounded-pill d-flex align-items-center ${message.sender.nickname !== user.nickname ? "bg-primary" : "bg-success"}  px-3 mx-2 mt-2`} key={`message-${index}`}>
+                                  <span className={`rounded-pill d-flex align-items-center bg-messages-${message.sender.nickname !== user.nickname ? "receptor" : "emisor"}  px-3 mx-2 mt-2`} key={`message-${index}`}>
                                     {message.message}
                                   </span>
                                 </div>
