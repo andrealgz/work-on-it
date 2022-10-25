@@ -39,12 +39,12 @@
   padding-top: 12vh;
 }
 
-.bg-success{
+.bg-messages-emisor{
   --bs-bg-opacity: 1;
   background-color: #F0C6AA!important;
 }
 
-.bg-primary{
+.bg-messages-receptor{
   --bs-bg-opacity: 1;
   background-color: #B0B9A7!important;
 }
@@ -66,4 +66,8 @@
 .message-update-order.active {
   top: 10px;
   transition: 350ms;
+}
+
+.detail-order-box a{
+  color:#f0c6aa
 }

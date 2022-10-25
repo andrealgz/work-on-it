@@ -3,8 +3,6 @@ import { useParams, useNavigate } from "react-router";
 import { useContext } from "react";
 import { AccountContext } from "../../../contexts/AccountContext";
 import * as Services from "../../../services/Main.js";
-import * as IoIcons from "react-icons/io";
-import * as GiIcons from "react-icons/gi";
 import "./ReviewOrder.css";
 import { Rating } from "@mui/material";
 
@@ -32,8 +30,8 @@ function ReviewOrder() {
   return (
     <div className="review-order h-100 d-flex flex-column align-items-center justify-content-center w-50">
       <form className="form" onSubmit={handleSubmit(handleReview)}>
-        <div className="input-group mb-1">
-          <span>Valoración: </span>
+        <span className="review-order-title d-flex justify-content-center mb-4">Ayuda a otras personas contando tu experiencia </span>
+        <div className="input-group d-flex justify-content-center mb-1">
           <Controller
             control={control}
             name="rating"
@@ -48,9 +46,8 @@ function ReviewOrder() {
             )}  
           />
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text"><IoIcons.IoIosText /></span>
-          <textarea type="text" rows="7" className={`form-control ${errors.text ? "is-invalid" : ''}`} placeholder="Descripcion" 
+        <div className="mb-1 mt-4">
+          <textarea type="text" rows="7" className={`form-control ${errors.text ? "is-invalid" : ''}`} placeholder="1. Escribe tu reseña"
             {...register("text", { 
               required: "La reseña es obligatoria", 
               maxLength: { value: 100, message: "La valoración no puede tener mas de 100 caracteres" },
@@ -58,18 +55,18 @@ function ReviewOrder() {
             })} />
           {errors.text && (<div className="invalid-feedback">{errors.text.message}</div>)}
         </div>
-        <div className="input-group mb-1">
-          <span className="input-group-text">
-            <GiIcons.GiPhotoCamera/>
-          </span>
-          <input
-            type="file"
-            placeholder="Sube tu foto"
-            {...register("photo")}
-          />
+        <div className="mb-1">
+          <label class="custom-file-upload">
+            <input
+              class="custom-file-upload"
+              type="file"
+              {...register("photo")}
+            />
+              2. Sube una imagen
+          </label>
         </div>
-        <div className="d-grid mt-2">
-          <button className="btn" type='submit' disabled={!isValid}>Crea tu comentario</button>
+        <div className="d-grid mt-2 justify-content-center">
+          <button className="btn" type='submit' disabled={!isValid}>3. Sube tu reseña</button>
         </div>
       </form>
     </div>
