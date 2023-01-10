@@ -26,4 +26,6 @@ router.post("/orders/create", secure.isLogged, orders.createOrders);
 router.post("/order/:id/messages", secure.isLogged, secure.isOwner, messages.setMessage);
 router.post("/order/:id/review", secure.isLogged, secure.isOwnerSent, upload.single("photo"), reviews.createReview);
 
+router.use((req, res, next) => next(createError(404, "Ruta no encontrada")));
+
 module.exports = router;
